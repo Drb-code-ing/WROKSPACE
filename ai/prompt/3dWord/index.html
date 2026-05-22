@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D小世界编辑器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 顶部面板 -->
+    <div class="top-panel">
+        <h1>🏠 3D小世界编辑器</h1>
+        <div class="save-controls">
+            <select id="saveSlot">
+                <option value="0">存档 1</option>
+                <option value="1">存档 2</option>
+                <option value="2">存档 3</option>
+            </select>
+            <button id="resetBtn">🎲 随机生成</button>
+            <button id="clearBtn">🗑️ 清空世界</button>
+        </div>
+    </div>
+
+    <!-- 底部工具栏 -->
+    <div class="toolbar">
+        <div class="tool-item active" data-tool="grass">🌱 草地</div>
+        <div class="tool-item" data-tool="dirt">🟫 土路</div>
+        <div class="tool-item" data-tool="water">💧 水</div>
+        <div class="tool-item" data-tool="stone">🪨 石头</div>
+        <div class="tool-item" data-tool="tree">🌳 树</div>
+        <div class="tool-item" data-tool="house">🏠 房子</div>
+        <div class="tool-item" data-tool="erase">❌ 擦除</div>
+    </div>
+
+    <!-- 小地图 -->
+    <div class="minimap-container">
+        <canvas id="minimap" width="160" height="160"></canvas>
+    </div>
+
+    <!-- 操作提示 -->
+    <div id="tutorial" class="tutorial">
+        拖拽旋转 / 滚轮缩放 / 点击放置
+    </div>
+
+    <!-- Three.js容器 -->
+    <div id="world-container"></div>
+
+    <!-- 引入Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <!-- 主脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>

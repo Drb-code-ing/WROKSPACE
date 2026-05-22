@@ -1,0 +1,32 @@
+{
+  "version": "v001",
+  "date": "2026-05-17",
+  "title": "一人公司 + AI 全栈工程师：从 Vibe Coding 到 OPC 的实践之路",
+  "covered_sources": {
+    "DRB_AI/readme.md": {
+      "hash": "89a8a51843c853e4bb4b689b0f5c955814e9fe784b61ca45eacd25be4eca20ba",
+      "sections_covered": [
+        "OPC 概念定义",
+        "Boss/Agent 角色",
+        "PM 产品经理角色",
+        "设计师角色",
+        "前端工程师角色",
+        "后端工程师角色",
+        "测试工程师角色",
+        "运维与运营销售角色"
+      ]
+    },
+    "ai/wnd/readme.md": {
+      "hash": "4bdfb846a713791743ce90264045cbea176701be7b2d4cb0de33f4ad2675bea7",
+      "sections_covered": [
+        "吴恩达与 deeplearning.ai",
+        "Vibe Coding 氛围编程概念",
+        "Prompt Engineering 提示词工程",
+        "生日卡片应用案例",
+        "Goal+Input+Output+Layout+Features 模式"
+      ]
+    }
+  },
+  "character_count": 1884,
+  "notes": "首次写作，覆盖全部笔记内容"
+}

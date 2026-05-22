@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body>
+
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+
+  <div class="sequencer">
+    <h2>Sequencer</h2>
+    <div class="sequencer-controls">
+      <button id="playBtn">▶ Play</button>
+      <div class="bpm-control">
+        <label for="bpmSlider">BPM</label>
+        <input type="range" id="bpmSlider" min="40" max="200" value="120">
+        <span id="bpmDisplay">120</span>
+      </div>
+      <button id="clearBtn">✕ Clear</button>
+    </div>
+    <div class="sequencer-grid" id="sequencerGrid"></div>
+  </div>
+
+<script>
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+  function playSoundByKey(keyCode) {
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  function playSound(e) {
+    playSoundByKey(e.keyCode);
+  }
+
+  function playSoundFromClick(e) {
+    playSoundByKey(e.currentTarget.dataset.key);
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => {
+    key.addEventListener('transitionend', removeTransition);
+    key.addEventListener('click', playSoundFromClick);
+  });
+  window.addEventListener('keydown', playSound);
+
+  // === Sequencer ===
+  const SOUND_LIST = [
+    { name: 'clap', keyCode: 65 },
+    { name: 'hihat', keyCode: 83 },
+    { name: 'kick', keyCode: 68 },
+    { name: 'openhat', keyCode: 70 },
+    { name: 'boom', keyCode: 71 },
+    { name: 'ride', keyCode: 72 },
+    { name: 'snare', keyCode: 74 },
+    { name: 'tom', keyCode: 75 },
+    { name: 'tink', keyCode: 76 },
+  ];
+
+  let seqSteps = {};
+  let seqCurrentStep = 0;
+  let seqIsPlaying = false;
+  let seqInterval = null;
+  let seqBpm = 120;
+
+  // Default beat: kick on 1&3, snare on 2&4, hihat on 8th notes
+  const DEFAULT_PATTERN = {
+    2: [0, 8],
+    6: [4, 12],
+    1: [0, 2, 4, 6, 8, 10, 12, 14],
+  };
+
+  function buildSequencerGrid() {
+    const grid = document.getElementById('sequencerGrid');
+    grid.innerHTML = '';
+
+    const corner = document.createElement('div');
+    corner.className = 'grid-corner';
+    grid.appendChild(corner);
+
+    for (let col = 0; col < 16; col++) {
+      const el = document.createElement('div');
+      el.className = 'grid-step-num';
+      el.textContent = col + 1;
+      el.dataset.col = col;
+      grid.appendChild(el);
+    }
+
+    SOUND_LIST.forEach((sound, row) => {
+      const label = document.createElement('div');
+      label.className = 'grid-label';
+      label.textContent = sound.name;
+      grid.appendChild(label);
+
+      if (!seqSteps[row]) seqSteps[row] = {};
+      if (DEFAULT_PATTERN[row]) {
+        DEFAULT_PATTERN[row].forEach(col => { seqSteps[row][col] = true; });
+      }
+
+      for (let col = 0; col < 16; col++) {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        if (seqSteps[row] && seqSteps[row][col]) cell.classList.add('active');
+        cell.dataset.row = row;
+        cell.dataset.col = col;
+        cell.addEventListener('click', () => {
+          seqSteps[row][col] = !seqSteps[row][col];
+          cell.classList.toggle('active');
+        });
+        grid.appendChild(cell);
+      }
+    });
+  }
+
+  function seqUpdatePlayhead() {
+    document.querySelectorAll('.grid-cell.current, .grid-step-num.current')
+      .forEach(el => el.classList.remove('current'));
+
+    document.querySelectorAll(`.grid-cell[data-col="${seqCurrentStep}"]`)
+      .forEach(el => el.classList.add('current'));
+    document.querySelectorAll(`.grid-step-num[data-col="${seqCurrentStep}"]`)
+      .forEach(el => el.classList.add('current'));
+  }
+
+  function seqPlayStep() {
+    SOUND_LIST.forEach((sound, row) => {
+      if (seqSteps[row] && seqSteps[row][seqCurrentStep]) {
+        playSoundByKey(sound.keyCode);
+      }
+    });
+    seqUpdatePlayhead();
+    seqCurrentStep = (seqCurrentStep + 1) % 16;
+  }
+
+  function seqStart() {
+    if (seqInterval) return;
+    seqIsPlaying = true;
+    document.getElementById('playBtn').textContent = '⏸ Pause';
+    seqCurrentStep = 0;
+    seqPlayStep();
+    const interval = 60000 / seqBpm / 4;
+    seqInterval = setInterval(seqPlayStep, interval);
+  }
+
+  function seqStop() {
+    clearInterval(seqInterval);
+    seqInterval = null;
+    seqIsPlaying = false;
+    document.getElementById('playBtn').textContent = '▶ Play';
+    document.querySelectorAll('.grid-cell.current, .grid-step-num.current')
+      .forEach(el => el.classList.remove('current'));
+    seqCurrentStep = 0;
+  }
+
+  document.getElementById('playBtn').addEventListener('click', () => {
+    seqIsPlaying ? seqStop() : seqStart();
+  });
+
+  document.getElementById('bpmSlider').addEventListener('input', (e) => {
+    seqBpm = parseInt(e.target.value);
+    document.getElementById('bpmDisplay').textContent = seqBpm;
+    if (seqIsPlaying) {
+      seqStop();
+      seqStart();
+    }
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    seqStop();
+    seqSteps = {};
+    buildSequencerGrid();
+  });
+
+  buildSequencerGrid();
+</script>
+
+
+</body>
+</html>

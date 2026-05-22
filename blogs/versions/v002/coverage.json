@@ -1,0 +1,24 @@
+{
+  "version": "v002",
+  "date": "2026-05-19",
+  "title": "从 Prompt 到 3D 小世界：一个 AI Native 开发者的实践与思考",
+  "covered_sources": {
+    "ai/prompt/readme.md": {
+      "hash": "02bbb1544ab80de0bc3bf89f5086bc7617bd24f5c653319495e2c23ffdddc9f9",
+      "sections_covered": [
+        "3D 小世界项目需求与设计",
+        "OPC 流程 (PM/设计师/工程师)",
+        "Prompt Engineer 完整 prompt",
+        "方法: 复杂 prompt 逻辑分割",
+        "从 AIGC 到 LLM 概念演进",
+        "LLM 定义与模型参数 (Billion/Trillion)",
+        "数学表示 y = fθ(x)",
+        "代码向后，业务向前 哲学",
+        "Be AI Native",
+        "领域知识 前端3D游戏 Three.js"
+      ]
+    }
+  },
+  "character_count": 3280,
+  "notes": "首次覆盖 ai/prompt/readme.md，前端3D + LLM概念融合叙事"
+}

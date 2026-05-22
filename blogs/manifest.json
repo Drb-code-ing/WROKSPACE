@@ -1,0 +1,82 @@
+{
+  "source_files": {
+    "DRB_AI/readme.md": {
+      "hash": "89a8a51843c853e4bb4b689b0f5c955814e9fe784b61ca45eacd25be4eca20ba",
+      "path": "E:\\WROKSPACE\\DRB_AI\\readme.md",
+      "label": "AI全栈工程师 / OPC笔记"
+    },
+    "ai/wnd/readme.md": {
+      "hash": "4bdfb846a713791743ce90264045cbea176701be7b2d4cb0de33f4ad2675bea7",
+      "path": "E:\\WROKSPACE\\ai\\wnd\\readme.md",
+      "label": "吴恩达 / Prompt工程笔记"
+    },
+    "ai/prompt/readme.md": {
+      "hash": "02bbb1544ab80de0bc3bf89f5086bc7617bd24f5c653319495e2c23ffdddc9f9",
+      "path": "E:\\WROKSPACE\\ai\\prompt\\readme.md",
+      "label": "3D小世界编辑器 / LLM概念笔记"
+    },
+    "ai/claude_code/demo1/readme.md": {
+      "hash": "0abe9ce3584924eba3f7742b6e23ac337d2ed0a91a80648e75549d41aebff030",
+      "path": "E:\\WROKSPACE\\ai\\claude_code\\demo1\\readme.md",
+      "label": "Claude Code Agent笔记"
+    },
+    "ai/prompt/landing_page/readme.md": {
+      "hash": "aaff524a37d50dfc6e3ca21ca331dcca145d7804a5a9e61c8330079ef2314049",
+      "path": "E:\\WROKSPACE\\ai\\prompt\\landing_page\\readme.md",
+      "label": "落地页项目笔记 / Prompt设计"
+    },
+    "ai/prompt/landing_page/food_app/prompt.md": {
+      "hash": "f8a5afe5e816c802ecd0b708d3cb3c43bc3dd34477ffe4e1e26540227616d534",
+      "path": "E:\\WROKSPACE\\ai\\prompt\\landing_page\\food_app\\prompt.md",
+      "label": "Foodiez 落地页完整 Prompt"
+    },
+    "ai/claude_code/try-cc/readme.md": {
+      "hash": "338de380c8576a7a53f61cdfc1e552688c768b6d3705ecbe511c29bbfb5bfd87",
+      "path": "E:\\WROKSPACE\\ai\\claude_code\\try-cc\\readme.md",
+      "label": "Claude Code CLI 笔记"
+    },
+    "ai/claude_code/01 - JavaScript Drum Kit/CLAUDE.md": {
+      "hash": "27aade33401aaf7b6af6a46a91157da5902d2c20e8f81854a82005686378d1b0",
+      "path": "E:\\WROKSPACE\\ai\\claude_code\\01 - JavaScript Drum Kit\\CLAUDE.md",
+      "label": "鼓点模拟器项目 CLAUDE.md"
+    }
+  },
+  "versions": [
+    {
+      "id": "v001",
+      "date": "2026-05-17",
+      "title": "一人公司 + AI 全栈工程师：从 Vibe Coding 到 OPC 的实践之路",
+      "covered_sources": {
+        "DRB_AI/readme.md": "89a8a51843c853e4bb4b689b0f5c955814e9fe784b61ca45eacd25be4eca20ba",
+        "ai/wnd/readme.md": "4bdfb846a713791743ce90264045cbea176701be7b2d4cb0de33f4ad2675bea7"
+      }
+    },
+    {
+      "id": "v002",
+      "date": "2026-05-19",
+      "title": "从 Prompt 到 3D 小世界：一个 AI Native 开发者的实践与思考",
+      "covered_sources": {
+        "ai/prompt/readme.md": "02bbb1544ab80de0bc3bf89f5086bc7617bd24f5c653319495e2c23ffdddc9f9"
+      }
+    },
+    {
+      "id": "v003",
+      "date": "2026-05-20",
+      "title": "从 AIGC 到 AI Agent：用 Claude Code 搭建产品级落地页的实战",
+      "covered_sources": {
+        "ai/claude_code/demo1/readme.md": "0abe9ce3584924eba3f7742b6e23ac337d2ed0a91a80648e75549d41aebff030",
+        "ai/prompt/landing_page/readme.md": "aaff524a37d50dfc6e3ca21ca331dcca145d7804a5a9e61c8330079ef2314049",
+        "ai/prompt/landing_page/food_app/prompt.md": "f8a5afe5e816c802ecd0b708d3cb3c43bc3dd34477ffe4e1e26540227616d534"
+      }
+    },
+    {
+      "id": "v004",
+      "date": "2026-05-21",
+      "title": "从 VS Code 到命令行：一个 AI Native 开发者的 Claude Code 工作流进化",
+      "covered_sources": {
+        "ai/claude_code/try-cc/readme.md": "338de380c8576a7a53f61cdfc1e552688c768b6d3705ecbe511c29bbfb5bfd87",
+        "ai/claude_code/01 - JavaScript Drum Kit/CLAUDE.md": "27aade33401aaf7b6af6a46a91157da5902d2c20e8f81854a82005686378d1b0"
+      }
+    }
+  ]
+}

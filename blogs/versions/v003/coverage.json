@@ -1,0 +1,19 @@
+{
+  "covered_sources": {
+    "ai/claude_code/demo1/readme.md": {
+      "hash": "0abe9ce3584924eba3f7742b6e23ac337d2ed0a91a80648e75549d41aebff030",
+      "path": "E:\\WROKSPACE\\ai\\claude_code\\demo1\\readme.md",
+      "label": "Claude Code Agent 笔记"
+    },
+    "ai/prompt/landing_page/readme.md": {
+      "hash": "aaff524a37d50dfc6e3ca21ca331dcca145d7804a5a9e61c8330079ef2314049",
+      "path": "E:\\WROKSPACE\\ai\\prompt\\landing_page\\readme.md",
+      "label": "落地页项目笔记 / Prompt 设计"
+    },
+    "ai/prompt/landing_page/food_app/prompt.md": {
+      "hash": "f8a5afe5e816c802ecd0b708d3cb3c43bc3dd34477ffe4e1e26540227616d534",
+      "path": "E:\\WROKSPACE\\ai\\prompt\\landing_page\\food_app\\prompt.md",
+      "label": "Foodiez 落地页完整 Prompt"
+    }
+  }
+}
