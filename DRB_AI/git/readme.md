@@ -43,3 +43,7 @@
     git config --global user.email "your email"
     配置全局的用户名和邮箱
     gitee 证件
+
+## repo 仓库
+ - remote origin 远程源
+ - git push origin main/master
