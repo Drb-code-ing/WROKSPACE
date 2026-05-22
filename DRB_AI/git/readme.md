@@ -28,3 +28,18 @@
     shell 脚本 ls 命令
     关系：
     文件 : 文件版本(快照) === 1 : n
+ - git status
+    常用，做任何git 操作前
+    明确仓库当前的状态
+ - git add 文件名/ .
+    文件 untracked -> tracked
+    将一个**未追踪的文件**添加到**暂存区(stage area)**中
+    to be commited 待提交
+ - git commit -m "write a readme file"
+    存储到了.git 仓库中，有了第一个版本(快照)
+    2 insertions 内容新增了2 行
+ - git 配置
+    git config --global user.name "your name"
+    git config --global user.email "your email"
+    配置全局的用户名和邮箱
+    gitee 证件
