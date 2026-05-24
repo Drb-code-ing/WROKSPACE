@@ -39,6 +39,11 @@
       "hash": "27aade33401aaf7b6af6a46a91157da5902d2c20e8f81854a82005686378d1b0",
       "path": "E:\\WROKSPACE\\ai\\claude_code\\01 - JavaScript Drum Kit\\CLAUDE.md",
       "label": "鼓点模拟器项目 CLAUDE.md"
+    },
+    "DRB_AI/git/readme.md": {
+      "hash": "964972ad2f3062fc9c277ab918769c3bca9cb5d37831d9b5cabab68f29846d7f",
+      "path": "E:\\WROKSPACE\\DRB_AI\\git\\readme.md",
+      "label": "Git 学习笔记"
     }
   },
   "versions": [
@@ -76,6 +81,14 @@
       "covered_sources": {
         "ai/claude_code/try-cc/readme.md": "338de380c8576a7a53f61cdfc1e552688c768b6d3705ecbe511c29bbfb5bfd87",
         "ai/claude_code/01 - JavaScript Drum Kit/CLAUDE.md": "27aade33401aaf7b6af6a46a91157da5902d2c20e8f81854a82005686378d1b0"
+      }
+    },
+    {
+      "id": "v005",
+      "date": "2026-05-22",
+      "title": "从 Git 到版本思维：一个 AI Native 开发者的基本功补全",
+      "covered_sources": {
+        "DRB_AI/git/readme.md": "964972ad2f3062fc9c277ab918769c3bca9cb5d37831d9b5cabab68f29846d7f"
       }
     }
   ]
