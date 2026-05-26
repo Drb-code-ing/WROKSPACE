@@ -40,6 +40,11 @@
       "path": "E:\\WROKSPACE\\ai\\claude_code\\01 - JavaScript Drum Kit\\CLAUDE.md",
       "label": "鼓点模拟器项目 CLAUDE.md"
     },
+    "ai/fde/readme.md": {
+      "hash": "eb9164f2e868cc3a796ad6ecad62332e0971b815425f3ed8e1e4ecf52c19e0bf",
+      "path": "E:\\WROKSPACE\\ai\\fde\\readme.md",
+      "label": "FDE 前沿部署工程师笔记"
+    },
     "DRB_AI/git/readme.md": {
       "hash": "964972ad2f3062fc9c277ab918769c3bca9cb5d37831d9b5cabab68f29846d7f",
       "path": "E:\\WROKSPACE\\DRB_AI\\git\\readme.md",
@@ -102,6 +107,14 @@
       "title": "从模块化到全栈项目：一个 AI Native 开发者的工程化启蒙",
       "covered_sources": {
         "ai/project/users-chat/readme.md": "caf0c025958b46b0c8b23ed2e8c2ae20c3f2a77768f19324d2dac5b277e4c495"
+      }
+    },
+    {
+      "id": "v007",
+      "date": "2026-05-26",
+      "title": "从 AI 开发到业务落地：一个 AI Native 开发者的 FDE 初探",
+      "covered_sources": {
+        "ai/fde/readme.md": "eb9164f2e868cc3a796ad6ecad62332e0971b815425f3ed8e1e4ecf52c19e0bf"
       }
     }
   ]
