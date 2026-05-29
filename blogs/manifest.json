@@ -134,8 +134,10 @@
     {
       "id": "v010",
       "date": "2026-05-28",
-      "title": "从 API 到 Agent 实战：一个 AI Native 开发者的 Hermes Agent 初体验",
-      "covered_sources": {}
+      "title": "从 Python 回到前端：一个 AI Native 开发者的 JavaScript 底层基础补全",
+      "covered_sources": {
+        "fe/js/es6/var_let_const/readme.md": "auto"
+      }
     }
   ]
 }
