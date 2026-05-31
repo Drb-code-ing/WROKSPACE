@@ -59,6 +59,11 @@
       "hash": "3cb6e24595246aac4d6df6b73296c20961dc903ac922fc810248864a44c7a2fa",
       "path": "E:\\WROKSPACE\\ai\\model_scope\\readme.md",
       "label": "Model Scope / Python基础 / LLM API调用笔记"
+    },
+    "ai/wnd/prompt/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\wnd\\prompt\\readme.md",
+      "label": "吴恩达 Prompt Engineering 笔记"
     }
   },
   "versions": [
@@ -137,6 +142,14 @@
       "title": "从 Python 回到前端：一个 AI Native 开发者的 JavaScript 底层基础补全",
       "covered_sources": {
         "fe/js/es6/var_let_const/readme.md": "auto"
+      }
+    },
+    {
+      "id": "v011",
+      "date": "2026-05-31",
+      "title": "从写代码到写 Prompt：一个 AI Native 开发者的提示词工程入门",
+      "covered_sources": {
+        "ai/wnd/prompt/readme.md": "auto"
       }
     }
   ]
