@@ -64,6 +64,11 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\ai\\wnd\\prompt\\readme.md",
       "label": "吴恩达 Prompt Engineering 笔记"
+    },
+    "ai/generative-ai/demo1/reademe.md": {
+      "hash": "1e1654bd533a5bc75b7d9b56b2ff713be00b3a814d0f028ecda0f8000914d27a",
+      "path": "E:\\WROKSPACE\\ai\\generative-ai\\demo1\\reademe.md",
+      "label": "Generative AI / Node.js调用LLM笔记"
     }
   },
   "versions": [
@@ -150,6 +155,14 @@
       "title": "从写代码到写 Prompt：一个 AI Native 开发者的提示词工程入门",
       "covered_sources": {
         "ai/wnd/prompt/readme.md": "auto"
+      }
+    },
+    {
+      "id": "v012",
+      "date": "2026-06-02",
+      "title": "从 Python 到 Node.js：一个 AI Native 开发者的 JavaScript 调用 LLM 实战",
+      "covered_sources": {
+        "ai/generative-ai/demo1/reademe.md": "1e1654bd533a5bc75b7d9b56b2ff713be00b3a814d0f028ecda0f8000914d27a"
       }
     }
   ]
