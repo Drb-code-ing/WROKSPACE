@@ -69,6 +69,11 @@
       "hash": "1e1654bd533a5bc75b7d9b56b2ff713be00b3a814d0f028ecda0f8000914d27a",
       "path": "E:\\WROKSPACE\\ai\\generative-ai\\demo1\\reademe.md",
       "label": "Generative AI / Node.js调用LLM笔记"
+    },
+    "ai/coze/知识库/readme.md": {
+      "hash": "4c42a9b05db069c3c036710e2cfb871332fa98eaa27120bc735c5ce5258b2fb9",
+      "path": "E:\\WROKSPACE\\ai\\coze\\知识库\\readme.md",
+      "label": "Coze智能体开发 / 知识库笔记"
     }
   },
   "versions": [
@@ -163,6 +168,22 @@
       "title": "从 Python 到 Node.js：一个 AI Native 开发者的 JavaScript 调用 LLM 实战",
       "covered_sources": {
         "ai/generative-ai/demo1/reademe.md": "1e1654bd533a5bc75b7d9b56b2ff713be00b3a814d0f028ecda0f8000914d27a"
+      }
+    },
+    {
+      "id": "v013",
+      "date": "2026-06-02",
+      "title": "从 div 到语义化：一个 AI Native 开发者的前端规范化初体验",
+      "covered_sources": {
+        "fe/html5/weui-page/readme.md": "auto"
+      }
+    },
+    {
+      "id": "v014",
+      "date": "2026-06-03",
+      "title": "从代码到智能体：一个 AI Native 开发者的 Coze 平台初体验",
+      "covered_sources": {
+        "ai/coze/知识库/readme.md": "4c42a9b05db069c3c036710e2cfb871332fa98eaa27120bc735c5ce5258b2fb9"
       }
     }
   ]
