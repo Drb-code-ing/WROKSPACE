@@ -1,0 +1,29 @@
+{
+  "name": "wrokspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drb-code-ing/WROKSPACE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Drb-code-ing/WROKSPACE/issues"
+  },
+  "homepage": "https://github.com/Drb-code-ing/WROKSPACE#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "openai": "^6.41.0",
+    "pnpm": "^11.5.0"
+  }
+}

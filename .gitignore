@@ -1,0 +1,4 @@
+node_modules/
+ai/generative-ai/demo1/.env
+ai/generative-ai/demo2/.env
+.playwright-mcp/
