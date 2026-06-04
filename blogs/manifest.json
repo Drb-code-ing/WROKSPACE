@@ -74,6 +74,11 @@
       "hash": "4c42a9b05db069c3c036710e2cfb871332fa98eaa27120bc735c5ce5258b2fb9",
       "path": "E:\\WROKSPACE\\ai\\coze\\知识库\\readme.md",
       "label": "Coze智能体开发 / 知识库笔记"
+    },
+    "ai/aigc/http-demo/readme.md": {
+      "hash": "6e579e62b2b988c126b16e53bdd00119c001a139a7e23deffb5013f90f9a4ec2",
+      "path": "E:\\WROKSPACE\\ai\\aigc\\http-demo\\readme.md",
+      "label": "LLM HTTP接口 / 前后端通信笔记"
     }
   },
   "versions": [
@@ -184,6 +189,14 @@
       "title": "从代码到智能体：一个 AI Native 开发者的 Coze 平台初体验",
       "covered_sources": {
         "ai/coze/知识库/readme.md": "4c42a9b05db069c3c036710e2cfb871332fa98eaa27120bc735c5ce5258b2fb9"
+      }
+    },
+    {
+      "id": "v015",
+      "date": "2026-06-04",
+      "title": "从 fetch 到 HTTP：一个 AI Native 开发者的前后端通信实战",
+      "covered_sources": {
+        "ai/aigc/http-demo/readme.md": "6e579e62b2b988c126b16e53bdd00119c001a139a7e23deffb5013f90f9a4ec2"
       }
     }
   ]
