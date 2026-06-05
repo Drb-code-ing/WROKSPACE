@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 创建一个空对象
+    // Object 是顶层对象
+    const drb = new Object('drb')
+    console.log(drb)
+
+    function Person(name, age) {
+      // 构造实例，实例私有属性
+      this.name = name
+      this.age = age
+    }
+    Person.prototype.poem = '仁义礼智信'
+    Person.prototype.say = function() {
+      console.log(`我叫${this.name}, 我今年${this.age}岁`)
+    }
+    Person.prototype.timeMF = function() {
+      console.log('我是一个时间机器 ')
+    }
+    const Drb = new Person('Drb', 18)
+    console.log(Drb)
+    Drb.say()
+    Drb.timeMF()
+    console.log(Drb.toString())// 没有这个方法，会在原型链上向上查找，直到Object 最顶层
+  </script>
+</body>
+</html>
