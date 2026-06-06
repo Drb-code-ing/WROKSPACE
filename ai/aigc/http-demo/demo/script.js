@@ -20,7 +20,7 @@ const payload = {
     },
   ],
 }
-
+;(async () => {
 try {
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -28,8 +28,9 @@ try {
     body: JSON.stringify(payload),// 因为只能传递字符串，所以需要转换为字符串(反序列化)
   })
   const data = await response.json()
-  document.querySelector('#result').innerHTML = data.choices[0].message.content
-  console.log(data)
+  // document.querySelector('#result').innerHTML = data.choices[0].message.content
+  console.log(data.choices[0].message.content)
 } catch (error) {
   console.log(error)
 }
+})()

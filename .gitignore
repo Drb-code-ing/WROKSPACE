@@ -2,4 +2,5 @@ node_modules/
 ai/generative-ai/demo1/.env
 ai/generative-ai/demo2/.env
 ai/aigc/http-demo/demo/.env
+ai/wnd/nlp-demo/.env
 .playwright-mcp/
