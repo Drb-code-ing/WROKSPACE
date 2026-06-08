@@ -84,6 +84,11 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\ai\\wnd\\nlp-demo\\readme.md",
       "label": "Prompt做NLP任务开发 / ES6语法特性笔记"
+    },
+    "backend/bun/readme.md": {
+      "hash": "83d59225e83c2bab7b0ded211e10243bc7cb042f992e129caa74e76dd8edb0a3",
+      "path": "E:\\WROKSPACE\\backend\\bun\\readme.md",
+      "label": "Bun运行时 / TypeScript / HTTP请求LLM笔记"
     }
   },
   "versions": [
@@ -210,6 +215,14 @@
       "title": "用 Prompt 做 NLP：解构赋值与 AI 全栈的第一次实战",
       "covered_sources": {
         "ai/wnd/nlp-demo/readme.md": "1ce587126d03d819464df4eb41981f14089f6f139d079712478f0be7d375a18f"
+      }
+    },
+    {
+      "id": "v018",
+      "date": "2026-06-08",
+      "title": "Bun 与 TypeScript：一个 AI Native 开发者的后端基础设施升级",
+      "covered_sources": {
+        "backend/bun/readme.md": "83d59225e83c2bab7b0ded211e10243bc7cb042f992e129caa74e76dd8edb0a3"
       }
     }
   ]
