@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const arr = [6, 8, 12, 15]
+    const newArr = arr.map((item, index, self) => {
+      return item * 2
+    })
+    // map 是一个纯函数, 不会改变原数组, 返回一个新的新数组
+    console.log(newArr)
+    console.log(arr)
+
+    console.log(arr.filter((item, index, self) => {
+      return item % 2 === 0
+    }))
+    console.log(arr)
+
+    console.log(arr.some((item, index, self) => {
+      return item % 2 === 0
+    }))
+    console.log(arr.every((item, index, self) => {
+      return item % 2 === 0
+    }))
+
+    console.log(arr.reduce((prev, curr) => {
+      return prev + curr
+    }, 0))
+  </script>
+</body>
+</html>
