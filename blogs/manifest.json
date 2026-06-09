@@ -89,6 +89,16 @@
       "hash": "83d59225e83c2bab7b0ded211e10243bc7cb042f992e129caa74e76dd8edb0a3",
       "path": "E:\\WROKSPACE\\backend\\bun\\readme.md",
       "label": "Bun运行时 / TypeScript / HTTP请求LLM笔记"
+    },
+    "algorithm/arr/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\algorithm\\arr\\readme.md",
+      "label": "数据结构入门 / 数组与高阶函数笔记"
+    },
+    "fe/js/es6/sync_async/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\js\\es6\\sync_async\\readme.md",
+      "label": "JS同步异步 / Promise与Event Loop笔记"
     }
   },
   "versions": [
@@ -223,6 +233,22 @@
       "title": "Bun 与 TypeScript：一个 AI Native 开发者的后端基础设施升级",
       "covered_sources": {
         "backend/bun/readme.md": "83d59225e83c2bab7b0ded211e10243bc7cb042f992e129caa74e76dd8edb0a3"
+      }
+    },
+    {
+      "id": "v019",
+      "date": "2026-06-09",
+      "title": "数组与高阶函数：一个 AI Native 开发者的数据结构启蒙",
+      "covered_sources": {
+        "algorithm/arr/readme.md": "auto"
+      }
+    },
+    {
+      "id": "v020",
+      "date": "2026-06-09",
+      "title": "JS 同步异步与 Promise：一个 AI Native 开发者的执行机制理解",
+      "covered_sources": {
+        "fe/js/es6/sync_async/readme.md": "auto"
       }
     }
   ]
