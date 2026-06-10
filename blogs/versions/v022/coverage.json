@@ -1,0 +1,33 @@
+{
+  "version": "v022",
+  "date": "2026-06-10",
+  "title": "JS 的八种数据类型与内存分配：一个 AI Native 开发者的语言底层理解",
+  "covered_sources": {
+    "fe/js/type/readme.md": {
+      "hash": "auto",
+      "sections_covered": [
+        "ECMA262 八种数据类型全景",
+        "原始数据类型（Number/String/Boolean/null/undefined）",
+        "ES6 新增类型（Symbol/BigInt）",
+        "引用类型 Object",
+        "栈内存 Vs 堆内存分配",
+        "null vs undefined 语义区别",
+        "拷贝式赋值 vs 引用式赋值",
+        "Number 浮点数精度问题",
+        "BigInt 大整数运算",
+        "Symbol 唯一标识符",
+        "手动释放内存（null 触发 GC）"
+      ]
+    },
+    "fe/js/runway/readme.md": {
+      "hash": "auto",
+      "sections_covered": [
+        "调用栈与执行上下文",
+        "变量环境与词法环境",
+        "编译阶段的内存分配"
+      ]
+    }
+  },
+  "character_count": 2800,
+  "notes": "覆盖 JS 八种数据类型全景、原始类型与引用类型的内存分配差异、null vs undefined、Symbol/BigInt 新特性。结合 fe/js/runway/readme.md 补充栈内存视角"
+}
