@@ -1,0 +1,30 @@
+{
+  "version": "v023",
+  "date": "2026-06-11",
+  "title": "RESTful API 与面向接口编程：一个 AI Native 开发者的后端工程化初体验",
+  "covered_sources": {
+    "backend/bun/todos/readme.md": {
+      "hash": "auto",
+      "sections_covered": [
+        "OOP 核心概念（封装/继承/多态）",
+        "接口（interface）作为类型约束",
+        "面向接口编程与设计模式",
+        "RESTful 资源命名与 HTTP 动词语义",
+        "路由概念"
+      ]
+    },
+    "backend/bun/todos/server.ts": {
+      "hash": "auto",
+      "sections_covered": [
+        "TypeScript interface 定义 Todo 类型",
+        "Bun.serve 高性能 HTTP 服务器",
+        "fetch 请求处理与 Response.json",
+        "URL 解析与路由分发",
+        "CORS 跨域配置",
+        "路径参数提取（/todos/:id）"
+      ]
+    }
+  },
+  "character_count": 2800,
+  "notes": "覆盖 OOP 接口概念、TypeScript 强类型约束、RESTful API 设计原则、Bun HTTP 服务器路由实战。从数据类型（v022）到接口定义（v023），形成类型系统的完整闭环"
+}
