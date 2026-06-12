@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="Todos"></ul>
+  <button id="btn">发送请求</button>
+  <script>
+    console.log('start')
+    // 事件注册
+    document.getElementById('btn').addEventListener('click', function() {
+      console.log('click')
+    })
+    const Todos = document.getElementById('Todos')
+    // fetch("http://localhost:5000/todos")
+      // .then(res => res.json())
+      // .then(data => {
+        // console.log(data)
+      // })
+      // .catch(err => console.log(err))
+
+      // fetch 的前辈
+      // 底层本质是js 可以主动去发起http 请求，当前页面还在
+      // fetch/xhr 请求接口，动态更新页面 web2.0 时代 繁荣
+      const xhr = new XMLHttpRequest()// 创建一个 xhr 实例
+      // 打开一个http 通道
+      xhr.open('GET', 'http://localhost:5000/todos', true)// true 异步请求 || false 同步请求
+      // 监听状态变化 回调函数callback
+      xhr.onreadystatechange = function() {
+        console.log(xhr.readyState)
+        if(xhr.status === 200 && xhr.readyState === 4) {
+          // console.log(xhr.responseText)
+          const todos = JSON.parse(xhr.responseText)// 反序列化为js 对象
+          console.log(todos)
+          Todos.innerHTML = todos.map(t => `<li>${t.title}</li>`).join('')
+        }
+      }
+      // 发送请求
+      xhr.send()
+      console.log('end')
+  </script>
+</body>
+</html>
