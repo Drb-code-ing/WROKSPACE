@@ -114,6 +114,26 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\backend\\bun\\todos\\readme.md",
       "label": "RESTful API / OOP接口 / Bun路由笔记"
+    },
+    "backend/ajax/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\backend\\ajax\\readme.md",
+      "label": "Ajax / JSON序列化 / JS异步处理笔记"
+    },
+    "backend/ajax/backend/index.js": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\backend\\ajax\\backend\\index.js",
+      "label": "Node.js http模块 / CommonJS / 伺服状态笔记"
+    },
+    "backend/ajax/frontend/index.html": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\backend\\ajax\\frontend\\index.html",
+      "label": "XMLHttpRequest / DOM动态渲染 / Web 2.0笔记"
+    },
+    "backend/ajax/backend/package.json": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\backend\\ajax\\backend\\package.json",
+      "label": "CommonJS 模块类型声明"
     }
   },
   "versions": [
@@ -282,6 +302,17 @@
       "covered_sources": {
         "backend/bun/todos/readme.md": "auto",
         "backend/bun/todos/server.ts": "auto"
+      }
+    },
+    {
+      "id": "v024",
+      "date": "2026-06-12",
+      "title": "AJAX 与 HTTP 底层机制：一个 AI Native 开发者的前后端通信原理理解",
+      "covered_sources": {
+        "backend/ajax/readme.md": "auto",
+        "backend/ajax/backend/index.js": "auto",
+        "backend/ajax/frontend/index.html": "auto",
+        "backend/ajax/backend/package.json": "auto"
       }
     }
   ]

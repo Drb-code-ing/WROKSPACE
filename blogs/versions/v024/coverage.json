@@ -1,0 +1,49 @@
+{
+  "version": "v024",
+  "date": "2026-06-12",
+  "title": "AJAX 与 HTTP 底层机制：一个 AI Native 开发者的前后端通信原理理解",
+  "covered_sources": {
+    "backend/ajax/readme.md": {
+      "hash": "auto",
+      "sections_covered": [
+        "JSON.stringify 序列化（value/replacer/space）",
+        "JS 异步处理三阶段（callback/Promise/async-await）",
+        "Event Loop 机制",
+        "单线程异步模型"
+      ]
+    },
+    "backend/ajax/backend/index.js": {
+      "hash": "auto",
+      "sections_covered": [
+        "CommonJS 模块化（require + module.exports）",
+        "http.createServer 伺服状态",
+        "CORS 响应头（Access-Control-Allow-Origin）",
+        "Content-Type 响应头（application/json; charset=utf-8）",
+        "req.url 路由匹配",
+        "res.end 响应结束",
+        "JSON.stringify 序列化返回数据"
+      ]
+    },
+    "backend/ajax/frontend/index.html": {
+      "hash": "auto",
+      "sections_covered": [
+        "XMLHttpRequest（XHR）—— fetch 的前辈",
+        "xhr.open / xhr.send / xhr.onreadystatechange",
+        "xhr.readyState 生命周期（0→1→2→3→4）",
+        "xhr.status HTTP 状态码判断",
+        "JSON.parse 反序列化",
+        "DOM 动态渲染（innerHTML + map + join）",
+        "事件注册（addEventListener）",
+        "Web 2.0 概念——动态更新页面不刷新"
+      ]
+    },
+    "backend/ajax/backend/package.json": {
+      "hash": "auto",
+      "sections_covered": [
+        "package.json type: commonjs 声明模块类型"
+      ]
+    }
+  },
+  "character_count": 3200,
+  "notes": "从 Node.js 原生 http 模块和 XMLHttpRequest 入手，覆盖前后端通信的完整底层链路：JSON 序列化/反序列化、CommonJS 模块系统、HTTP 伺服状态、CORS/Content-Type 响应头、路由匹配、XHR 生命周期、DOM 动态渲染、JS 异步三阶段演变。与 v023（Bun 现代方案）形成对照——v023 教会用，v024 教理解"
+}
