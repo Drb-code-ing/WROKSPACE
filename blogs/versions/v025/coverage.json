@@ -1,0 +1,24 @@
+{
+  "covered_sources": {
+    "ai/multi/readme.md": {
+      "path": "E:\\WROKSPACE\\ai\\multi\\readme.md",
+      "label": "多模态AI / 生图模型 / Vite前端工程化笔记"
+    },
+    "ai/multi/qwen-image-demo/main.js": {
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\main.js",
+      "label": "Qwen多模态生图 / fetch调用LLM / import.meta.env"
+    },
+    "ai/multi/qwen-image-demo/vite.config.js": {
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\vite.config.js",
+      "label": "Vite代理配置 / changeOrigin / rewrite"
+    },
+    "ai/multi/qwen-image-demo/package.json": {
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\package.json",
+      "label": "Vite项目配置 / npm scripts"
+    },
+    "ai/multi/qwen-image-demo/index.html": {
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\index.html",
+      "label": "Vite入口HTML / ESM模块加载"
+    }
+  }
+}

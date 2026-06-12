@@ -134,6 +134,31 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\backend\\ajax\\backend\\package.json",
       "label": "CommonJS 模块类型声明"
+    },
+    "ai/multi/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\multi\\readme.md",
+      "label": "多模态AI / 生图模型 / Vite前端工程化笔记"
+    },
+    "ai/multi/qwen-image-demo/main.js": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\main.js",
+      "label": "Qwen多模态生图 / fetch调用LLM / import.meta.env"
+    },
+    "ai/multi/qwen-image-demo/vite.config.js": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\vite.config.js",
+      "label": "Vite代理配置 / changeOrigin / rewrite"
+    },
+    "ai/multi/qwen-image-demo/package.json": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\package.json",
+      "label": "Vite项目配置 / npm scripts"
+    },
+    "ai/multi/qwen-image-demo/index.html": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\index.html",
+      "label": "Vite入口HTML / ESM模块加载"
     }
   },
   "versions": [
@@ -313,6 +338,18 @@
         "backend/ajax/backend/index.js": "auto",
         "backend/ajax/frontend/index.html": "auto",
         "backend/ajax/backend/package.json": "auto"
+      }
+    },
+    {
+      "id": "v025",
+      "date": "2026-06-12",
+      "title": "多模态 AI 与前端工程化：一个 AI Native 开发者的 Vite 与 LLM 调用实战",
+      "covered_sources": {
+        "ai/multi/readme.md": "auto",
+        "ai/multi/qwen-image-demo/main.js": "auto",
+        "ai/multi/qwen-image-demo/vite.config.js": "auto",
+        "ai/multi/qwen-image-demo/package.json": "auto",
+        "ai/multi/qwen-image-demo/index.html": "auto"
       }
     }
   ]
