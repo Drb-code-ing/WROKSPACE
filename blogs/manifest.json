@@ -159,6 +159,41 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\ai\\multi\\qwen-image-demo\\index.html",
       "label": "Vite入口HTML / ESM模块加载"
+    },
+    "fe/html5/canvas/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\readme.md",
+      "label": "Canvas 2D/3D / 网页游戏 / 数据可视化概念笔记"
+    },
+    "fe/html5/canvas/readme2.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\readme2.md",
+      "label": "Canvas API / 帧动画 / requestAnimationFrame / 游戏开发笔记"
+    },
+    "fe/html5/canvas/1.html": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\1.html",
+      "label": "Canvas入门 / fillRect / strokeRect / clearRect"
+    },
+    "fe/html5/canvas/2.html": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\2.html",
+      "label": "帧动画 / requestAnimationFrame / clear-then-draw模式"
+    },
+    "fe/html5/canvas/airplans/src/main.js": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\airplans\\src\\main.js",
+      "label": "打飞机游戏 / 敌兵种Boss / 升级系统 / 粒子特效"
+    },
+    "fe/html5/canvas/echart/src/main.js": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\echart\\src\\main.js",
+      "label": "ECharts柱状图 / 渐变配色 / 响应式适配"
+    },
+    "fe/html5/canvas/echart/src/data.js": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\echart\\src\\data.js",
+      "label": "数据定义 / 月度销售数据 / ES Module导出"
     }
   },
   "versions": [
@@ -350,6 +385,20 @@
         "ai/multi/qwen-image-demo/vite.config.js": "auto",
         "ai/multi/qwen-image-demo/package.json": "auto",
         "ai/multi/qwen-image-demo/index.html": "auto"
+      }
+    },
+    {
+      "id": "v026",
+      "date": "2026-06-15",
+      "title": "HTML5 Canvas 与数据可视化：一个 AI Native 开发者的图形编程初体验",
+      "covered_sources": {
+        "fe/html5/canvas/readme.md": "auto",
+        "fe/html5/canvas/readme2.md": "auto",
+        "fe/html5/canvas/1.html": "auto",
+        "fe/html5/canvas/2.html": "auto",
+        "fe/html5/canvas/airplans/src/main.js": "auto",
+        "fe/html5/canvas/echart/src/main.js": "auto",
+        "fe/html5/canvas/echart/src/data.js": "auto"
       }
     }
   ]

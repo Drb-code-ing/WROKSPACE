@@ -1,0 +1,32 @@
+{
+  "covered_sources": {
+    "fe/html5/canvas/readme.md": {
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\readme.md",
+      "label": "Canvas 2D/3D / 网页游戏 / 数据可视化概念笔记"
+    },
+    "fe/html5/canvas/readme2.md": {
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\readme2.md",
+      "label": "Canvas API / 帧动画 / requestAnimationFrame / 游戏开发笔记"
+    },
+    "fe/html5/canvas/1.html": {
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\1.html",
+      "label": "Canvas入门 / fillRect / strokeRect / clearRect"
+    },
+    "fe/html5/canvas/2.html": {
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\2.html",
+      "label": "帧动画 / requestAnimationFrame / clear-then-draw模式"
+    },
+    "fe/html5/canvas/airplans/src/main.js": {
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\airplans\\src\\main.js",
+      "label": "打飞机游戏 / 敌兵种Boss / 升级系统 / 粒子特效"
+    },
+    "fe/html5/canvas/echart/src/main.js": {
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\echart\\src\\main.js",
+      "label": "ECharts柱状图 / 渐变配色 / 响应式适配"
+    },
+    "fe/html5/canvas/echart/src/data.js": {
+      "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\echart\\src\\data.js",
+      "label": "数据定义 / 月度销售数据 / ES Module导出"
+    }
+  }
+}
