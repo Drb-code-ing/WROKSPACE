@@ -400,6 +400,30 @@
         "fe/html5/canvas/echart/src/main.js": "auto",
         "fe/html5/canvas/echart/src/data.js": "auto"
       }
+    },
+    {
+      "id": "v027",
+      "date": "2026-06-16",
+      "title": "从 DFS 到推荐算法：一个 AI Native 开发者的算法思维启蒙",
+      "covered_sources": {
+        "algorithm/arr/readme.md": "auto",
+        "algorithm/dfs/readme.md": "auto",
+        "algorithm/dfs/1.js": "auto",
+        "algorithm/dfs/2.js": "auto",
+        "algorithm/dy_tj/readme.md": "auto"
+      }
+    },
+    {
+      "id": "v028",
+      "date": "2026-06-16",
+      "title": "CSS 3D 与布局原理：一个 AI Native 开发者的视觉编程进阶",
+      "covered_sources": {
+        "fe/html5/3d/readme.md": "auto",
+        "fe/html5/3d/1.html": "auto",
+        "fe/html5/3d/2.html": "auto",
+        "fe/html5/3d/3.html": "auto",
+        "fe/html5/3d/common.css": "auto"
+      }
     }
   ]
 }
