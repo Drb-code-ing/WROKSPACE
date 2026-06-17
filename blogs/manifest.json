@@ -424,6 +424,17 @@
         "fe/html5/3d/3.html": "auto",
         "fe/html5/3d/common.css": "auto"
       }
+    },
+    {
+      "id": "v029",
+      "date": "2026-06-17",
+      "title": "从 LLM 到 Agent：一个 AI Native 开发者的智能体核心概念启蒙",
+      "covered_sources": {
+        "ai/agent/concepts/readme.md": "auto",
+        "ai/agent/concepts/reason-demo/clint.mjs": "auto",
+        "ai/agent/concepts/reason-demo/index.mjs": "auto",
+        "ai/agent/concepts/reason-demo/main.mjs": "auto"
+      }
     }
   ]
 }
