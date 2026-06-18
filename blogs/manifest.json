@@ -435,6 +435,17 @@
         "ai/agent/concepts/reason-demo/index.mjs": "auto",
         "ai/agent/concepts/reason-demo/main.mjs": "auto"
       }
+    },
+    {
+      "id": "v030",
+      "date": "2026-06-18",
+      "title": "从写 Prompt 到设计 Loop：一个 AI Native 开发者的自动化思维觉醒",
+      "covered_sources": {
+        "ai/loop/readme.md": "auto",
+        "ai/loop/demo/main.mjs": "auto",
+        "ai/loop/demo/package.json": "auto",
+        "ai/loop/demo/package-lock.json": "auto"
+      }
     }
   ]
 }

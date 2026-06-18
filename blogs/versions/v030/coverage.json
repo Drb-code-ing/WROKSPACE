@@ -1,0 +1,6 @@
+{
+  "ai/loop/readme.md": "auto",
+  "ai/loop/demo/main.mjs": "auto",
+  "ai/loop/demo/package.json": "auto",
+  "ai/loop/demo/package-lock.json": "auto"
+}
