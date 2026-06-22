@@ -4,3 +4,5 @@ ai/generative-ai/demo2/.env
 ai/aigc/http-demo/demo/.env
 ai/wnd/nlp-demo/.env
 .playwright-mcp/
+backend/bun/.env
+.env

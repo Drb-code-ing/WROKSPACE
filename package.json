@@ -22,8 +22,16 @@
   },
   "homepage": "https://github.com/Drb-code-ing/WROKSPACE#readme",
   "dependencies": {
+    "@langchain/langgraph": "^1.4.2",
+    "@langchain/openai": "^1.4.7",
+    "@langchain/tavily": "^1.2.0",
+    "axios": "^1.17.0",
     "dotenv": "^17.4.2",
-    "openai": "^6.41.0",
+    "openai": "^6.44.0",
     "pnpm": "^11.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "tsx": "^4.22.4"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "ai/agent/stateless/readme.md": "auto",
+  "ai/agent/stateless/index.mjs": "auto",
+  "searchAgent.ts": "auto",
+  "Coordinator.ts": "auto"
+}

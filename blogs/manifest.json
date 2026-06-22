@@ -194,6 +194,26 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\fe\\html5\\canvas\\echart\\src\\data.js",
       "label": "数据定义 / 月度销售数据 / ES Module导出"
+    },
+    "ai/agent/stateless/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\agent\\stateless\\readme.md",
+      "label": "LLM无状态本质 / chatHistory / 工程化思维四级跃迁"
+    },
+    "ai/agent/stateless/index.mjs": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\agent\\stateless\\index.mjs",
+      "label": "无状态LLM调用 / chatHistory手动维护 / 对话历史演示"
+    },
+    "searchAgent.ts": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\searchAgent.ts",
+      "label": "LangGraph搜索Agent / StateGraph / ToolNode / 条件路由"
+    },
+    "Coordinator.ts": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\Coordinator.ts",
+      "label": "多智能体协作 / Supervisor模式 / TeamState共享状态"
     }
   },
   "versions": [
@@ -445,6 +465,17 @@
         "ai/loop/demo/main.mjs": "auto",
         "ai/loop/demo/package.json": "auto",
         "ai/loop/demo/package-lock.json": "auto"
+      }
+    },
+    {
+      "id": "v031",
+      "date": "2026-06-22",
+      "title": "从无状态到多智能体协作：一个 AI Native 开发者的 Agent 工程化实践",
+      "covered_sources": {
+        "ai/agent/stateless/readme.md": "auto",
+        "ai/agent/stateless/index.mjs": "auto",
+        "searchAgent.ts": "auto",
+        "Coordinator.ts": "auto"
       }
     }
   ]
