@@ -1,0 +1,17 @@
+{
+  "name": "tool_use",
+  "version": "1.0.0",
+  "description": "工具调用，背后真正的技术逻辑，不只是API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "openai": "^6.44.0"
+  }
+}
