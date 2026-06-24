@@ -477,6 +477,18 @@
         "searchAgent.ts": "auto",
         "Coordinator.ts": "auto"
       }
+    },
+    {
+      "id": "v032",
+      "date": "2026-06-23",
+      "title": "LLM 的底层语言：从分词到向量化，搞懂 AI 是怎么"读"文字的",
+      "covered_sources": {
+        "algorithm/recursive/readme.md": "auto",
+        "algorithm/quick_sort/readme.md": "auto",
+        "ai/token/readme.md": "auto",
+        "ai/token/demo/index.mjs": "auto",
+        "ai/token/demo/main.mjs": "auto"
+      }
     }
   ]
 }
