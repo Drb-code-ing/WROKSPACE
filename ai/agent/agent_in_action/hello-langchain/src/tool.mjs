@@ -60,10 +60,51 @@ const messages = [
         可用工具：
         - read_file: 读取文件内容(使用此工具来获取文件内容)
     `),
-    new HumanMessage('请读取 tool.mjs 文件内容并解释代码'),
+    new HumanMessage('请读取 src/tool.mjs 文件内容并解释代码'),
 ]
-
+// 变量 每次调用llm 覆盖
+// tools 继续调用工具
+// 足够的上下文，可以直接生成了
 let response = await modelWithTools.invoke(messages)
 // console.log(JSON.stringify(response));
 messages.push(response)
 // 多个工具await read, await write 并发？
+// response.tools 性能，有多个任务Promise.all tool promises 数组
+// tool 执行结果，每个结果带上tool id ToolMessage 给messages
+// 把整个messages 数组打包给llm 得到最后的结果
+
+while(response.tool_calls && response.tool_calls.length > 0) {
+    // 调用工具
+    console.log(`\n检测到[${response.tool_calls.length}]个工具调用`)
+    const toolResult = await Promise.all(
+        // 通过map + async转化为promise 数组
+        response.tool_calls.map(async(toolCall) => {
+            // 需要检验 以及准备逻辑
+            const tool = tools.find(t => t.name === toolCall.name)
+            if(!tool) {
+                return `工具${toolCall.name} 不存在`
+            }
+            console.log(`[执行工具]${toolCall.name}(${JSON.stringify(toolCall.args)})`)
+            // langchain tool方法
+            // 容错处理
+            try {
+                const result = await tool.invoke(toolCall.args)// 注入工具调用参数，执行工具
+                return result
+            } catch(err) {
+                return `工具${toolCall.name} 执行失败：${err.message}`
+            }
+        })
+    )
+
+    // 把工具调用结果，添加到messages 数组，整合到大模型的上下文
+    response.tool_calls.forEach((toolCall, index) => {
+        messages.push(new ToolMessage({
+            content: toolResult[index],
+            tool_call_id: toolCall.id
+        }))
+    })
+
+    response = await modelWithTools.invoke(messages)
+    console.log(response)
+    messages.push(response)
+}
