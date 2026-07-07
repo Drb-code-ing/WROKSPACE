@@ -481,13 +481,27 @@
     {
       "id": "v032",
       "date": "2026-06-23",
-      "title": "LLM 的底层语言：从分词到向量化，搞懂 AI 是怎么"读"文字的",
+      "title": "LLM 的底层语言：从分词到向量化，搞懂 AI 是怎么「读」文字的",
       "covered_sources": {
         "algorithm/recursive/readme.md": "auto",
         "algorithm/quick_sort/readme.md": "auto",
         "ai/token/readme.md": "auto",
         "ai/token/demo/index.mjs": "auto",
         "ai/token/demo/main.mjs": "auto"
+      }
+    },
+    {
+      "id": "v034",
+      "date": "2026-07-07",
+      "title": "Promise 与 LangChain 的完美结合：用 ReAct Loop 打造第一个编程助手 Agent",
+      "covered_sources": {
+        "ai/interview/agent/readme.md": "auto",
+        "ai/js/promise/readme.md": "auto",
+        "ai/js/promise/1.html": "auto",
+        "ai/agent/agent_in_action/hello-langchain/src/tool.mjs": "auto",
+        "ai/agent/agent_in_action/hello-langchain/src/node-exec.mjs": "auto",
+        "ai/agent/agent_in_action/readme2.md": "auto",
+        "ai/agent/agent_in_action/readme3.md": "auto"
       }
     }
   ]

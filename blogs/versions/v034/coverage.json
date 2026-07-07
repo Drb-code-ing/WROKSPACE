@@ -1,0 +1,51 @@
+{
+  "version": "v034",
+  "date": "2026-07-07",
+  "day": 30,
+  "title": "Promise 与 LangChain 的完美结合：用 ReAct Loop 打造第一个编程助手 Agent",
+  "sources": [
+    {
+      "path": "ai/interview/agent/readme.md",
+      "topic": "Agent 智能体概念 / ReAct 工作框架",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/js/promise/readme.md",
+      "topic": "Promise 基础 / 三种状态 / reject 机制",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/js/promise/1.html",
+      "topic": "Promise.all 并行请求 / fetch 实战",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/hello-langchain/src/tool.mjs",
+      "topic": "ReAct Loop / Promise.all 并行工具调用 / ToolMessage 关联",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/hello-langchain/src/node-exec.mjs",
+      "topic": "Node child_process / spawn 子进程 / IPC 通信",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/readme2.md",
+      "topic": "LangChain Message 类型 / Agent 总结 / Promise 特性",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/readme3.md",
+      "topic": "手写 AI 编程 Agent 蓝图 / CLI 命令执行工具",
+      "hash": "auto"
+    }
+  ],
+  "highlights": [
+    "ReAct 框架：Reason → Act → Observe 循环",
+    "Promise.all 与 LangChain 的深度结合（三层解析）",
+    "while 循环实现 Agent 持续工具调用",
+    "ToolMessage 的 tool_call_id 关联机制",
+    "Node child_process 为 CLI 工具打基础",
+    "从概念到造轮子的工程化思维"
+  ]
+}
