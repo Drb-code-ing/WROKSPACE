@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // const streetCartsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris')
+    // console.log(streetCartsPromise)
+    const getStory = async () => fetch('https://v1.hitokoto.cn/?c=i&encode=json')
+    const getRatp = async () => fetch('https://data.ratp.fr/api/datasets/1.0/search/?q=paris')
+    async function main() {
+      // 不存在依赖关系，并行请求 Promise 一系列静态方法
+      // const story = await getStory()
+      // const ratp = await getRatp()
+
+      // 并行请求多个 Promise 并等待它们都完成 并发效果
+      // 参数是Promise数组，返回值也是Promise
+      // 不管谁先解决，谁后，resolve 的结果按参数顺序返回
+      // 最后一个Promise resolve 后，停下来
+      // const res = await Promise.all([getStory(), getRatp()])
+      // console.log(res)
+      // const jsonPromises = res.map(item => item.json())
+      // console.log(jsonPromises)
+      // const result = await Promise.all(jsonPromises)// 解析所有Promise，返回数组
+      // console.log(result)
+
+      // 简单写法
+      Promise.all([getStory(), getRatp()]).then(response => {
+        return Promise.all(response.map(item => item.json()))
+      }).then(result => {
+        console.log(result)
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+    main()
+  </script>
+</body>
+</html>
