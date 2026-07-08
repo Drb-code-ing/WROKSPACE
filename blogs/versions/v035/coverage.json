@@ -1,0 +1,37 @@
+{
+  "version": "v035",
+  "date": "2026-07-08",
+  "day": 31,
+  "title": "手写 Mini-Cursor：用 Node 子进程 + ReAct Loop 打造能写代码、执行命令的 AI 编程助手",
+  "sources": [
+    {
+      "path": "ai/agent/agent_in_action/hello-langchain/src/all-tools.mjs",
+      "topic": "完整工具系统：read_file / write_file / list_directory / execute_command",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/hello-langchain/src/mini-cursor.mjs",
+      "topic": "Mini-Cursor Agent：ReAct 循环 + 四工具协同 + 防呆设计",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/hello-langchain/src/node-exec.mjs",
+      "topic": "Node child_process spawn 子进程独立实验",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/readme3.md",
+      "topic": "手写 AI 编程 Agent 蓝图 / CLI 命令执行工具 / ls -la",
+      "hash": "auto"
+    }
+  ],
+  "highlights": [
+    "四个工具的完整工程实现（path 跨平台、recursive 目录创建、try-catch 容错）",
+    "Node.js child_process spawn 深度剖析（cwd/stdio/shell 参数 + 事件模型）",
+    "execute_command 工具的 Promise 包装模式",
+    "System Prompt 的五要素设计（角色/上下文/工具列表/规则/风格）",
+    "Mini-Cursor 完整执行流程回放（10 轮 ReAct）",
+    "Agent 工具设计的黄金法则：工具可以失败，Agent 不能死",
+    "面试要点三件套：Node.js 子进程 / Agent 工程 / 路径处理"
+  ]
+}
