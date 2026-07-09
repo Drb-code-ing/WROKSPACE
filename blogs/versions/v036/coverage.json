@@ -1,0 +1,57 @@
+{
+  "version": "v036",
+  "date": "2026-07-09",
+  "day": 32,
+  "title": "从回调地狱到跨进程工具调用：Node.js 文件系统与 MCP 协议的工程实践",
+  "sources": [
+    {
+      "path": "backend/path_fs/readme.md",
+      "topic": "path.join vs resolve / 工程化目录思维",
+      "hash": "auto"
+    },
+    {
+      "path": "backend/path_fs/1.mjs",
+      "topic": "path.join vs path.resolve 对比实验",
+      "hash": "auto"
+    },
+    {
+      "path": "backend/path_fs/2.mjs",
+      "topic": "path.dirname / basename / extname / normalize / parse",
+      "hash": "auto"
+    },
+    {
+      "path": "backend/path_fs/3.mjs",
+      "topic": "fs 同步读取 / 回调地狱（callback hell）",
+      "hash": "auto"
+    },
+    {
+      "path": "backend/path_fs/4.mjs",
+      "topic": "fs/promises + async/await 异步进化终态",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/mcp-demo/readme.md",
+      "topic": "MCP 协议概念 / 跨进程工具调用 / stdio vs HTTP",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/mcp-demo/my-mcp-server.mjs",
+      "topic": "MCP Server 实现 / registerTool / StdioServerTransport",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/mcp-demo/langchain-mcp-test.mjs",
+      "topic": "LangChain MCP Client / MultiServerMCPClient 配置",
+      "hash": "auto"
+    }
+  ],
+  "highlights": [
+    "path.join vs path.resolve 的工程化区别与应用场景",
+    "JS 异步进化全景图：同步→回调→Promise→async/await 四阶段",
+    "回调地狱的成因与 async/await 的解决方案",
+    "MCP 协议核心价值：跨进程、跨语言、标准化 tool 通信",
+    "MCP Server 实现：StdioServerTransport 子进程通信",
+    "LangChain MultiServerMCPClient 多 server 配置",
+    "AI Agent 从单进程工具到跨进程 MCP 协议的架构升级"
+  ]
+}

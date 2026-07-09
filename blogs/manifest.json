@@ -503,6 +503,21 @@
         "ai/agent/agent_in_action/readme2.md": "auto",
         "ai/agent/agent_in_action/readme3.md": "auto"
       }
+    },
+    {
+      "id": "v036",
+      "date": "2026-07-09",
+      "title": "从回调地狱到跨进程工具调用：Node.js 文件系统与 MCP 协议的工程实践",
+      "covered_sources": {
+        "backend/path_fs/readme.md": "auto",
+        "backend/path_fs/1.mjs": "auto",
+        "backend/path_fs/2.mjs": "auto",
+        "backend/path_fs/3.mjs": "auto",
+        "backend/path_fs/4.mjs": "auto",
+        "ai/agent/agent_in_action/mcp-demo/readme.md": "auto",
+        "ai/agent/agent_in_action/mcp-demo/my-mcp-server.mjs": "auto",
+        "ai/agent/agent_in_action/mcp-demo/langchain-mcp-test.mjs": "auto"
+      }
     }
   ]
 }
