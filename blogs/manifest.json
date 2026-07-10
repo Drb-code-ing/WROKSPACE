@@ -518,6 +518,20 @@
         "ai/agent/agent_in_action/mcp-demo/my-mcp-server.mjs": "auto",
         "ai/agent/agent_in_action/mcp-demo/langchain-mcp-test.mjs": "auto"
       }
+    },
+    {
+      "id": "v037",
+      "date": "2026-07-10",
+      "title": "从工具调用到上下文编排：MCP Resource、多 Server 协作与远程工作流排障",
+      "covered_sources": {
+        "ai/agent/agent_in_action/mcp-demo/1.js": "auto",
+        "ai/agent/agent_in_action/mcp-demo/readme.md": "auto",
+        "ai/agent/agent_in_action/mcp-demo/my-mcp-server.mjs": "auto",
+        "ai/agent/agent_in_action/mcp-demo/langchain-mcp-test.mjs": "auto",
+        "ai/agent/agent_in_action/remote-mcp/readme.md": "auto",
+        "ai/agent/agent_in_action/remote-mcp/src/mcp-test.mjs": "auto",
+        "ai/agent/agent_in_action/remote-mcp/debug-map-tool-hang.md": "auto"
+      }
     }
   ]
 }

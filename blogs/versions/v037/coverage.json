@@ -1,0 +1,51 @@
+{
+  "version": "v037",
+  "date": "2026-07-10",
+  "day": 33,
+  "title": "从工具调用到上下文编排：MCP Resource、多 Server 协作与远程工作流排障",
+  "sources": [
+    {
+      "path": "ai/agent/agent_in_action/mcp-demo/1.js",
+      "topic": "Object.entries 对象遍历与资源映射处理",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/mcp-demo/readme.md",
+      "topic": "MCP Resource、Context 注入与 RAG 边界笔记",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/mcp-demo/my-mcp-server.mjs",
+      "topic": "registerResource、docs URI 与静态使用指南",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/mcp-demo/langchain-mcp-test.mjs",
+      "topic": "资源枚举读取、SystemMessage 注入、Agent 循环与客户端关闭",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/remote-mcp/readme.md",
+      "topic": "地图、浏览器与文件系统 MCP 应用场景",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/remote-mcp/src/mcp-test.mjs",
+      "topic": "本地与远程多 MCP Server 编排、结果适配与异常处理",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/remote-mcp/debug-map-tool-hang.md",
+      "topic": "maps_geo 挂起现象、未验证假设与开放排障状态",
+      "hash": "auto"
+    }
+  ],
+  "highlights": [
+    "MCP Resource 从服务端注册到 SystemMessage 注入的完整数据流",
+    "Object.entries 在多 Server 资源遍历中的实际应用",
+    "来源可信且经审查的短静态 Resource 直接注入，与长文档选择性 RAG 的信任边界",
+    "本地、远程 HTTP 与 npx MCP Server 的统一配置与待验证目标编排",
+    "工具返回值归一化、异常回传与 mcpClient.close 生命周期",
+    "maps_geo 挂起问题的诚实记录与隔离排查顺序"
+  ]
+}
