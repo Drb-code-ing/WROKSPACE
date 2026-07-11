@@ -1,0 +1,32 @@
+{
+  "version": "v038",
+  "date": "2026-07-11",
+  "day": 34,
+  "title": "从幻觉到检索增强：RAG 向量化语义搜索的工程启蒙",
+  "sources": [
+    {
+      "path": "ai/agent/agent_in_action/rag/readme.md",
+      "topic": "RAG 核心概念笔记：幻觉成因、向量语义搜索、嵌入模型与向量数据库",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/rag/rag-test/src/hello-rag.mjs",
+      "topic": "LangChain Document 构建、OpenAIEmbeddings 配置、metadata 元数据设计",
+      "hash": "auto"
+    },
+    {
+      "path": "ai/agent/agent_in_action/rag/rag-test/package.json",
+      "topic": "LangChain 依赖配置：@langchain/core + @langchain/openai + dotenv",
+      "hash": "auto"
+    }
+  ],
+  "highlights": [
+    "LLM 幻觉的本质：训练数据集的边界与模型不会说'不知道'",
+    "RAG 三步管线：Retrieval（检索）→ Augmented（增强）→ Generation（生成）",
+    "向量语义搜索：多维向量表达语义，余弦相似度替代关键词匹配",
+    "嵌入模型（embedding model）将文本、图片、PDF 统一向量化",
+    "文档切分策略：按章节、按段落、按自然语义分片",
+    "向量数据库：持久化存储向量，支持大规模语义检索",
+    "RAG 与 MCP Resource 的互补：直接注入 vs 选择性检索的工程决策"
+  ]
+}

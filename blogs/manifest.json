@@ -532,6 +532,16 @@
         "ai/agent/agent_in_action/remote-mcp/src/mcp-test.mjs": "auto",
         "ai/agent/agent_in_action/remote-mcp/debug-map-tool-hang.md": "auto"
       }
+    },
+    {
+      "id": "v038",
+      "date": "2026-07-11",
+      "title": "从幻觉到检索增强：RAG 向量化语义搜索的工程启蒙",
+      "covered_sources": {
+        "ai/agent/agent_in_action/rag/readme.md": "auto",
+        "ai/agent/agent_in_action/rag/rag-test/src/hello-rag.mjs": "auto",
+        "ai/agent/agent_in_action/rag/rag-test/package.json": "auto"
+      }
     }
   ]
 }
