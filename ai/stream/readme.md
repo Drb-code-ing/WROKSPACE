@@ -39,3 +39,13 @@
        count  setup vue3 新增的语法糖，支持宏指令，宏函数
        把script 全局数据直接可以被template 绑定使用
      - style 样式
+
+ - 表单元素
+    显示值
+    用户又要修改value
+    dom 编程不要
+    count {{count}}单向数据流绑定
+    保证数据和界面状态的一致性
+    数据驱动 data driven
+    表单元素是个例外，用户的输入，需要传回数据
+    双向数据流 v-model
