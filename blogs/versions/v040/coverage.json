@@ -1,0 +1,7 @@
+{
+  "source_files": {
+    "ai/agent/agent_in_action/rag/rag-demo/src/index.mjs": "auto",
+    "ai/agent/agent_in_action/rag/rag-demo/readme.md": "auto",
+    "ai/agent/agent_in_action/rag/rag-demo/package.json": "auto"
+  }
+}

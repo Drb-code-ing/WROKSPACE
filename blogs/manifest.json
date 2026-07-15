@@ -542,6 +542,25 @@
         "ai/agent/agent_in_action/rag/rag-test/src/hello-rag.mjs": "auto",
         "ai/agent/agent_in_action/rag/rag-test/package.json": "auto"
       }
+    },
+    {
+      "id": "v039",
+      "date": "2026-07-14",
+      "title": "从等待到流式：LLM 流式输出的原理、协议与工程实践",
+      "covered_sources": {
+        "ai/agent/agent_in_action/stream-demo/src/App.vue": "auto",
+        "ai/agent/agent_in_action/stream-demo/readme.md": "auto"
+      }
+    },
+    {
+      "id": "v040",
+      "date": "2026-07-15",
+      "title": "从入门到生产：RAG 检索增强生成的完整工程链路与面试通关指南",
+      "covered_sources": {
+        "ai/agent/agent_in_action/rag/rag-demo/src/index.mjs": "auto",
+        "ai/agent/agent_in_action/rag/rag-demo/readme.md": "auto",
+        "ai/agent/agent_in_action/rag/rag-demo/package.json": "auto"
+      }
     }
   ]
 }
