@@ -1,0 +1,20 @@
+:root {
+  font-family: Georgia, 'Noto Serif SC', serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #17201c;
+  background: #edf3ee;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
