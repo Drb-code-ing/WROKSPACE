@@ -40,3 +40,6 @@ const textSplitter = new RecursiveCharacterTextSplitter({
   separators: ['。', '！', '？'],// 分隔符，分割器按顺序递归尝试
   chunkOverlap: 80,
 })
+
+const chunks = await textSplitter.splitDocuments(documents)
+console.log(chunks)
