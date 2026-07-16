@@ -1,0 +1,4 @@
+{"sessionId": "crawl-no-output", "runId": "pre-fix", "hypothesisId": "A", "location": "src/crawl.mjs:14", "msg": "[DEBUG] 爬虫函数已进入", "data": {"targetUrl": "https://juejin.cn/post/7662627075258449946"}, "ts": 1784203291854}
+{"sessionId": "crawl-no-output", "runId": "pre-fix", "hypothesisId": "B", "location": "src/crawl.mjs:18", "msg": "[DEBUG] 即将发送 HTTP 请求", "data": {"targetUrl": "https://juejin.cn/post/7662627075258449946"}, "ts": 1784203291859}
+{"sessionId": "crawl-no-output", "runId": "pre-fix", "hypothesisId": "C", "location": "src/crawl.mjs:22", "msg": "[DEBUG] 已收到 HTTP 响应", "data": {"htmlLength": 2492, "hasMainArea": false}, "ts": 1784203291988}
+{"sessionId": "crawl-no-output", "runId": "pre-fix", "hypothesisId": "D", "location": "src/crawl.mjs:35", "msg": "[DEBUG] CSS 选择器执行完成", "data": {"matchedCount": 0, "contentLength": 0, "title": ""}, "ts": 1784203291994}
