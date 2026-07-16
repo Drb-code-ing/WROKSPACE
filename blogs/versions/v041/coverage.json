@@ -1,0 +1,9 @@
+{
+  "version": "v041",
+  "title": "从网页到可检索知识：RAG 文档处理、切分策略与生产工程实践",
+  "covered_sources": {
+    "ai/agent/agent_in_action/rag_splitter/src/index.mjs": "auto",
+    "ai/agent/agent_in_action/rag_splitter/src/crawl.mjs": "auto",
+    "ai/agent/agent_in_action/rag_splitter/readme.md": "auto"
+  }
+}
