@@ -4,7 +4,7 @@
 import { ref } from 'vue'
 
 const count = ref(0)// 变量 -> 数据 -> 数据状态(相应式) -> 页面状态(反应在页面上)
-const question = ref('以抖音上的奶蛙形象为标准，讲一个关于奶蛙们一起讨论“看到大狗吓得叫”是否合乎周礼的故事')
+const question = ref('讲讲小舞献祭')
 const content = ref('')
 const stream = ref(true)
 
