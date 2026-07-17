@@ -571,6 +571,19 @@
         "ai/agent/agent_in_action/rag_splitter/src/crawl.mjs": "auto",
         "ai/agent/agent_in_action/rag_splitter/readme.md": "auto"
       }
+    },
+    {
+      "id": "v042",
+      "date": "2026-07-17",
+      "title": "从 Prompt 到可复用能力：Agent Skills 的工程本质、SKILL.md 协议与面试通关指南",
+      "covered_sources": {
+        "ai/skills/readme.md": "auto",
+        "ai/skills/hys/readme.md": "auto",
+        "ai/skills/hys/meeting/meeting_content.txt": "auto",
+        ".agents/skills/meeting-minutes/SKILL.md": "auto",
+        ".agents/skills/tian-ai-daily/SKILL.md": "auto",
+        ".agents/skills/skill-creator/SKILL.md": "auto"
+      }
     }
   ]
 }

@@ -1,0 +1,30 @@
+{
+  "version": "v042",
+  "title": "从 Prompt 到可复用能力：Agent Skills 的工程本质、SKILL.md 协议与面试通关指南",
+  "covered_sources": {
+    "ai/skills/readme.md": "auto",
+    "ai/skills/hys/readme.md": "auto",
+    "ai/skills/hys/meeting/meeting_content.txt": "auto",
+    ".agents/skills/meeting-minutes/SKILL.md": "auto",
+    ".agents/skills/tian-ai-daily/SKILL.md": "auto",
+    ".agents/skills/skill-creator/SKILL.md": "auto"
+  },
+  "day": "第三十八天",
+  "topic": "skill初步",
+  "excluded_same_day_topics": [
+    "流式输出",
+    "RAG 全量"
+  ],
+  "expanded_sections": [
+    "触发工程 undertrigger/overtrigger",
+    "写作模式与防过拟合",
+    "从0到1封装闭环",
+    "评测分层与 assertion",
+    "Skill 组合冲突与 Host 运行时",
+    "生产治理 版本/权限/安全/指标",
+    "反模式大全",
+    "扩展面试题库",
+    "上线检查清单与 FDE 技能树"
+  ],
+  "notes": "仅覆盖 d8cfcb0「第三十八天学习 skill初步」相关笔记与本地 skills 实践；扩展内容仍严格限定在 Skills 主题，不混入同日 5eaf6b3 流式输出与 7124d00 RAG 笔记。"
+}
