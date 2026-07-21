@@ -214,6 +214,31 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\Coordinator.ts",
       "label": "多智能体协作 / Supervisor模式 / TeamState共享状态"
+    },
+    "ai/temperature/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\temperature\\readme.md",
+      "label": "LLM随机性控制 / Temperature与Top-K笔记"
+    },
+    "ai/temperature/t-demo/main.mjs": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\temperature\\t-demo\\main.mjs",
+      "label": "Temperature/Top-K Demo / LangChain Chain工作流"
+    },
+    "ai/temperature/t-demo/package.json": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\temperature\\t-demo\\package.json",
+      "label": "LangChain项目配置 / @langchain/openai依赖"
+    },
+    "fe/React/deepseek-r1-webgpu/webgpu-demo/event.html": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\deepseek-r1-webgpu\\webgpu-demo\\event.html",
+      "label": "DOM事件演化 / DOM 0 vs DOM 2 / addEventListener"
+    },
+    "fe/React/deepseek-r1-webgpu/webgpu-demo/src/components/Progress.tsx": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\deepseek-r1-webgpu\\webgpu-demo\\src\\components\\Progress.tsx",
+      "label": "React进度条组件 / Props传递 / 组件抽离实践"
     }
   },
   "versions": [
@@ -563,50 +588,24 @@
       }
     },
     {
-      "id": "v041",
-      "date": "2026-07-16",
-      "title": "从网页到可检索知识：RAG 文档处理、切分策略与生产工程实践",
+      "id": "v045",
+      "date": "2026-07-21",
+      "title": "大模型怎么随机说话：Temperature、Top-K 与 LangChain 工作流初探",
       "covered_sources": {
-        "ai/agent/agent_in_action/rag_splitter/src/index.mjs": "auto",
-        "ai/agent/agent_in_action/rag_splitter/src/crawl.mjs": "auto",
-        "ai/agent/agent_in_action/rag_splitter/readme.md": "auto"
+        "ai/temperature/readme.md": "auto",
+        "ai/temperature/t-demo/main.mjs": "auto",
+        "ai/temperature/t-demo/package.json": "auto"
       }
     },
     {
-      "id": "v042",
-      "date": "2026-07-17",
-      "title": "从 Prompt 到可复用能力：Agent Skills 的工程本质、SKILL.md 协议与面试通关指南",
-      "covered_sources": {
-        "ai/skills/readme.md": "auto",
-        "ai/skills/hys/readme.md": "auto",
-        "ai/skills/hys/meeting/meeting_content.txt": "auto",
-        ".agents/skills/meeting-minutes/SKILL.md": "auto",
-        ".agents/skills/tian-ai-daily/SKILL.md": "auto",
-        ".agents/skills/skill-creator/SKILL.md": "auto"
-      }
-    },
-    {
-      "id": "v043",
-      "date": "2026-07-18",
-      "title": "BFF 层流式输出：从前端直连到生产级流式网关的架构演进",
-      "covered_sources": {
-        "ai/SSE/stream-bff/server.mjs": "auto",
-        "ai/SSE/stream-bff/src/App.vue": "auto",
-        "ai/SSE/stream-bff/vite.config.js": "auto",
-        "ai/SSE/readme.md": "auto",
-        "ai/stream-demo/readme.md": "auto"
-      }
-    },
-    {
-      "id": "v044",
-      "date": "2026-07-20",
-      "title": "浏览器端侧AI推理：DeepSeek R1 WebGPU 实战——从 React 组件化到 Transformers.js 浏览器内模型加载",
+      "id": "v046",
+      "date": "2026-07-21",
+      "title": "React 合成事件与组件树：从 DOM 事件演化到组件化架构思维",
       "covered_sources": {
         "fe/React/deepseek-r1-webgpu/readme.md": "auto",
+        "fe/React/deepseek-r1-webgpu/webgpu-demo/event.html": "auto",
         "fe/React/deepseek-r1-webgpu/webgpu-demo/src/App.tsx": "auto",
-        "fe/React/deepseek-r1-webgpu/webgpu-demo/src/main.tsx": "auto",
-        "fe/React/deepseek-r1-webgpu/webgpu-demo/package.json": "auto",
-        "fe/React/deepseek-r1-webgpu/webgpu-demo/eslint.config.js": "auto"
+        "fe/React/deepseek-r1-webgpu/webgpu-demo/src/components/Progress.tsx": "auto"
       }
     }
   ]
