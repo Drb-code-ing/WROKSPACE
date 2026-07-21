@@ -47,3 +47,30 @@ vue template, script style 三明治 一个文件vue 好入门react? 封装一�
     react 最为骄傲的一大特性之一，非常方便表达UI 界面
     javascript with xml
     <div></div> html 特有的XML
+
+## React 合成事件
+- onClick 最原始的 DOM 0 级事件监听
+  html, css, js 三剑客 不要耦合在一起 模块化分离
+- DOM 1 ?
+  DOM n ? html 标准的执行迭代
+  DOM 1 这个版本没有更新事件相关，不存在DOM 1 事件
+- addEventListener DOM 2 级事件监听
+- 同一个dom 元素可以多次监听同一事件
+- react 代码洁癖 能不发明新概念就不
+  @ 事件绑定 ... vue
+  react 直接用已在的概念
+  onClick 作为高手没有学习成本
+- react 里面的事件并不是原生事件，是合成事件
+
+## 封装进度条组件
+比较独立的，可复用的业务模块
+把它单独抽离出来，作为组件
+
+## 组件树
+- 代替DOM 树
+- 基于组件封装，组件树
+  一眼看出页面的组件构成
+  页面的组件化程度，粒度
+  前端发展的必然
+  页面及交付越来越复杂，组件作为最小开发单元
+  团队好协作，好复用，好维护
