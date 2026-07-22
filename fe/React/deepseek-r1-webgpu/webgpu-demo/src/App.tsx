@@ -20,18 +20,20 @@ function App() {
   const [error, setError] = useState(null)
   // 加载信息
   const [loadingMessage, setLoadingMessage] = useState("开始加载")
-  const [progressItems, setProgressItems] = useState([
-  {
-    text: 'model.onnx',
-    percentage: 0,
-    total: 37521985789
-  },
-  {
-    text: 'model2.onnx',
-    percentage: 10,
-    total: 35521985782
-  }
-])
+  // 输入框内容
+  const [input, setInput] = useState("")
+  // const [progressItems, setProgressItems] = useState([
+  // {
+    // text: 'model.onnx',
+    // percentage: 0,
+    // total: 37521985789
+  // },
+  // {
+    // text: 'model2.onnx',
+    // percentage: 10,
+    // total: 35521985782
+  // }
+// ])
   // js 脚本 数据逻辑交互
   // const [count, setCount] = useState(0)
   // 组件生命周期 副作用
@@ -59,6 +61,10 @@ function App() {
   // 双重否定表肯定
   // @ts-expect-error 忽略类型检查
   const IS_WEBGPU_AVALABLE = !!navigator.gpu
+
+  const onEnter = () => {
+    setStatus('loading')
+  }
 
   return (
     // flex-direction 主轴 100vh margin x 水平居中对齐
@@ -142,6 +148,37 @@ function App() {
           </div>
         )
       }
+
+      {/* 聊天输入框 */}
+      <div className="mt-2 border border-gray-300 rounded-lg w-[600px] max-w-[80%] max-h-[200px] mx-auto relative mb-3 flex">
+        <textarea className="w-[550px] dark: text-gray-700 px-3 py-4 rounded-lg bg-transparent border-none 
+        outline-hidden resize-none disabled:placeholder-gray-200"
+        placeholder="Type your message here..."
+        rows={1}
+        disabled={status !== 'ready'}
+        title={status==='ready' ? 'Model is ready' : 'Model not loaded yet'}
+        // react 不支持双向绑定，性能不太好
+        value={input}
+        onInput={(e) => {
+          // HTMLTextAreaElement 是 textarea 元素的类型，包含 value 属性
+          // 类型断言，将 e.target 转换为 HTMLTextAreaElement 类型
+          // e是通用的事件对象，所有的事件对象都有 target 属性，指向触发事件的元素
+          // 但是并发任何事件的target上都有value属性，比如点击事件
+          // 像表单元素则一定有value属性
+          // 因此不能全部笼统的使用 e.target.value ，需要类型断言为 HTMLTextAreaElement 类型
+          setInput((e.target as HTMLTextAreaElement).value)
+        }}
+        onKeyDown={(e) => {
+          // Enter 发送消息；Shift + Enter 保留 textarea 的默认换行行为
+          if (input.length > 0 && e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault() // 阻止 Enter 默认插入换行
+            onEnter()
+          }
+        }}
+        >
+
+        </textarea>
+      </div>
     </div>) : (
       <div>
         <h1>你使用的浏览器不支持 WebGPU</h1>
