@@ -239,6 +239,16 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\fe\\React\\deepseek-r1-webgpu\\webgpu-demo\\src\\components\\Progress.tsx",
       "label": "React进度条组件 / Props传递 / 组件抽离实践"
+    },
+    "ai/agent/concepts/workflow_agent/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\ai\\agent\\concepts\\workflow_agent\\readme.md",
+      "label": "Workflow与Agent区别 / 流水线vs智能体笔记"
+    },
+    "fe/React/deepseek-r1-webgpu/webgpu-demo/src/App.tsx": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\deepseek-r1-webgpu\\webgpu-demo\\src\\App.tsx",
+      "label": "WebGPU Demo App / 受控输入与状态机"
     }
   },
   "versions": [
@@ -604,6 +614,24 @@
       "covered_sources": {
         "fe/React/deepseek-r1-webgpu/readme.md": "auto",
         "fe/React/deepseek-r1-webgpu/webgpu-demo/event.html": "auto",
+        "fe/React/deepseek-r1-webgpu/webgpu-demo/src/App.tsx": "auto",
+        "fe/React/deepseek-r1-webgpu/webgpu-demo/src/components/Progress.tsx": "auto"
+      }
+    },
+    {
+      "id": "v047",
+      "date": "2026-07-22",
+      "title": "Workflow 与 Agent：确定性流水线 vs 不确定探索——AI 工程的双层能力",
+      "covered_sources": {
+        "ai/agent/concepts/workflow_agent/readme.md": "auto"
+      }
+    },
+    {
+      "id": "v048",
+      "date": "2026-07-22",
+      "title": "React 进度条组件的健壮性：props / state 分工、空值合并与受控输入",
+      "covered_sources": {
+        "fe/React/deepseek-r1-webgpu/readme.md": "auto",
         "fe/React/deepseek-r1-webgpu/webgpu-demo/src/App.tsx": "auto",
         "fe/React/deepseek-r1-webgpu/webgpu-demo/src/components/Progress.tsx": "auto"
       }
