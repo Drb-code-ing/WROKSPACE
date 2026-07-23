@@ -249,6 +249,36 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\fe\\React\\deepseek-r1-webgpu\\webgpu-demo\\src\\App.tsx",
       "label": "WebGPU Demo App / 受控输入与状态机"
+    },
+    "ai/vibe/demo1/readme.md": {
+      "hash": "581025bb3db7bbecab755bde1e6e43eadd7f1d7d12a15ea32722761e4c64bbb8",
+      "path": "E:\\WROKSPACE\\ai\\vibe\\demo1\\readme.md",
+      "label": "Vibe Coding 工程方法论笔记"
+    },
+    "ai/vibe/demo1/todoList/src/App.jsx": {
+      "hash": "84351954c7f8b7764c97d96e684de2c3f16d39c9f991cd9da8e15467bb85c621",
+      "path": "E:\\WROKSPACE\\ai\\vibe\\demo1\\todoList\\src\\App.jsx",
+      "label": "Vibe TodoList App 状态与胶水重排"
+    },
+    "ai/vibe/demo1/todoList/src/components/TodoInput.jsx": {
+      "hash": "0cfb97978d8e96c5539f6c72fe8fc8fb9916210b057d7f87b0810932d9f42e44",
+      "path": "E:\\WROKSPACE\\ai\\vibe\\demo1\\todoList\\src\\components\\TodoInput.jsx",
+      "label": "Vibe TodoList 输入组件"
+    },
+    "ai/vibe/demo1/todoList/src/components/TodoItem.jsx": {
+      "hash": "df80a5c48c35039cdfb026e74e3cecde667b4f8ee6470c4c599352bfb126c68f",
+      "path": "E:\\WROKSPACE\\ai\\vibe\\demo1\\todoList\\src\\components\\TodoItem.jsx",
+      "label": "Vibe TodoList 条目 + sortable"
+    },
+    "ai/vibe/demo1/todoList/src/components/TodoList.jsx": {
+      "hash": "8a7eddb1cefb3987148aae6e8f97141bc9ce0c1a7e8ae8ccdce71596f0cb18fa",
+      "path": "E:\\WROKSPACE\\ai\\vibe\\demo1\\todoList\\src\\components\\TodoList.jsx",
+      "label": "Vibe TodoList 列表 + DragDropProvider"
+    },
+    "ai/vibe/demo1/todoList/package.json": {
+      "hash": "f7ab89922d3f42b64c899b675fefbc099dbc7918906e248ced03cc7345e755f1",
+      "path": "E:\\WROKSPACE\\ai\\vibe\\demo1\\todoList\\package.json",
+      "label": "Vibe TodoList 依赖（React19 + dnd-kit + Tailwind）"
     }
   },
   "versions": [
@@ -634,6 +664,19 @@
         "fe/React/deepseek-r1-webgpu/readme.md": "auto",
         "fe/React/deepseek-r1-webgpu/webgpu-demo/src/App.tsx": "auto",
         "fe/React/deepseek-r1-webgpu/webgpu-demo/src/components/Progress.tsx": "auto"
+      }
+    },
+    {
+      "id": "v049",
+      "date": "2026-07-23",
+      "title": "Vibe Coding 工程初步：先规划、胶水编程与元方法论——以 React 待办清单为例",
+      "covered_sources": {
+        "ai/vibe/demo1/readme.md": "581025bb3db7bbecab755bde1e6e43eadd7f1d7d12a15ea32722761e4c64bbb8",
+        "ai/vibe/demo1/todoList/src/App.jsx": "84351954c7f8b7764c97d96e684de2c3f16d39c9f991cd9da8e15467bb85c621",
+        "ai/vibe/demo1/todoList/src/components/TodoInput.jsx": "0cfb97978d8e96c5539f6c72fe8fc8fb9916210b057d7f87b0810932d9f42e44",
+        "ai/vibe/demo1/todoList/src/components/TodoItem.jsx": "df80a5c48c35039cdfb026e74e3cecde667b4f8ee6470c4c599352bfb126c68f",
+        "ai/vibe/demo1/todoList/src/components/TodoList.jsx": "8a7eddb1cefb3987148aae6e8f97141bc9ce0c1a7e8ae8ccdce71596f0cb18fa",
+        "ai/vibe/demo1/todoList/package.json": "f7ab89922d3f42b64c899b675fefbc099dbc7918906e248ced03cc7345e755f1"
       }
     }
   ]
