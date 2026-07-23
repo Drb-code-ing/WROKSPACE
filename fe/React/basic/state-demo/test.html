@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="list"></ul>
+  <script>
+  const data = ["任务1", "任务2", "任务3"]
+  const oList = document.querySelector('#list')
+  // 文档碎片
+  // 挂载一批元素
+  const fragment = document.createDocumentFragment()
+  for (const task of data) {
+    // dom api 创建
+    // 能不能批量绘制？
+    const item = document.createElement('li')
+    item.innerText = task
+    // oList.appendChild(item)
+    fragment.appendChild(item)
+  }
+  // 批量挂载
+  oList.appendChild(fragment)
+  </script>
+</body>
+</html>
