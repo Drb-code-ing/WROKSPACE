@@ -279,6 +279,26 @@
       "hash": "f7ab89922d3f42b64c899b675fefbc099dbc7918906e248ced03cc7345e755f1",
       "path": "E:\\WROKSPACE\\ai\\vibe\\demo1\\todoList\\package.json",
       "label": "Vibe TodoList 依赖（React19 + dnd-kit + Tailwind）"
+    },
+    "fe/React/basic/readme.md": {
+      "hash": "5ea7ac7de0475fab13d3d8d2134e45ed2129a0d86351d73d3dace6b8ffb02ad4",
+      "path": "E:\\WROKSPACE\\fe\\React\\basic\\readme.md",
+      "label": "useState 深入与性能笔记"
+    },
+    "fe/React/basic/state-demo/src/App2.jsx": {
+      "hash": "438c097fd1507ed6e67604f0855bef1e492d970b0ec120e50fb5e9c31178ca32",
+      "path": "E:\\WROKSPACE\\fe\\React\\basic\\state-demo\\src\\App2.jsx",
+      "label": "useState 计数与函数式更新 Demo"
+    },
+    "fe/React/basic/state-demo/src/App.jsx": {
+      "hash": "8af20122f2ce11864de9508402bcb4ccf594939aef6dc200efebb3c42df601e8",
+      "path": "E:\\WROKSPACE\\fe\\React\\basic\\state-demo\\src\\App.jsx",
+      "label": "useState 懒初始化与列表过滤 Demo"
+    },
+    "fe/React/basic/state-demo/test.html": {
+      "hash": "ef06d93f71abc59fff64250099c080067e430f761d78d20a1ab0a4c06223b2d2",
+      "path": "E:\\WROKSPACE\\fe\\React\\basic\\state-demo\\test.html",
+      "label": "DocumentFragment 批量挂载对照"
     }
   },
   "versions": [
@@ -677,6 +697,17 @@
         "ai/vibe/demo1/todoList/src/components/TodoItem.jsx": "df80a5c48c35039cdfb026e74e3cecde667b4f8ee6470c4c599352bfb126c68f",
         "ai/vibe/demo1/todoList/src/components/TodoList.jsx": "8a7eddb1cefb3987148aae6e8f97141bc9ce0c1a7e8ae8ccdce71596f0cb18fa",
         "ai/vibe/demo1/todoList/package.json": "f7ab89922d3f42b64c899b675fefbc099dbc7918906e248ced03cc7345e755f1"
+      }
+    },
+    {
+      "id": "v050",
+      "date": "2026-07-23",
+      "title": "React useState 深入：异步更新、批处理合并与懒初始化性能",
+      "covered_sources": {
+        "fe/React/basic/readme.md": "5ea7ac7de0475fab13d3d8d2134e45ed2129a0d86351d73d3dace6b8ffb02ad4",
+        "fe/React/basic/state-demo/src/App2.jsx": "438c097fd1507ed6e67604f0855bef1e492d970b0ec120e50fb5e9c31178ca32",
+        "fe/React/basic/state-demo/src/App.jsx": "8af20122f2ce11864de9508402bcb4ccf594939aef6dc200efebb3c42df601e8",
+        "fe/React/basic/state-demo/test.html": "ef06d93f71abc59fff64250099c080067e430f761d78d20a1ab0a4c06223b2d2"
       }
     }
   ]
