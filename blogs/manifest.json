@@ -299,6 +299,16 @@
       "hash": "ef06d93f71abc59fff64250099c080067e430f761d78d20a1ab0a4c06223b2d2",
       "path": "E:\\WROKSPACE\\fe\\React\\basic\\state-demo\\test.html",
       "label": "DocumentFragment 批量挂载对照"
+    },
+    "ai/agent/concepts/benchmark/readme.md": {
+      "hash": "6c3faffea6a99cdf168eadd52320b76fa3ba8504180252b7cfcc5cd14ba25d97",
+      "path": "E:\\WROKSPACE\\ai\\agent\\concepts\\benchmark\\readme.md",
+      "label": "LLM Benchmark 概念笔记"
+    },
+    "ai/agent/concepts/gpt5.6/readme.md": {
+      "hash": "353bcc00c7e87e8d71d2bf10acd6c9dc023fa171b6303d9ee6aa63ecd76a46c7",
+      "path": "E:\\WROKSPACE\\ai\\agent\\concepts\\gpt5.6\\readme.md",
+      "label": "GPT-5.6 分层与工具协作笔记"
     }
   },
   "versions": [
@@ -708,6 +718,22 @@
         "fe/React/basic/state-demo/src/App2.jsx": "438c097fd1507ed6e67604f0855bef1e492d970b0ec120e50fb5e9c31178ca32",
         "fe/React/basic/state-demo/src/App.jsx": "8af20122f2ce11864de9508402bcb4ccf594939aef6dc200efebb3c42df601e8",
         "fe/React/basic/state-demo/test.html": "ef06d93f71abc59fff64250099c080067e430f761d78d20a1ab0a4c06223b2d2"
+      }
+    },
+    {
+      "id": "v051",
+      "date": "2026-07-24",
+      "title": "Benchmark 不是排行榜：用标准题给大模型打分的体系、多维能力与选型门槛",
+      "covered_sources": {
+        "ai/agent/concepts/benchmark/readme.md": "6c3faffea6a99cdf168eadd52320b76fa3ba8504180252b7cfcc5cd14ba25d97"
+      }
+    },
+    {
+      "id": "v052",
+      "date": "2026-07-24",
+      "title": "GPT-5.6 之后：从「谁最强」到「哪层合适」——模型分层、任务分配与工具协作",
+      "covered_sources": {
+        "ai/agent/concepts/gpt5.6/readme.md": "353bcc00c7e87e8d71d2bf10acd6c9dc023fa171b6303d9ee6aa63ecd76a46c7"
       }
     }
   ]
