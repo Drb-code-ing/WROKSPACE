@@ -735,6 +735,14 @@
       "covered_sources": {
         "ai/agent/concepts/gpt5.6/readme.md": "353bcc00c7e87e8d71d2bf10acd6c9dc023fa171b6303d9ee6aa63ecd76a46c7"
       }
+    },
+    {
+      "id": "v053",
+      "date": "2026-07-25",
+      "title": "从 Git 回退到 AI 工程治理：Vibe Coding 的 Harness 工作流与质量阀门",
+      "covered_sources": {
+        "vibe-git/demo2/readme.md": "d613912"
+      }
     }
   ]
 }
