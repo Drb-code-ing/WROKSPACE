@@ -1,0 +1,24 @@
+{
+  "covered_sources": {
+    "ai/agent/agent_in_action/milvus-demo/readme.md": {
+      "commit": "d4bae7c",
+      "label": "Milvus、Zilliz Cloud 与语义检索基础"
+    },
+    "ai/agent/agent_in_action/milvus-demo/src/main.mjs": {
+      "commit": "d4bae7c",
+      "label": "集合、向量字段、索引和基础搜索"
+    },
+    "ai/agent/agent_in_action/milvus-demo/src/index.mjs": {
+      "commit": "de3497a",
+      "label": "日记 schema、Embedding 写入与 collection load"
+    },
+    "ai/agent/agent_in_action/milvus-demo/src/query.mjs": {
+      "commit": "de3497a",
+      "label": "查询向量化与 Milvus 相似度检索"
+    },
+    "ai/agent/agent_in_action/milvus-demo/src/rag.mjs": {
+      "commit": "de3497a",
+      "label": "检索结果组装与 LLM RAG 问答"
+    }
+  }
+}

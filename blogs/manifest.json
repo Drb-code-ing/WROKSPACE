@@ -743,6 +743,18 @@
       "covered_sources": {
         "vibe-git/demo2/readme.md": "d613912"
       }
+    },
+    {
+      "id": "v054",
+      "date": "2026-07-27",
+      "title": "Milvus 生产级向量检索与 RAG：从 Embedding、ANN 索引到召回质量治理",
+      "covered_sources": {
+        "ai/agent/agent_in_action/milvus-demo/readme.md": "d4bae7c",
+        "ai/agent/agent_in_action/milvus-demo/src/main.mjs": "d4bae7c",
+        "ai/agent/agent_in_action/milvus-demo/src/index.mjs": "de3497a",
+        "ai/agent/agent_in_action/milvus-demo/src/query.mjs": "de3497a",
+        "ai/agent/agent_in_action/milvus-demo/src/rag.mjs": "de3497a"
+      }
     }
   ]
 }
