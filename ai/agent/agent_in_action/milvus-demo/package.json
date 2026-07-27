@@ -1,0 +1,17 @@
+{
+  "name": "milvus-demo",
+  "version": "1.0.0",
+  "description": "- loader and splitter\r - 内存向量数据库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@zilliz/milvus2-sdk-node": "^3.0.3",
+    "dotenv": "^17.4.2"
+  }
+}
