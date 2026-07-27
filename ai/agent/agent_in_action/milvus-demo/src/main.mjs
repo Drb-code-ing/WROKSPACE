@@ -51,17 +51,25 @@ async function main() {
     // console.log('索引创建成功')
 
     // 插入数据
-    const data = [
+    // const data = [
       // row field
       // 相比于mysql 宽松一些，可以在插入数据时建立字段
-      {vector: [0.1, 0.2, 0.3, 0.4], content: '这是第一条数据'},
-      {vector: [0.5, 0.6, 0.7, 0.8], content: '这是第二条数据'},
-    ]
-    const insertRes = await client.insert({
+      // {vector: [0.1, 0.2, 0.3, 0.4], content: '这是第一条数据'},
+      // {vector: [0.5, 0.6, 0.7, 0.8], content: '这是第二条数据'},
+    // ]
+    // const insertRes = await client.insert({
+      // collection_name: COLLECTION_NAME,
+      // data
+    // })
+    // console.log('插入数据成功')
+
+    const searchRes = await client.search({
       collection_name: COLLECTION_NAME,
-      data
+      data: [[0.1, 0.1, 0.3, 0.4]],
+      limit: 2,
+      output_fields: ['content']
     })
-    console.log('插入数据成功')
+    console.log('查询结果', JSON.stringify(searchRes.results, null, 2))
   } catch (err) {
     console.log('集合可能存在或创建失败', err.message)
   }
