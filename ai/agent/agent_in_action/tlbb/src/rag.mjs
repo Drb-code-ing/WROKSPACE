@@ -12,7 +12,8 @@ import {
 
 const ADDRESS =process.env.MILVUS_ADDRESS
 const TOKEN=process.env.MILVUS_TOKEN
-const COLLECTION_NAME = 'ai_dairy';
+// 与 main.mjs 写入、query.mjs 检索使用同一个 ebook collection。
+const COLLECTION_NAME = 'ebook';
 const VECTOR_DIM=1024; 
 
 const embedding = new OpenAIEmbeddings({
