@@ -755,6 +755,17 @@
         "ai/agent/agent_in_action/milvus-demo/src/query.mjs": "de3497a",
         "ai/agent/agent_in_action/milvus-demo/src/rag.mjs": "de3497a"
       }
+    },
+    {
+      "id": "v055",
+      "date": "2026-07-28",
+      "title": "从 EPUB 到 RAG 问答：文档加载、切块策略与 Milvus 向量检索全链路实战",
+      "covered_sources": {
+        "ai/agent/agent_in_action/tlbb/readme.md": "7059ea1",
+        "ai/agent/agent_in_action/tlbb/src/main.mjs": "7059ea1",
+        "ai/agent/agent_in_action/tlbb/src/query.mjs": "58ae145",
+        "ai/agent/agent_in_action/tlbb/src/rag.mjs": "df83768"
+      }
     }
   ]
 }
