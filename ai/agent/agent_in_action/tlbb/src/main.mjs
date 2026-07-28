@@ -118,10 +118,67 @@ async function loadAndProcessEPubStreaming(bookId) {
     let totalInserted = 0// 计数
     const documentLen = documents.length
     for(let chapterIndex = 0; chapterIndex < documentLen; chapterIndex++) {
-      
+      // 处理当前章节
+      const chapter = documents[chapterIndex]
+      const chapterContent = chapter.pageContent
+      console.log(`\n 处理章节 ${chapterIndex + 1}/${documentLen}，共 ${chapterContent.length} 字`)
+      // 切割章节内容
+      const chunks = await textSplitter.splitText(chapterContent)
+      console.log(`切割后共 ${chunks.length} 个数据切片`)
+      if(chunks.length === 0) {
+        console.log(`章节 ${chapterIndex + 1} 为空，跳过`)
+        continue
+      }
+      console.log('生成向量并插入数据库...')
+      const insertedCount = await insertChunksBatch(chunks, bookId, chapterIndex + 1)
+      totalInserted += insertedCount
+      console.log(`已插入 ${insertedCount} 条数据`)
     }
+
+    console.log(`\n 共插入 ${totalInserted} 条数据`)
+    console.log('处理完成')
+    console.log('='.repeat(80))
+    return totalInserted
   } catch (error) {
-    console.error(error)
+    console.error('加载EPUB文件失败:', error)
+    throw error
+  }
+}
+
+// 将一批chunk 插入向量数据库
+async function insertChunksBatch(chunks, bookId, chapterNum) {
+  try {
+    // 检查是否有数据
+    if(chunks.length === 0) {
+      return 0
+    }
+    const insertData = await Promise.all(
+      chunks.map(async (chunk, chunkIndex) => {
+        const vector = await getEmbedding(chunk)
+        return {
+          // 书籍 ID + 章节号 + 章节内切片序号共同定位一个文本块：
+          // 同一书不同章节、同一章节不同切片都不会冲突；再次处理同一本书时 ID 仍稳定，
+          // 可据此做幂等写入、删除旧切片和定位问题，不必依赖随机 ID。
+          id: `${bookId}_${chapterNum}_${chunkIndex}`,
+          book_id: bookId,
+          book_name: BOOK_NAME,
+          chapter_num: chapterNum,
+          index: chunkIndex,
+          content: chunk,
+          vector: vector,
+        }
+      })
+    )
+    // 批量插入
+    const insertResult = await client.insert({
+      collection_name: COLLECTION_NAME,
+      data: insertData,
+    })
+    // 函数的返回结果要有可预测性 一致
+    return +insertResult.insert_cnt || 0
+  } catch (error) {
+    console.error(`插入章节 ${chapterNum} 的数据失败: ${error.message}`)
+    throw error
   }
 }
 
