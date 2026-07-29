@@ -1,349 +1,162 @@
-# UI = fn(props)：一个 React 组件改了 3 版，我才真正理解"单向数据流"
+# 从 AIGC 到 AI Agent：用 Claude Code 搭建产品级落地页的实战
 
 ## 引言
 
-上一篇文章聊了 **AI Native 开发**和 **OPC 工作流**，今天我们回到前端老本行，聊点"基本功"——**React + TypeScript 的组件通信**。
+上篇文章我聊了"代码向后，业务向前"——AI 时代，写代码的主力变成了 LLM，程序员的核心价值转向了定义问题和架构设计。
 
-为什么突然聊这个？因为我最近在学 React，写了一个看起来简单得不能再简单的组件——一个输入框，用户输入名字，点按钮更新。就这一个功能，我改了**三个版本**。
+但有一个细节我一直没展开说：**AI 生成代码之后呢？**
 
-前两个版本都能跑，但当我写出第三版时，突然有种"原来如此"的感觉——**单向数据流不只是 React 的"法律条文"，它是一种让代码变简单的最优解。**
+过去我用 AI 的工作流是这样的：在 ChatGPT/豆包里写 prompt → AI 生成代码 → 我手动复制 → 粘贴到编辑器 → 保存 → 切回浏览器看效果 → 不满意，再写 prompt → 再复制……循环往复。
 
-这篇文章就把这三个版本的演进过程串起来，从"能跑就行"到"写得漂亮"，顺便把 TypeScript 在其中的角色讲清楚。
+这当然比手写代码快，但总觉得哪里不对。**AI 只替代了"写"这个环节，但"搬运代码"这件事还是我在做。**
 
----
+直到我遇到了 Claude Code，才发现原来还有另一种可能。
 
-## 一、React + TypeScript：天作之合
+## 一、从 Chat Bot 到 Agent：AI Coding Agent 的进化
 
-在进入三个版本的故事之前，先聊聊 React 和 TypeScript 的关系。
+先回顾一下 AI 辅助编程的进化路径：
 
-你可能知道，**React 本身就是用 TypeScript 写的**。这不是巧合——React 的组件模型天然需要类型约束：
+**第一阶段：AIGC + 复制粘贴**
 
-- 父组件通过 **props** 向子组件传递数据
-- 每个 prop 都有它该有的类型（string、number、function……）
-- 如果类型不匹配，运行时就会出 bug
+这是最原始的方式。LLM Chatbot（ChatGPT、豆包、Kimi 等）生成代码片段，你手动复制到项目中。优点是门槛极低，缺点也很明显——每次修改都要来回切换上下文，代码一多就手忙脚乱。
 
-而 TypeScript 在**编译时**就能帮你把这类问题揪出来。所以 React + TypeScript 这对组合，从一开始就是"天作之合"——**一个负责组件化，一个负责类型安全**。
+**第二阶段：AI 编辑器**
 
-在 React 的类型体系里，最核心的一个东西就是 `React.FC`：
+Cursor 是这个阶段的代表。它把 LLM 直接嵌入到编辑器里，你不需要离开 IDE 就能和 AI 对话。AI 可以直接修改光标所在位置的代码。相比复制粘贴，这已经是巨大的进步。
 
-```typescript
-// React 源码中
-type FC<P = {}> = FunctionComponent<P>
-```
+**第三阶段：AI Coding Agent**
 
-这个 `FC<P>` 的 `<P>` 就是**泛型**——你传什么类型进去，它就按什么类型约束你的组件。`P = {}` 表示默认是空对象，不传也行。
+Claude Code（还有 Codex）代表了这个阶段。它不是编辑器插件，而是一个**真正有"手"有"脚"的 Agent**。
 
----
+什么叫有手有脚？就是它能：
 
-## 二、Hello 组件：一切从打招呼开始
+- **读取文件**——理解你的项目结构、现有代码
+- **写入文件**——直接创建和修改代码文件
+- **运行命令**——启动项目、安装依赖、运行测试
 
-先看一个最简单的例子。我写了一个 `Hello` 组件，接收一个 `userName`，打个招呼：
+换句话说，**给它一个任务，它能自己完成从理解需求到执行操作的整个闭环。** 你只需要在终点验收结果，而不需要在每个环节手动搬运。
 
-```tsx
-import * as React from 'react';
+Claude Code 的安装也很简单：VS Code 里安装 Claude Code 插件，通过 `cc switch` 配置后端模型（我用的是 DeepSeek）。一切都在命令行或编辑器内完成。
 
-interface Props {
-    userName: string;
-}
+使用 Claude Code 有一个很重要的最佳实践：**在一个单独的 VS Code 窗口里打开项目目录**。这样做的好处是，Agent 能专注于当前项目，不受其他文件或标签页的干扰。给它一个清晰的"边界"，它反而能更好地完成任务。
 
-const Hello: React.FC<Props> = (props) => {
-    return (
-        <h2>Hello {props.userName}</h2>
-    );
-};
+这个"有边界感"的思路很有意思——就像给一个员工分配独立的工位，而不是让他坐在嘈杂的大通铺里。
 
-export default Hello;
-```
+## 二、实战：用 Claude Code 搭建产品级落地页
 
-短短几行代码，TypeScript 的身影已经无处不在：
+概念说完了，直接上一个实战。
 
-- **`interface Props`**：定义了 props 的"形状"——必须有一个 `userName`，且是 `string`
-- **`React.FC<Props>`**：用泛型告诉 React "这个组件的 props 长这样"
-- 父组件传 `<Hello userName="Tom" />` 时，如果写成 `userName={123}`，TS 会直接报错
+最近我在做一个叫 **Foodiez** 的外卖 App 项目，需要一个产品落地页。需求很明确：一个能促进下载转化的营销页面，包含导航栏、功能介绍、社交证明、应用预览等完整模块。
 
-注意这里还有一个小知识点：**`interface` 和 `type` 有什么区别？**
+最开始我用豆包试了一下，生成的是纯 HTML/CSS/JS。对于快速原型来说没问题，但距离"生产级"还有差距——没有组件化、没有类型安全、动画交互也比较基础。
 
-在 TypeScript 里，两者都可以用来声明类型。但按 React 社区的习惯，**组件 props 用 `interface`**——因为 interface 是专门用来描述"对象需要满足哪些属性和方法"的，而 props 恰好就是一个对象。
+于是我决定：**把技术栈升级到 React + TypeScript + Tailwind CSS + Framer Motion，交给 Claude Code 来完成。**
 
-> 一句话总结：`type` 是"类型别名"，`interface` 是"对象契约"。props 是一种契约，所以用 interface。
+这时候就体现出 Agent 和 Chatbot 的本质区别了：
 
----
+- **用 Chatbot**：我需要在对话里描述所有需求 → 拿到代码 → 手动创建每个文件 → 安装依赖 → 调试
+- **用 Agent**：我只需要描述需求和最终目标 → Agent 读取项目上下文 → 自动创建组件文件 → 安装依赖 → 全部搞定
 
-## 三、第一版：把 Event 对象"泄漏"给父组件
+对于这个落地页项目，我用的是一个**六要素的结构化 Prompt**（稍后会详细拆解）。Claude Code 基于这个 Prompt，直接生成了完整的 React 项目结构——9 个组件、动画系统、响应式布局，全部一次到位。
 
-Hello 组件没问题。但实际需求比打个招呼复杂——用户要能**修改名字**。
+从"生成代码"到"交付项目"，这就是 Agent 带来的质变。
 
-于是我开始写 `NameEditComponent`——一个带输入框和提交按钮的组件。
+## 三、六要素 Prompt 框架
 
-**第一版设计思路**：子组件只管渲染输入框，`onChange` 事件原封不动传给父组件处理。
+上篇文章我分享了写 3D 小世界时的"五块分割法"（体验目标 → 技术约束 → 视觉方向 → UI 风格 → 代码组织）。这次做落地页项目，我用了一个升级版的 **六要素框架**：
 
-```tsx
-// ❌ 第一版：把原生 event 丢给父组件
-interface Props {
-    username: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+### 1. 任务描述（Task）
+一句话说清楚要做什么："Build a modern, responsive landing page for a food delivery mobile app called Foodiez."
 
-const NameEditComponent: React.FC<Props> = (props) => {
-    return (
-        <div>
-            <label>Update name:</label>
-            <input
-                type="text"
-                value={props.username}
-                onChange={props.onChange}
-            />
-        </div>
-    );
-};
-```
+### 2. 最终目标（Goal）
+"Create a high-conversion marketing landing page that promotes the app, communicates value instantly, and drives users to download."
 
-父组件这边就得自己处理：
+目标是文章的"北极星"，告诉 AI 我们到底要达成什么效果。
 
-```tsx
-// 父组件被迫处理 React.ChangeEvent
-const setUsernameState = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
-};
-```
+### 3. 技术栈（Tech Stack）
+React + TypeScript + Tailwind CSS + Framer Motion，面向组件的架构、移动优先、语义化 HTML。
 
-**问题在哪？**
-
-1. **类型污染**：`React.ChangeEvent<HTMLInputElement>` 这个类型，父组件本来不该关心。父组件的职责是"持有状态+修改状态"，不是"处理 DOM 事件"。
-2. **可读性差**：父组件代码里出现了 `event.target.value`，这是实现细节——子组件用 `<input>` 还是 `<textarea>` 还是别的什么，父组件不应该知道。
-3. **耦合太紧**：如果子组件从 `<input>` 改成其他控件，父组件代码也要改。
+这里有一个关键要求：**"The result must be production-ready."**——不是 demo，而是能直接上线的东西。这个明确的期望值设定，对最终输出质量有决定性影响。
 
-这就是所谓的 **"泄漏"**——子组件把自己的实现细节（用的是什么 HTML 元素、什么事件类型）**泄露**给了父组件。
+### 4. 风格和视觉方向（Style）
+Clean, modern, premium UI。主色 #FF6B35（橙色），暖色系+食物感。柔和阴影、大圆角、流畅的微交互。
 
----
+### 5. 页面结构（Layout）
+这是最具体的部分——9 个模块的详细描述：
 
-## 四、第二版：子组件的"小算盘"
+| 模块 | 一句话设计意图 |
+|------|---------------|
+| **Navbar** | 品牌展示 + 导航 + 下载 CTA，滚动固定 |
+| **Hero** | 标题+副标题直击痛点，左侧文案右侧手机 Mockup |
+| **Social Proof** | 合作品牌 + 用户评价，建立信任 |
+| **How It Works** | 三步法解释流程，降低认知门槛 |
+| **Feature Highlights** | 左图右文交替展示核心功能，滚动动画触发 |
+| **App Preview** | 横向滑动展示 App 多屏界面 |
+| **Promo Banner** | 首单免费强视觉 Banner，促进转化 |
+| **Final CTA** | 大号文字 + 下载按钮，最后一道转化关卡 |
+| **Footer** | 品牌 + 导航 + 社交 + 版权，完整收尾 |
 
-第二版我做了改进——**把表单逻辑封装在子组件内部**。
+### 6. 交付内容（Deliverable）
+明确要求：结构化 React 组件、可复用的 UI 模块、Tailwind 样式、Framer Motion 动画、**不要 Lorem Ipsum**——全部使用真实营销文案。
 
-```tsx
-// ✅ 第二版：子组件自己管理 editing 状态
-interface Props {
-    initialUsername: string;
-    onNameUpdated: (newName: string) => void;
-}
-
-const NameEditComponent: React.FC<Props> = (props) => {
-    // 子组件自己的"小算盘"——私有状态
-    const [editingName, setEditingName] = React.useState(props.initialUsername);
-
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEditingName(e.target.value);
-    };
-
-    const onNameSubmit = () => {
-        props.onNameUpdated(editingName);
-    };
-
-    return (
-        <>
-            <label>Update name:</label>
-            <input value={editingName} onChange={onChange} />
-            <button onClick={onNameSubmit}>Change</button>
-        </>
-    );
-};
-```
-
-这一版的改进非常明显：
-
-- **`onNameUpdated` 只传 `string`**，父组件不需要碰 `React.ChangeEvent`
-- **`initialUsername` 作为初始值**，子组件自己维护编辑中的状态
-- **`React.ChangeEvent<HTMLInputElement>` 封装在子组件内部**，父组件完全无感
-
-父组件的代码变得干净：
-
-```tsx
-// 父组件只需传初始值和接收最终结果
-<NameEditComponent
-    initialUsername={username}
-    onNameUpdated={setUsername}
-/>
-```
-
-这一版已经可以在工作中使用了。但还能更好——这引出了第三版。
-
----
-
-## 五、第三版：UI = fn(props)
-
-第二版有一个"隐藏问题"：**状态散落在父子组件之间**。
-
-- 父组件有 `username`
-- 子组件有 `editingName`
-- 两个状态描述的是"同一个东西"的不同阶段
-
-这带来了什么麻烦？假设你想加一个"重置"按钮，把名字恢复成初始值——你需要**同时重置父组件的 `username` 和子组件的 `editingName`**，状态同步变得复杂。
-
-第三版的核心思想就一句话：**把编辑状态也提升到父组件**，让子组件变成一个"失忆"的纯展示组件：
-
-```tsx
-// ✅ 第三版：子组件变成纯展示组件
-interface Props {
-    initialName: string;
-    editingName: string;
-    onEditingNameUpdated: (newEditingName: string) => void;
-    onNameUpdated: () => void;
-    disabled: boolean;
-}
-
-const NameEditComponent: React.FC<Props> = (props) => {
-    const { editingName, onEditingNameUpdated, onNameUpdated, disabled } = props;
-
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onEditingNameUpdated(event.target.value);
-    };
-
-    return (
-        <>
-            <label>Update Name:</label>
-            <input value={editingName} onChange={onChange} />
-            <button disabled={disabled} onClick={onNameUpdated}>Change</button>
-        </>
-    );
-};
-```
-
-父组件持有全部状态：
-
-```tsx
-const App: React.FC = () => {
-    const [name, setName] = React.useState<string>('defaultUserName');
-    const [editingName, setEditingName] = React.useState('defaultUserName');
-
-    const setUsernameState = () => {
-        setName(editingName);
-    };
-
-    return (
-        <>
-            名字：{name}
-            <Hello userName={editingName} />
-            <NameEditComponent
-                initialName={name}
-                editingName={editingName}
-                onNameUpdated={setUsernameState}
-                onEditingNameUpdated={setEditingName}
-                disabled={editingName === '' || editingName === name}
-            />
-        </>
-    );
-};
-```
-
-**第三版的优势：**
-
-| 维度 | 第二版 | 第三版 |
-|------|--------|--------|
-| 状态位置 | 散落在父子组件 | 集中在父组件 |
-| 子组件职责 | 展示 + 维护私有状态 | 只展示 |
-| 可测试性 | 需要 mock 状态 | 纯 props in, JSX out |
-| 额外逻辑（如 disabled） | 子组件需额外处理 | 父组件统一计算 |
-
-这时候再看这个公式就豁然开朗了：
-
-> **UI = fn(props)**
-
-这是 React 组件设计的**终极公式**——给定相同的 props，组件渲染出相同的 UI。没有内部状态，没有副作用，输入决定输出，简单、可预测、好测试。
-
-**注意**：这并不意味着子组件永远不该有私有状态。表单输入、动画状态、下拉菜单的开合——这些"不影响全局状态"的局部 UI 状态放在子组件里完全合理。关键在于判断：**这个状态是"属于这个组件自身"的，还是"属于应用全局"的。**
-
----
-
-## 六、useEffect：组件的"第二人生"
-
-现在 App 组件里还有一个知识点——`useEffect`：
-
-```tsx
-const loadUserName = () => {
-    setTimeout(() => {
-        setName('name from async call');
-    }, 2000);
-};
-
-React.useEffect(() => {
-    loadUserName();
-}, []);
-```
-
-`useEffect` 是 React 的**副作用 Hook**，它赋予了组件"第二人生"：
+这六个要素组合起来，就形成了一个完整的 Prompt：
 
 ```
-组件的一生：
-  ┌─ mounted（挂载）──→ 页面出现
-  │     ↓
-  │  useEffect 执行 ← 这里请求数据
-  │     ↓
-  │  状态更新 → re-render
-  │     ↓
-  │  ...（用户交互）...
-  │     ↓
-  └─ unmounted（卸载）──→ 页面消失
+Task + Goal + Tech Stack + Style + Layout + Deliverable
 ```
 
-关键的一句话：**组件的第一要务是赶快显示出来，让用户觉得快。** 所以数据先给个默认值，`useEffect` 在挂载**之后**再异步请求真实数据。
+对比上篇文章吴恩达的 **Goal + Input + Output + Layout + Features**，你会发现本质相同但侧重点不同——当你的项目是"生产级代码"而非"一次性页面"时，技术栈和交付标准的描述变得格外重要。
 
-`useEffect` 的第二个参数 `[]`（空依赖数组）表示"只在挂载后执行一次"。如果填了依赖项，比如 `[name]`，则每次 `name` 变化时都会重新执行。
+## 四、Prompt 设计的进阶思考
 
----
+写到这里，我想分享一个更深层的体会。
 
-## 七、TypeScript 的类型武器库
+对比 v002 的 3D 小世界项目和这次的落地页项目，你会发现我的 Prompt 结构是不一样的：
 
-在三个版本的迭代中，TypeScript 始终在默默发挥作用。总结一下用到的核心类型：
+**3D 小世界 Prompt 强调**：
+- 体验目标（用户能做什么）
+- 技术约束（零构建、CDN、无外部模型）
+- 代码组织（数据结构、入口函数）
 
-### React.FC<P>
+**落地页 Prompt 强调**：
+- 技术栈（React + TypeScript + Tailwind）
+- 页面结构（9 个模块的详细描述）
+- 交付标准（生产级、动画、响应式、可访问性）
 
-```typescript
-type FC<P = {}> = FunctionComponent<P>
-```
+为什么不一样？因为项目类型不同。
 
-泛型 `P` 是你的 Props 类型。不传就是空对象。
+3D 小世界是一个**纯前端的互动体验**，核心挑战是技术约束下的实现质量和交互流畅度。而落地页是一个**营销导向的产品页面**，核心挑战是视觉品质和代码的可维护性。
 
-### React.ChangeEvent<T>
+这就是 Prompt 设计的核心方法论：**没有万能模板，只有适配思维。**
 
-```typescript
-React.ChangeEvent<HTMLInputElement>
-```
+你不需要记住"五块分割法"或"六要素框架"，你需要做的是：**分析你的项目是什么类型，然后设计适合这个类型的 Prompt 结构。**
 
-这是 React 的**合成事件（SyntheticEvent）**——看起来像原生 DOM 事件，但实际上是 React 跨浏览器封装后的事件对象。泛型参数指定事件发生在哪个元素上。
+这恰好呼应了上篇文章的结论——**领域知识仍然是护城河**。如果你不懂前端项目的工程化标准，你就不知道要在 Prompt 里强调 TypeScript 和组件化；如果你不懂营销页面的转化逻辑，你就不会去设计 Social Proof 和 Promo Banner 这样的模块。
 
-### interface vs type
+AI 是你的代码主力，但**你是 AI 的架构师**。
 
-| | interface | type |
-|------|-----------|------|
-| 用途 | 描述对象形状 | 类型别名 |
-| 扩展 | `extends` | `&` 交叉类型 |
-| 场景 | 组件 Props | 联合类型、工具类型 |
+## 结语：从"写代码"到"写 Prompt"再到"做架构"
 
-组件 Props 推荐用 `interface`——语义更明确。
+回顾这三篇文章的旅程：
 
----
+**v001** 聊了 OPC（一人公司）的概念框架——一个人借助 AI 身兼七个角色。
 
-## 结语：单向数据流不是法律，是最优解
+**v002** 通过 3D 小世界项目，深入讲了 Prompt 工程和 LLM 原理——理解了 y = fθ(x)，理解了为什么"代码向后，业务向前"。
 
-三版重构走下来，我有一个强烈的感受：
+**v003** 今天，我们看到 AI 编程从 Chatbot 进化到了 Agent——Claude Code 不仅有手有脚，还能独立完成从理解需求到交付项目的完整闭环。
 
-> **"单向数据流"不是 React 定的规矩，而是代码简单到一定程度后的自然结果。**
+这三个阶段，恰好对应了 AI 全栈工程师的能力进化路径：
 
-第一版把事情搞复杂了——因为子组件把不该暴露的东西暴露了。
-第二版已经很好——但状态分散让后续扩展变得困难。
-第三版回归本质——**状态在上，视图在下，数据单向流动**。
+> **写代码 → 写 Prompt → 做架构**
 
-这不就是 `UI = fn(props)` 吗？
+第一阶段，你用手写代码。
+第二阶段，你用 Prompt 生成代码。
+第三阶段，你让 Agent 自主完成项目，你只负责定义目标和验收结果。
 
-最后，回到那个经典的问题：**子组件能不能有自己的状态？**
+每一步，你的抽象层级都在提升，你的杠杆效应都在放大。
 
-答案是：**看情况**。如果这个状态只影响子组件自身的 UI 表现（比如一个 tooltip 的开合、一个动画的进度），放在子组件内部是好的封装。但如果这个状态是"应用数据"的一部分（比如用户输入的名字），它应该"住"在父组件，子组件只是帮它"照个镜子"。
+这也是 OPC 拼图中最核心的那块——**Boss/Agent 角色**。在 v001 里我只是概念性地提到了它，而今天，通过 Claude Code，这个角色真正落地了。
 
-**判断标准很简单**：问问自己，如果两个组件需要共享这个状态，你打算怎么办？如果答案是"提升到共同父组件"——那不如一开始就放在那里。
+一人公司的时代，比你想象中来得更快。
 
-下一篇文章，我们会进入更复杂的场景——多个组件之间如何通信，Context API 如何打破 props drilling，敬请期待。
-
----
-
-*📝 本文为"React + TypeScript 学习笔记"系列第三篇，代码基于实际项目 [ts-demo](https://github.com/DRB-code-ing) 编写。*
+**Be AI Native.**

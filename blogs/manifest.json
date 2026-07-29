@@ -309,6 +309,36 @@
       "hash": "353bcc00c7e87e8d71d2bf10acd6c9dc023fa171b6303d9ee6aa63ecd76a46c7",
       "path": "E:\\WROKSPACE\\ai\\agent\\concepts\\gpt5.6\\readme.md",
       "label": "GPT-5.6 分层与工具协作笔记"
+    },
+    "fe/React/ts-demo/readme.md": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\ts-demo\\readme.md",
+      "label": "React + TypeScript 组件通信 / 单向数据流 / useEffect 笔记"
+    },
+    "fe/React/ts-demo/demo/src/APP.tsx": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\ts-demo\\demo\\src\\APP.tsx",
+      "label": "第三版 App：状态提升 / 纯展示子组件 / UI=fn(props)"
+    },
+    "fe/React/ts-demo/demo/src/App2.tsx": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\ts-demo\\demo\\src\\App2.tsx",
+      "label": "第二版 App：子组件私有状态 / 单向数据流"
+    },
+    "fe/React/ts-demo/demo/src/components/Hello.tsx": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\ts-demo\\demo\\src\\components\\Hello.tsx",
+      "label": "Hello 组件：React.FC<Props> / interface 类型约束"
+    },
+    "fe/React/ts-demo/demo/src/components/NameEditComponent.tsx": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\ts-demo\\demo\\src\\components\\NameEditComponent.tsx",
+      "label": "第三版 NameEdit：纯展示组件 / 状态提升 / 解构 props"
+    },
+    "fe/React/ts-demo/demo/src/components/NameEditComponent2.tsx": {
+      "hash": "auto",
+      "path": "E:\\WROKSPACE\\fe\\React\\ts-demo\\demo\\src\\components\\NameEditComponent2.tsx",
+      "label": "第二版 NameEdit：私有状态封装 / React.ChangeEvent"
     }
   },
   "versions": [
@@ -765,6 +795,19 @@
         "ai/agent/agent_in_action/tlbb/src/main.mjs": "7059ea1",
         "ai/agent/agent_in_action/tlbb/src/query.mjs": "58ae145",
         "ai/agent/agent_in_action/tlbb/src/rag.mjs": "df83768"
+      }
+    },
+    {
+      "id": "v056",
+      "date": "2026-07-29",
+      "title": "UI = fn(props)：一个 React 组件改了 3 版，我才真正理解\"单向数据流\"",
+      "covered_sources": {
+        "fe/React/ts-demo/readme.md": "auto",
+        "fe/React/ts-demo/demo/src/APP.tsx": "auto",
+        "fe/React/ts-demo/demo/src/App2.tsx": "auto",
+        "fe/React/ts-demo/demo/src/components/Hello.tsx": "auto",
+        "fe/React/ts-demo/demo/src/components/NameEditComponent.tsx": "auto",
+        "fe/React/ts-demo/demo/src/components/NameEditComponent2.tsx": "auto"
       }
     }
   ]
