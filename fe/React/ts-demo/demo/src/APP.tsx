@@ -1,10 +1,11 @@
 import './App.css'
 import * as React from 'react'
 import HellowComponent from './components/Hello'
+import NameEditComponent from './components/NameEditComponent.tsx'
 
 // 写js一样写ts
 const App:React.FC = () => {
-  const [name, setName] = React.useState('defaultUserName')
+  const [name, setName] = React.useState<string>('defaultUserName')
   const [editingName, setEditingName] = React.useState('defaultUserName')
 
   const loadUserName = () => {
@@ -24,7 +25,15 @@ const App:React.FC = () => {
   }
    return (
     <>
-      <HellowComponent userName={name}/>
+      名字：{name}
+      <HellowComponent userName={editingName}/>
+      <NameEditComponent 
+      initialName={name} 
+      editingName={editingName} 
+      onNameUpdated={setUsernameState} 
+      onEditingNameUpdated={setEditingName}
+      disabled={editingName === "" || editingName === name}
+      />
     </>
   )
 }

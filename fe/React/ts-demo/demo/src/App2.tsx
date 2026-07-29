@@ -1,7 +1,7 @@
 import './App.css'
 import * as React from 'react'
 import Hello from './components/Hello.tsx'
-import NameEditComponent from './components/NameEditComponent.tsx'
+import NameEditComponent from './components/NameEditComponent2.tsx'
 
 const App:React.FC = () => {
   const [username, setUsername] = React.useState('initialName')

@@ -1,43 +1,39 @@
 import * as React from 'react'
 
-// interface Props{
-    // username:string
-    // onChange:(event:React.ChangeEvent<HTMLInputElement>) => void
-// }
-
 interface Props {
-  // 接口不是json, ; 隔开
-  initialUsername: string
-  onNameUpdated: (newName: string) => void
+  initialName:string
+  editingName:string
+  onEditingNameUpdated:(newEditingName:string)=>void
+  onNameUpdated:()=>void
+  disabled:boolean
 }
 
-// const NameEditComponent:React.FC<Props>=(props) => {
-    // return (
-        // <div>
-            {/* <label>Update name:</label> */}
-            {/* <input type="text" value={props.username} onChange={props.onChange} /> */}
-        {/* </div> */}
-    // )
-// }
-
 const NameEditComponent:React.FC<Props> = (props) => {
-  // 表单事件 自己打理
-  const [editingName, setEditingName] = React.useState(props.initialUsername)
-  const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setEditingName(e.target.value)
-  }
+    const {
+      editingName,
+      onEditingNameUpdated,
+      onNameUpdated,
+      disabled
+    } = props
 
-  const onNameSubmit = () => {
-    props.onNameUpdated(editingName)
-  }
+    const onChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+      onEditingNameUpdated(event.target.value)
+    }
 
-  return (
-    <>
-      <label>Update name:</label>
-      <input value={editingName} onChange={onChange}></input>
-      <button onClick={onNameSubmit}>Change</button>
-    </>
-  )
+    const onNameSubmit = () => {
+      onNameUpdated()
+    }
+
+    return (
+        <>
+          <label>Update Name:</label>
+          <input
+          value={editingName}
+          onChange={onChange}
+          ></input>
+          <button disabled={disabled} onClick={onNameSubmit}>Change</button>
+        </>
+    )
 }
 
 export default NameEditComponent
