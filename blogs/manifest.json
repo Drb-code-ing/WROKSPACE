@@ -339,6 +339,26 @@
       "hash": "auto",
       "path": "E:\\WROKSPACE\\fe\\React\\ts-demo\\demo\\src\\components\\NameEditComponent2.tsx",
       "label": "第二版 NameEdit：私有状态封装 / React.ChangeEvent"
+    },
+    "fe/React/new/readme.md": {
+      "hash": "0d068b6",
+      "path": "E:\\WROKSPACE\\fe\\React\\new\\readme.md",
+      "label": "React 前端分层 / API 接口笔记"
+    },
+    "fe/React/new/color-picker/src/model/member.ts": {
+      "hash": "0d068b6",
+      "path": "E:\\WROKSPACE\\fe\\React\\new\\color-picker\\src\\model\\member.ts",
+      "label": "MemberEntity 数据模型 / TypeScript 类型契约"
+    },
+    "fe/React/new/color-picker/src/api/memberApi.ts": {
+      "hash": "0d068b6",
+      "path": "E:\\WROKSPACE\\fe\\React\\new\\color-picker\\src\\api\\memberApi.ts",
+      "label": "成员列表 API 模块 / Promise 异步数据"
+    },
+    "fe/React/new/color-picker/src/components/MemberTable.tsx": {
+      "hash": "0d068b6",
+      "path": "E:\\WROKSPACE\\fe\\React\\new\\color-picker\\src\\components\\MemberTable.tsx",
+      "label": "React 列表请求 / useEffect 与状态渲染"
     }
   },
   "versions": [
@@ -808,6 +828,17 @@
         "fe/React/ts-demo/demo/src/components/Hello.tsx": "auto",
         "fe/React/ts-demo/demo/src/components/NameEditComponent.tsx": "auto",
         "fe/React/ts-demo/demo/src/components/NameEditComponent2.tsx": "auto"
+      }
+    },
+    {
+      "id": "v057",
+      "date": "2026-07-30",
+      "title": "React 数据请求的第一步：用 TypeScript 契约串起 API、Effect 与列表渲染",
+      "covered_sources": {
+        "fe/React/new/readme.md": "0d068b6",
+        "fe/React/new/color-picker/src/model/member.ts": "0d068b6",
+        "fe/React/new/color-picker/src/api/memberApi.ts": "0d068b6",
+        "fe/React/new/color-picker/src/components/MemberTable.tsx": "0d068b6"
       }
     }
   ]

@@ -1,0 +1,10 @@
+{
+  "version": "v057",
+  "title": "React 数据请求的第一步：用 TypeScript 契约串起 API、Effect 与列表渲染",
+  "covered_sources": {
+    "fe/React/new/readme.md": "0d068b6",
+    "fe/React/new/color-picker/src/model/member.ts": "0d068b6",
+    "fe/React/new/color-picker/src/api/memberApi.ts": "0d068b6",
+    "fe/React/new/color-picker/src/components/MemberTable.tsx": "0d068b6"
+  }
+}
