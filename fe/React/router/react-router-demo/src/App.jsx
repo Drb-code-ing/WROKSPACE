@@ -8,6 +8,7 @@ import {
   HashRouter as Router,// 前端路由
   Routes,// 路由配置数组
   Route,// 路由配置项
+  Navigate,
 } from 'react-router-dom'
 import Navigation from './components/Navigation'
 // SPA 动态切换多个页面
@@ -23,6 +24,8 @@ const User = lazy(() => import('./pages/User'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const Products = lazy(() => import('./pages/Products'))
 const ProductDetail = lazy(() => import('./pages/Products/ProductDetail'))
+const NewProduct = lazy(() => import('./pages/Products/NewProduct'))
+
 
 
 function App() {
@@ -45,7 +48,10 @@ function App() {
             {/* 多级路由，嵌套路由 */}
             <Route path="/products" element={<Products />} >
               <Route path=":productId" element={<ProductDetail />} />
+              <Route path="new" element={<NewProduct />} />
             </Route>
+            {/* 重定向路由 */}
+            <Route path="old-path" element={<Navigate replace to="/new-path" />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

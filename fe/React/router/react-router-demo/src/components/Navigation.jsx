@@ -10,7 +10,8 @@ function Navigation() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/user/123">小家</Link></li>
-        <li><Link to="/products/123">Product Detail</Link></li>
+        <li><Link to="/products/123">商品详情</Link></li>
+        <li><Link to="/products/new">商品新增</Link></li>
       </ul>
     </nav>
   );
