@@ -359,6 +359,51 @@
       "hash": "0d068b6",
       "path": "E:\\WROKSPACE\\fe\\React\\new\\color-picker\\src\\components\\MemberTable.tsx",
       "label": "React 列表请求 / useEffect 与状态渲染"
+    },
+    "fe/html5/history/readme.md": {
+      "hash": "07069b9",
+      "path": "E:\\WROKSPACE\\fe\\html5\\history\\readme.md",
+      "label": "浏览历史 / Hash 路由笔记"
+    },
+    "fe/html5/history/demo2/index.html": {
+      "hash": "07069b9",
+      "path": "E:\\WROKSPACE\\fe\\html5\\history\\demo2\\index.html",
+      "label": "手写 HashRouter / hashchange 路由实现"
+    },
+    "fe/html5/history/demo2/demo.html": {
+      "hash": "07069b9",
+      "path": "E:\\WROKSPACE\\fe\\html5\\history\\demo2\\demo.html",
+      "label": "hashchange 事件 / 锚点示例"
+    },
+    "fe/React/router/readme.md": {
+      "hash": "99eeda4",
+      "path": "E:\\WROKSPACE\\fe\\React\\router\\readme.md",
+      "label": "React 集成前端路由笔记"
+    },
+    "fe/React/router/react-router-demo/src/App.jsx": {
+      "hash": "c070246",
+      "path": "E:\\WROKSPACE\\fe\\React\\router\\react-router-demo\\src\\App.jsx",
+      "label": "路由配置 / 懒加载 / 嵌套路由"
+    },
+    "fe/React/router/react-router-demo/src/components/Navigation.jsx": {
+      "hash": "c070246",
+      "path": "E:\\WROKSPACE\\fe\\React\\router\\react-router-demo\\src\\components\\Navigation.jsx",
+      "label": "Link 导航组件"
+    },
+    "fe/React/router/react-router-demo/src/pages/User/index.jsx": {
+      "hash": "99eeda4",
+      "path": "E:\\WROKSPACE\\fe\\React\\router\\react-router-demo\\src\\pages\\User\\index.jsx",
+      "label": "动态路由 / useParams"
+    },
+    "fe/React/router/react-router-demo/src/pages/Products/index.jsx": {
+      "hash": "99eeda4",
+      "path": "E:\\WROKSPACE\\fe\\React\\router\\react-router-demo\\src\\pages\\Products\\index.jsx",
+      "label": "嵌套路由 / Outlet"
+    },
+    "fe/React/router/react-router-demo/src/pages/NotFound/index.jsx": {
+      "hash": "99eeda4",
+      "path": "E:\\WROKSPACE\\fe\\React\\router\\react-router-demo\\src\\pages\\NotFound\\index.jsx",
+      "label": "404 兜底 / useNavigate"
     }
   },
   "versions": [
@@ -839,6 +884,22 @@
         "fe/React/new/color-picker/src/model/member.ts": "0d068b6",
         "fe/React/new/color-picker/src/api/memberApi.ts": "0d068b6",
         "fe/React/new/color-picker/src/components/MemberTable.tsx": "0d068b6"
+      }
+    },
+    {
+      "id": "v058",
+      "date": "2026-08-05",
+      "title": "前端路由的第一性原理：从 hashchange 手写路由，到 React Router 的嵌套与懒加载",
+      "covered_sources": {
+        "fe/html5/history/readme.md": "07069b9",
+        "fe/html5/history/demo2/index.html": "07069b9",
+        "fe/html5/history/demo2/demo.html": "07069b9",
+        "fe/React/router/readme.md": "99eeda4",
+        "fe/React/router/react-router-demo/src/App.jsx": "c070246",
+        "fe/React/router/react-router-demo/src/components/Navigation.jsx": "c070246",
+        "fe/React/router/react-router-demo/src/pages/User/index.jsx": "99eeda4",
+        "fe/React/router/react-router-demo/src/pages/Products/index.jsx": "99eeda4",
+        "fe/React/router/react-router-demo/src/pages/NotFound/index.jsx": "99eeda4"
       }
     }
   ]

@@ -1,0 +1,15 @@
+{
+  "version": "v058",
+  "title": "前端路由的第一性原理：从 hashchange 手写路由，到 React Router 的嵌套与懒加载",
+  "covered_sources": {
+    "fe/html5/history/readme.md": "07069b9",
+    "fe/html5/history/demo2/index.html": "07069b9",
+    "fe/html5/history/demo2/demo.html": "07069b9",
+    "fe/React/router/readme.md": "99eeda4",
+    "fe/React/router/react-router-demo/src/App.jsx": "c070246",
+    "fe/React/router/react-router-demo/src/components/Navigation.jsx": "c070246",
+    "fe/React/router/react-router-demo/src/pages/User/index.jsx": "99eeda4",
+    "fe/React/router/react-router-demo/src/pages/Products/index.jsx": "99eeda4",
+    "fe/React/router/react-router-demo/src/pages/NotFound/index.jsx": "99eeda4"
+  }
+}
