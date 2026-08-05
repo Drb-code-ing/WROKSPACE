@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hash</title>
+</head>
+<body>
+  <!-- 锚点链接 -->
+  <a name="top">顶部</a>
+  <a href="#bottom">去到底部</a>
+  <div style="height:200vh; background-color: yellow;"></div>
+  <a href="#top">回到顶部</a>
+  <div style="height: 300vh; background-color: red;"></div>
+  <a name="bottom">底部</a>
+
+  <script>
+    window.addEventListener('hashchange', function() {
+      console.log('hash 改变了')
+      console.log(event.newURL)
+      console.log(event.oldURL)
+    })
+  </script>
+</body>
+</html>
