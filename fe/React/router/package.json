@@ -1,0 +1,13 @@
+{
+  "name": "router",
+  "version": "1.0.0",
+  "description": "- restful 一切皆资源\r - 前端路由负责切换页面\r   以前是要后端路由支持，传统，慢，会白一下，体验不好\r   前后端分离、SPA hashRouter\r   hash 锚链接 改变url hash部分，不会刷新页面\r   hashchange 事件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
