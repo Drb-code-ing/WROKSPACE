@@ -20,3 +20,30 @@ react 开发全家桶
 - 动态路由
 - 404 NotFound
 - 嵌套路由
+- 鉴权路由
+  - http 无状态的
+  - 有状态？
+    - 请求头 token Authorization
+    - Cookie
+    - localStorage 存储 login 状态
+    user  admin
+    password  123456
+- 组件内部的子组件
+  props.children 拿到组件申明的内部所有的子节点
+  model 弹窗组件   mask 蒙层
+  窗体 头部，尾部 主体部分children 传入
+  定制性
+  <Modal>
+    {children 定制}
+  </Modal>
+
+## 路由对象
+- SPA 需要前端路由
+- url 改变，对应不同的资源 restful 设计理念
+  hash #/pay  browserRouter history
+- navigate 导航栏
+- location 地址栏
+- history 历史记录
+- Link 组件
+  to
+  replace

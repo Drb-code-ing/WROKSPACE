@@ -25,6 +25,9 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 const Products = lazy(() => import('./pages/Products'))
 const ProductDetail = lazy(() => import('./pages/Products/ProductDetail'))
 const NewProduct = lazy(() => import('./pages/Products/NewProduct'))
+const Login = lazy(() => import('./pages/Login'))
+const Pay = lazy(() => import('./pages/Pay'))
+const ProtectRoute = lazy(() => import('./ProtectRoute'))
 
 
 
@@ -51,7 +54,19 @@ function App() {
               <Route path="new" element={<NewProduct />} />
             </Route>
             {/* 重定向路由 */}
+            {/* 有个活动/game 100wan  /result 活动结束了 */}
+            {/* /home 重定向到 首页 */}
+            {/* /user/:id 登录? 送到/login  登录后送到 */}
             <Route path="old-path" element={<Navigate replace to="/new-path" />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/pay" element={
+              // 门禁保安
+              // Pay 要进的房间
+              <ProtectRoute>
+                {/* children */}
+                <Pay />
+              </ProtectRoute>
+            } />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
