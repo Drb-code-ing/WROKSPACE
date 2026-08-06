@@ -1,0 +1,14 @@
+{
+  "version": "v059",
+  "title": "React 的托管边界：从鉴权路由守卫，到 useRef 的 DOM 与线程引用",
+  "covered_sources": {
+    "fe/React/router/readme.md": "auto",
+    "fe/React/router/react-router-demo/src/App.jsx": "9c1e3a6",
+    "fe/React/router/react-router-demo/src/ProtectRoute.jsx": "9c1e3a6",
+    "fe/React/router/react-router-demo/src/components/Navigation.jsx": "9c1e3a6",
+    "fe/React/router/react-router-demo/src/pages/Login/index.jsx": "9c1e3a6",
+    "fe/React/router/react-router-demo/src/pages/Pay/index.jsx": "9c1e3a6",
+    "fe/React/basic/ref-demo/readme.md": "223aea1",
+    "fe/React/basic/ref-demo/ref-focus-demo/src/App.jsx": "223aea1"
+  }
+}
