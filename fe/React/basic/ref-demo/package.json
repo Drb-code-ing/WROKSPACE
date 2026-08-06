@@ -1,0 +1,13 @@
+{
+  "name": "ref-demo",
+  "version": "1.0.0",
+  "description": "响应式状态\r ## useEffect\r   副作用\r ## useRef\r   可变对象\r   - 可变，但是不会触发组件重新渲染\r   - 绑定DOM 对象\r     react 不直接操作DOM\r     万一需要呢？",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
