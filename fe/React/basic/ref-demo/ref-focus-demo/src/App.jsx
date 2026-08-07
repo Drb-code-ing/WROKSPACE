@@ -1,7 +1,7 @@
 import { 
   useRef, 
   useEffect, 
-  // useState
+  useState
 } from 'react'
 
 // function App() {
@@ -48,17 +48,49 @@ function App() {
   // console.timeEnd('主线程')
   // 阻塞页面渲染
 
-  const workerRef = useRef(null)
+  const workerRef = useRef(null)// 可持久化的可变对象
+  const [result, setResult] = useState(null)
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
     // 组件挂载完成后，创建 worker 线程，开销比较大的操作
     // ref 引用了 worker 线程，避免了主线程阻塞
-    workerRef.current = new Worker(
+    const worker = new Worker(
       new URL('./worker.js', import.meta.url)
     )
+    // 监听worker 线程，有没有消息到达
+    worker.onmessage = (e) => {
+      console.log('主线程收到 worker 线程返回的数据', e.data)
+      setResult(e.data.result)   // 把计算结果存到 state，触发渲染显示
+      setLoading(false)          // 计算结束，恢复按钮可点
+    }
+    workerRef.current = worker
+    // 组件卸载时，销毁 worker 线程
+    return () => {
+      workerRef.current.terminate()
+      workerRef.current = null
+    }
   }, [])
+
+  const startHeavyCalc = () => {
+    setLoading(true)
+    // 消息机制
+    // 给worker 线程发送一条工作指令  带上参数
+    workerRef.current.postMessage({
+      num: 88
+    })
+  }
 
   return (
     <>
+      <div style={{padding: "30px"}}>
+        <h2>useRef + WebWorker 耗时计算</h2>
+        <p>开启web worker 线程，执行5亿次循环，结束后通知主线程</p>
+        <button
+         onClick={startHeavyCalc}
+         disabled={loading}
+        >{loading ? "正在后台计算..." : "启动繁重计算任务"}</button>
+        {result && <h3>计算结果: {result}</h3>}
+      </div>
     </>
   )
 }
