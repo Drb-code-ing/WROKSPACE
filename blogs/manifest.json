@@ -404,6 +404,71 @@
       "hash": "99eeda4",
       "path": "E:\\WROKSPACE\\fe\\React\\router\\react-router-demo\\src\\pages\\NotFound\\index.jsx",
       "label": "404 兜底 / useNavigate"
+    },
+    "fe/React/basic/ref-demo/readme.md": {
+      "hash": "f105498bfd25a2ff593f41c6b82c1b40b026a690ad3d3cb594c26f18d390daea",
+      "path": "E:/WROKSPACE/fe/React/basic/ref-demo/readme.md",
+      "label": "useRef 笔记 / DOM 引用与 Web Worker 场景"
+    },
+    "fe/React/basic/ref-demo/ref-focus-demo/src/App.jsx": {
+      "hash": "001b6981ac3e8894c8360b7cf54a80b8d983086f0f511e3934a2e63b33841747",
+      "path": "E:/WROKSPACE/fe/React/basic/ref-demo/ref-focus-demo/src/App.jsx",
+      "label": "useRef + WebWorker 耗时计算 Demo / postMessage 消息机制"
+    },
+    "fe/React/basic/ref-demo/ref-focus-demo/src/worker.js": {
+      "hash": "d81a1d2318d0397321be10b627eb4c1aeec898c77c7eb9a0c75d3819919ef194",
+      "path": "E:/WROKSPACE/fe/React/basic/ref-demo/ref-focus-demo/src/worker.js",
+      "label": "Worker 线程 / 5亿次循环 / self.onmessage"
+    },
+    "fe/React/basic/context-demo/reeadme.md": {
+      "hash": "709a57593604e3f8fe9959b27d039f85bb30bd35602eea5d4a4087bde747ca2d",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/reeadme.md",
+      "label": "useContext 与自定义 Hooks 笔记"
+    },
+    "fe/React/basic/context-demo/context-demo/src/App.jsx": {
+      "hash": "3bc00cbeee149469547712799284226efad9d0f087b86deb7978299d8e29e6ba",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/context-demo/src/App.jsx",
+      "label": "useMouse 自定义 Hook 消费 Demo"
+    },
+    "fe/React/basic/context-demo/context-demo/src/App2.jsx": {
+      "hash": "fb1d8def9c0e9f13a30e79f54e6caf06fed98194019e5b335e758f50c2fe3f8f",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/context-demo/src/App2.jsx",
+      "label": "ThemeContext.Provider 主题容器 Demo"
+    },
+    "fe/React/basic/context-demo/context-demo/src/ThemeContext.jsx": {
+      "hash": "822e21406c2454d724918713d97f4a0d3c3cb59b589187ec9d5b60eef4cd2d90",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/context-demo/src/ThemeContext.jsx",
+      "label": "createContext 创建 Theme 上下文"
+    },
+    "fe/React/basic/context-demo/context-demo/src/components/Page.jsx": {
+      "hash": "2af0bc38b4a4e70ed818c03ea1ebd6b1a047f73e5dd0daff94febee7ccc0db1a",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/context-demo/src/components/Page.jsx",
+      "label": "useContext 跨层级消费 Demo"
+    },
+    "fe/React/basic/context-demo/context-demo/src/components/Child.jsx": {
+      "hash": "3d64141c4fa50f031fa93cacbffe148a6ee273df87d514636f546b0de7682b51",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/context-demo/src/components/Child.jsx",
+      "label": "useTheme 自定义 Hook 消费 Demo"
+    },
+    "fe/React/basic/context-demo/context-demo/src/hooks/useMouse.js": {
+      "hash": "ad7c2bd66fac57a22b931ac4e239a7051f57d40d1d69efe25d665fcc8ef83fd1",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/context-demo/src/hooks/useMouse.js",
+      "label": "useMouse 自定义 Hook / 事件监听封装"
+    },
+    "fe/React/basic/context-demo/context-demo/src/hooks/useTheme.js": {
+      "hash": "296967f303a366715377b8d3903ccc069436c6923eb590d058c4e65cbf66c58f",
+      "path": "E:/WROKSPACE/fe/React/basic/context-demo/context-demo/src/hooks/useTheme.js",
+      "label": "useTheme 自定义 Hook / 封装 useContext"
+    },
+    "fe/React/basic/todos-ts-hooks/src/hooks/useTodos.ts": {
+      "hash": "bba1416bf1ee1d9938865f9f7e87498e5120a3f39429f7c1d645f9d247125437",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-ts-hooks/src/hooks/useTodos.ts",
+      "label": "useTodos 自定义 Hook / TypeScript 待办逻辑"
+    },
+    "fe/React/basic/todos-ts-hooks/src/types/todo.ts": {
+      "hash": "d00966dec0f6c5e9da25f33ec4c3894c9d1388080d79548387f6edf84e51f045",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-ts-hooks/src/types/todo.ts",
+      "label": "Todo / FilterType 类型契约"
     }
   },
   "versions": [
@@ -915,6 +980,26 @@
         "fe/React/router/react-router-demo/src/pages/Pay/index.jsx": "9c1e3a6",
         "fe/React/basic/ref-demo/readme.md": "223aea1",
         "fe/React/basic/ref-demo/ref-focus-demo/src/App.jsx": "223aea1"
+      }
+    },
+    {
+      "id": "v060",
+      "date": "2026-08-07",
+      "title": "React 的复用与并行：从自定义 Hooks 封装状态逻辑，到 Web Worker 的多线程计算",
+      "covered_sources": {
+        "fe/React/basic/ref-demo/readme.md": "a23bf7e",
+        "fe/React/basic/ref-demo/ref-focus-demo/src/App.jsx": "a23bf7e",
+        "fe/React/basic/ref-demo/ref-focus-demo/src/worker.js": "a23bf7e",
+        "fe/React/basic/context-demo/reeadme.md": "f7c434b",
+        "fe/React/basic/context-demo/context-demo/src/App.jsx": "f7c434b",
+        "fe/React/basic/context-demo/context-demo/src/App2.jsx": "f7c434b",
+        "fe/React/basic/context-demo/context-demo/src/ThemeContext.jsx": "f7c434b",
+        "fe/React/basic/context-demo/context-demo/src/components/Page.jsx": "f7c434b",
+        "fe/React/basic/context-demo/context-demo/src/components/Child.jsx": "f7c434b",
+        "fe/React/basic/context-demo/context-demo/src/hooks/useMouse.js": "f7c434b",
+        "fe/React/basic/context-demo/context-demo/src/hooks/useTheme.js": "f7c434b",
+        "fe/React/basic/todos-ts-hooks/src/hooks/useTodos.ts": "f7c434b",
+        "fe/React/basic/todos-ts-hooks/src/types/todo.ts": "f7c434b"
       }
     }
   ]
