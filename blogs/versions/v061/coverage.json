@@ -1,0 +1,15 @@
+{
+  "version": "v061",
+  "title": "React 的数据主权与渲染防线：从受控与非受控组件的输入之争，到 useCallback 的性能优化",
+  "covered_sources": {
+    "fe/React/basic/controlled/readme.md": "dbc8557",
+    "fe/React/basic/controlled/uncontrolled-demo/src/App.jsx": "dbc8557",
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/ControlledInput.jsx": "dbc8557",
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/UncontrolledInput.jsx": "dbc8557",
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/CommentBox.jsx": "dbc8557",
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/RegisterForm.jsx": "dbc8557",
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/LoginForm.jsx": "dbc8557",
+    "fe/React/basic/useCallback/readme.md": "dbc8557",
+    "fe/React/basic/useCallback/callback-demo/src/App.jsx": "dbc8557"
+  }
+}

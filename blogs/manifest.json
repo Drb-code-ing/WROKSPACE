@@ -469,6 +469,51 @@
       "hash": "d00966dec0f6c5e9da25f33ec4c3894c9d1388080d79548387f6edf84e51f045",
       "path": "E:/WROKSPACE/fe/React/basic/todos-ts-hooks/src/types/todo.ts",
       "label": "Todo / FilterType 类型契约"
+    },
+    "fe/React/basic/controlled/readme.md": {
+      "hash": "947938bd65b411cf99e2452ab02eb3e3db3934c42c71d17bf46a5357962a55c5",
+      "path": "E:/WROKSPACE/fe/React/basic/controlled/readme.md",
+      "label": "受控/非受控组件笔记"
+    },
+    "fe/React/basic/controlled/uncontrolled-demo/src/App.jsx": {
+      "hash": "960ea40fc19c6d70e7a956eea336eeefa0b71fa4a1438b4c1bb4bbed1c0ecfa8",
+      "path": "E:/WROKSPACE/fe/React/basic/controlled/uncontrolled-demo/src/App.jsx",
+      "label": "受控/非受控组件汇总 Demo"
+    },
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/ControlledInput.jsx": {
+      "hash": "582758ea3a3c30aa17459f6005b6e82cdbfd980ea14bd1950c88c78bf28086d5",
+      "path": "E:/WROKSPACE/fe/React/basic/controlled/uncontrolled-demo/src/components/ControlledInput.jsx",
+      "label": "受控组件 / value + onChange"
+    },
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/UncontrolledInput.jsx": {
+      "hash": "32fea55a329ae606ea526a65aee7cdf4626c81fc16d1d1675970a6805d4ab592",
+      "path": "E:/WROKSPACE/fe/React/basic/controlled/uncontrolled-demo/src/components/UncontrolledInput.jsx",
+      "label": "非受控组件 / useRef 取值"
+    },
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/CommentBox.jsx": {
+      "hash": "2bf7e7d899974d542e5567f7b75f740686c9b1603e12a7f5227ba8f656cf2783",
+      "path": "E:/WROKSPACE/fe/React/basic/controlled/uncontrolled-demo/src/components/CommentBox.jsx",
+      "label": "评论框 / textarea ref 取值"
+    },
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/RegisterForm.jsx": {
+      "hash": "cda8aa8eca44830b2310e4c79e020a04915196e1025b024b04e76718651656f8",
+      "path": "E:/WROKSPACE/fe/React/basic/controlled/uncontrolled-demo/src/components/RegisterForm.jsx",
+      "label": "注册表单 / form 状态对象 + name"
+    },
+    "fe/React/basic/controlled/uncontrolled-demo/src/components/LoginForm.jsx": {
+      "hash": "6b9995d5a0e52a41cd2fb709a846061f372099e246a31295dc27c607af360a69",
+      "path": "E:/WROKSPACE/fe/React/basic/controlled/uncontrolled-demo/src/components/LoginForm.jsx",
+      "label": "登录表单 / 实时校验 + disabled"
+    },
+    "fe/React/basic/useCallback/readme.md": {
+      "hash": "9dd31a1701b05e222757b2146c32a56a3ad1936f2a7fb7b39047f2aaa7d9fd18",
+      "path": "E:/WROKSPACE/fe/React/basic/useCallback/readme.md",
+      "label": "useCallback & useMemo 笔记"
+    },
+    "fe/React/basic/useCallback/callback-demo/src/App.jsx": {
+      "hash": "f77307b1340fe2cb441fbd9d646f66a7835469e52338905090f80461070838db",
+      "path": "E:/WROKSPACE/fe/React/basic/useCallback/callback-demo/src/App.jsx",
+      "label": "memo 记忆组件 Demo / RegularChild vs MemoChild"
     }
   },
   "versions": [
@@ -1000,6 +1045,22 @@
         "fe/React/basic/context-demo/context-demo/src/hooks/useTheme.js": "f7c434b",
         "fe/React/basic/todos-ts-hooks/src/hooks/useTodos.ts": "f7c434b",
         "fe/React/basic/todos-ts-hooks/src/types/todo.ts": "f7c434b"
+      }
+    },
+    {
+      "id": "v061",
+      "date": "2026-08-09",
+      "title": "React 的数据主权与渲染防线：从受控与非受控组件的输入之争，到 useCallback 的性能优化",
+      "covered_sources": {
+        "fe/React/basic/controlled/readme.md": "dbc8557",
+        "fe/React/basic/controlled/uncontrolled-demo/src/App.jsx": "dbc8557",
+        "fe/React/basic/controlled/uncontrolled-demo/src/components/ControlledInput.jsx": "dbc8557",
+        "fe/React/basic/controlled/uncontrolled-demo/src/components/UncontrolledInput.jsx": "dbc8557",
+        "fe/React/basic/controlled/uncontrolled-demo/src/components/CommentBox.jsx": "dbc8557",
+        "fe/React/basic/controlled/uncontrolled-demo/src/components/RegisterForm.jsx": "dbc8557",
+        "fe/React/basic/controlled/uncontrolled-demo/src/components/LoginForm.jsx": "dbc8557",
+        "fe/React/basic/useCallback/readme.md": "dbc8557",
+        "fe/React/basic/useCallback/callback-demo/src/App.jsx": "dbc8557"
       }
     }
   ]
