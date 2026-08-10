@@ -1,0 +1,11 @@
+{
+  "version": "v062",
+  "title": "WebGPU 端侧推理与单例模式：从 Transformers.js 把大模型装进浏览器，到 Worker 线程的流式对话",
+  "covered_sources": {
+    "ai/webgpu-deepseek/readme.md": "c0bbacc",
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/work.js": "c0bbacc",
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": "c0bbacc",
+    "ai/webgpu-deepseek/singieton/readme.md": "c0bbacc",
+    "ai/webgpu-deepseek/singieton/index.html": "c0bbacc"
+  }
+}

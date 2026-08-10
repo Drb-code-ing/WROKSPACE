@@ -514,6 +514,31 @@
       "hash": "f77307b1340fe2cb441fbd9d646f66a7835469e52338905090f80461070838db",
       "path": "E:/WROKSPACE/fe/React/basic/useCallback/callback-demo/src/App.jsx",
       "label": "memo 记忆组件 Demo / RegularChild vs MemoChild"
+    },
+    "ai/webgpu-deepseek/readme.md": {
+      "hash": "64c016c665d44df8f329217e9b388dd91efa2376e793d5718c2aa4e54cc4b97a",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/readme.md",
+      "label": "WebGPU 端侧推理 / Transformers.js / 单例模式笔记"
+    },
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/work.js": {
+      "hash": "5323d868dac88e50c6ddf351aee3e823dd24fced9e8e6272d1cda178c7cbf05d",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/work.js",
+      "label": "Worker 端模型加载 / TextGenerationPipeline 单例 / 流式生成"
+    },
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": {
+      "hash": "ce938ec178c4fdc7b87f0792fe9c786c719247c85b1281b543c168f269d27efa",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx",
+      "label": "React App / Web Worker 通信 / 进度与流式对话状态机"
+    },
+    "ai/webgpu-deepseek/singieton/readme.md": {
+      "hash": "a268d37c37a6d279eadd3a36116278fff546481b8054f312d54a75a12487f4bb",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/singieton/readme.md",
+      "label": "单例模式笔记"
+    },
+    "ai/webgpu-deepseek/singieton/index.html": {
+      "hash": "ab9fa8da504babe03c11e3b7fb8ea6577567cf4655848e5877f8d0dfdbaf25d8",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/singieton/index.html",
+      "label": "单例模式 Popup Demo / getInstance 与静态属性"
     }
   },
   "versions": [
@@ -1061,6 +1086,18 @@
         "fe/React/basic/controlled/uncontrolled-demo/src/components/LoginForm.jsx": "dbc8557",
         "fe/React/basic/useCallback/readme.md": "dbc8557",
         "fe/React/basic/useCallback/callback-demo/src/App.jsx": "dbc8557"
+      }
+    },
+    {
+      "id": "v062",
+      "date": "2026-08-10",
+      "title": "WebGPU 端侧推理与单例模式：从 Transformers.js 把大模型装进浏览器，到 Worker 线程的流式对话",
+      "covered_sources": {
+        "ai/webgpu-deepseek/readme.md": "c0bbacc",
+        "ai/webgpu-deepseek/deepseek-r1-webgpu/src/work.js": "c0bbacc",
+        "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": "c0bbacc",
+        "ai/webgpu-deepseek/singieton/readme.md": "c0bbacc",
+        "ai/webgpu-deepseek/singieton/index.html": "c0bbacc"
       }
     }
   ]
