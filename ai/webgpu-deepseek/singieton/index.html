@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单例模式打开窗口</title>
+</head>
+<body>
+  <button id="openBtn">打开新网页</button>
+
+  <script>
+    class Popup {
+      static ins  // 静态属性：存唯一实例，不用先 new 就能访问
+      static getInstance() {
+        // 判空：第一次调用时创建，后续直接复用
+        if (!Popup.ins) {
+          Popup.ins = new Popup()
+        }
+        return Popup.ins
+      }
+
+      win = null  // 实例属性：缓存已打开的窗口引用
+
+      open(url) {
+        // 窗口没开过，或者被用户手动关了 → 开新窗口
+        if (!this.win || this.win.closed) {
+          this.win = window.open(url, "_blank")
+        } else {
+          // 已开过：复用同一个窗口，在原窗口跳转并切到前台
+          this.win.location.href = url
+          this.win.focus()
+        }
+      }
+    }
+
+    // 单例方式获取实例（代替 new），a 和 b 是同一个对象
+    const a = Popup.getInstance()
+    const b = Popup.getInstance()
+    console.log(a === b)  // true
+
+    const openBtn = document.getElementById("openBtn")
+    openBtn.addEventListener("click", () => {
+      // 点多少次按钮，都只在一个窗口里跳转，不会开一堆标签页
+      a.open("https://www.baidu.com")
+    })
+  </script>
+</body>
+</html>
