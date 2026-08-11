@@ -1,6 +1,6 @@
 # v063 博客大纲
 
-**标题**：TS 类型之争与 Harness 择优工程：从 interface 与 type 的面试必考点，到让大模型自我评分的自动化流水线  
+**标题**：TS 面试必考：interface 与 type 的四大差异，与 LLM Harness 的自动化择优  
 **日期**：2026-08-11  
 **目标平台**：稀土掘金（juejin.cn）
 
@@ -8,13 +8,13 @@
 
 | 章节 | 内容 | 来源 |
 | --- | --- | --- |
-| 引言 | 承接 v062 端侧推理，第 55 天回到面试考点：TS 类型 + LLM Harness，串起"用结构减少不确定性" | 综合 |
+| 引言 | 开门见山：TS 面试必考的 interface vs type，与 LLM Harness 的自动化择优，串起"用结构减少不确定性" | 综合 |
 | 一、同一个对象，两种描述 | interface 与 type 都能描述对象结构，用于函数参数/返回值/类型约束 | readme.md / 1.ts |
 | 二、继承：extends 与 & | `interface Employee extends Person` vs `type EmployeeType = PersonType & {job}` | 1.ts |
 | 三、声明合并 | interface 可重复声明自动合并，type 重复即冲突；扩展库类型的意义 | 2.ts |
 | 四、type 的用武之地 | 联合类型、元组类型（interface 不能）；函数类型两者都能、type 更简洁 | 3.ts / 4.ts |
 | 五、React 实战 | UserCardProps 面向接口编程，TS 类 Java OOP、父子组件数据接口 | UserCard.tsx / App.tsx |
-| 六、Harness 工程 | 工程化解决 LLM 幻觉与落地；马具比喻；呼应 v053 质量阀门 | harness readme.md |
+| 六、Harness 工程 | 工程化解决 LLM 幻觉与落地；马具比喻；单次碰运气 → 批量生成择优 | harness readme.md |
 | 七、核心思想 | Best of N Sampling + LLM as Judge + Harness 抽象，三阶段解耦 | readme.md |
 | 八、代码拆解 | askLLM / judge / evaluateAll / generateCandidates / pickBest / harness 全流程 | index.mjs |
 | 九、面试问答 | interface vs type、声明合并、LLM Harness、Best of N、LLM as Judge、流水线三阶段 | 综合 |

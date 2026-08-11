@@ -1148,7 +1148,7 @@
     {
       "id": "v063",
       "date": "2026-08-11",
-      "title": "TS 类型之争与 Harness 择优工程：从 interface 与 type 的面试必考点，到让大模型自我评分的自动化流水线",
+      "title": "TS 面试必考：interface 与 type 的四大差异，与 LLM Harness 的自动化择优",
       "covered_sources": {
         "ai/interview/ts/type_interface/readme.md": "3bac91d",
         "ai/interview/ts/type_interface/1.ts": "3bac91d",
