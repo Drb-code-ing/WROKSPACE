@@ -539,6 +539,51 @@
       "hash": "ab9fa8da504babe03c11e3b7fb8ea6577567cf4655848e5877f8d0dfdbaf25d8",
       "path": "E:/WROKSPACE/ai/webgpu-deepseek/singieton/index.html",
       "label": "单例模式 Popup Demo / getInstance 与静态属性"
+    },
+    "ai/interview/ts/type_interface/readme.md": {
+      "hash": "05b3a7a1675c50de9b15fbe789030e7d3f976dbb0dd189df53fdb0f39a6cd40c",
+      "path": "E:/WROKSPACE/ai/interview/ts/type_interface/readme.md",
+      "label": "TS 面试考点 / interface 与 type 区别笔记"
+    },
+    "ai/interview/ts/type_interface/1.ts": {
+      "hash": "00da4c3c66ec10b5aeb727ea217bbb62f05977c188120626ff071b1a3efcb900",
+      "path": "E:/WROKSPACE/ai/interview/ts/type_interface/1.ts",
+      "label": "interface/type 对象结构 / extends 继承与 & 交叉类型"
+    },
+    "ai/interview/ts/type_interface/2.ts": {
+      "hash": "291d39de5abf62c6afb89b6efdedd83cd373984f6c0d4fcc789762db1d248263",
+      "path": "E:/WROKSPACE/ai/interview/ts/type_interface/2.ts",
+      "label": "声明合并 / interface 重复声明自动合并"
+    },
+    "ai/interview/ts/type_interface/3.ts": {
+      "hash": "8112934fd2a6a371ab3831c0fed12773a35a2c6b408502a49c92d80c750e00aa",
+      "path": "E:/WROKSPACE/ai/interview/ts/type_interface/3.ts",
+      "label": "type 联合类型与元组类型"
+    },
+    "ai/interview/ts/type_interface/4.ts": {
+      "hash": "22593cb630957d4dc7f8ee620c80cafdeba4c120d25acbc7c80a90d86285a4df",
+      "path": "E:/WROKSPACE/ai/interview/ts/type_interface/4.ts",
+      "label": "函数类型 interface 调用签名 vs type 箭头函数"
+    },
+    "ai/interview/ts/type_interface/type-interface/src/App.tsx": {
+      "hash": "a611a972289a2efe86c081cad6a6e12e19c0b8c5af22b5500d0a64c1ef4b500f",
+      "path": "E:/WROKSPACE/ai/interview/ts/type_interface/type-interface/src/App.tsx",
+      "label": "React App / 按 UserCardProps 契约传 props"
+    },
+    "ai/interview/ts/type_interface/type-interface/src/cpmponents/UserCard.tsx": {
+      "hash": "b5a6b46bd5b328ed1fcedbf668dc443e7a429a375125d656b8d3002508dcb9d0",
+      "path": "E:/WROKSPACE/ai/interview/ts/type_interface/type-interface/src/cpmponents/UserCard.tsx",
+      "label": "UserCardProps / 面向接口编程"
+    },
+    "ai/interview/harness/q1/readme.md": {
+      "hash": "a5781e6fa593a8f8266bb0a86b5b866581eeb4310bdda9effa99dd9114d0ef7f",
+      "path": "E:/WROKSPACE/ai/interview/harness/q1/readme.md",
+      "label": "LLM Harness 工程 / LLM as Judge + Best of N 笔记"
+    },
+    "ai/interview/harness/q1/index.mjs": {
+      "hash": "f4a76d76204e754339810be8ce9aea671cdb9ce7d4f165b31de3cf2b0aba53bf",
+      "path": "E:/WROKSPACE/ai/interview/harness/q1/index.mjs",
+      "label": "Harness 流水线 / 生成评测择优三阶段"
     }
   },
   "versions": [
@@ -1098,6 +1143,22 @@
         "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": "c0bbacc",
         "ai/webgpu-deepseek/singieton/readme.md": "c0bbacc",
         "ai/webgpu-deepseek/singieton/index.html": "c0bbacc"
+      }
+    },
+    {
+      "id": "v063",
+      "date": "2026-08-11",
+      "title": "TS 类型之争与 Harness 择优工程：从 interface 与 type 的面试必考点，到让大模型自我评分的自动化流水线",
+      "covered_sources": {
+        "ai/interview/ts/type_interface/readme.md": "3bac91d",
+        "ai/interview/ts/type_interface/1.ts": "3bac91d",
+        "ai/interview/ts/type_interface/2.ts": "3bac91d",
+        "ai/interview/ts/type_interface/3.ts": "3bac91d",
+        "ai/interview/ts/type_interface/4.ts": "3bac91d",
+        "ai/interview/ts/type_interface/type-interface/src/App.tsx": "3bac91d",
+        "ai/interview/ts/type_interface/type-interface/src/cpmponents/UserCard.tsx": "3bac91d",
+        "ai/interview/harness/q1/readme.md": "61fa691",
+        "ai/interview/harness/q1/index.mjs": "61fa691"
       }
     }
   ]

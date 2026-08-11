@@ -1,0 +1,15 @@
+{
+  "version": "v063",
+  "title": "TS 类型之争与 Harness 择优工程：从 interface 与 type 的面试必考点，到让大模型自我评分的自动化流水线",
+  "covered_sources": {
+    "ai/interview/ts/type_interface/readme.md": "3bac91d",
+    "ai/interview/ts/type_interface/1.ts": "3bac91d",
+    "ai/interview/ts/type_interface/2.ts": "3bac91d",
+    "ai/interview/ts/type_interface/3.ts": "3bac91d",
+    "ai/interview/ts/type_interface/4.ts": "3bac91d",
+    "ai/interview/ts/type_interface/type-interface/src/App.tsx": "3bac91d",
+    "ai/interview/ts/type_interface/type-interface/src/cpmponents/UserCard.tsx": "3bac91d",
+    "ai/interview/harness/q1/readme.md": "61fa691",
+    "ai/interview/harness/q1/index.mjs": "61fa691"
+  }
+}
