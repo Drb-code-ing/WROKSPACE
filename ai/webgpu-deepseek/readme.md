@@ -46,3 +46,15 @@ OOP 面向对象编程，总结出来的23种解决特定问题的模式
 ### 单例模式
 类只实例化一次 全局只有一个实例
 用于解决全局变量问题，以及全局状态问题
+
+## load
+- 空值合并运算符 ??=
+  用于在变量未定义或为 null 或 undefined 时，赋值
+  如果为false或其他值，不赋值
+  避免重复赋值，保持变量原始值。AutoTokenizer.from_pretrained
+  开销比较大
+- web 异步下载
+  AutoTokenizer.from_pretrained  Promise
+  文件比较大，文件的chunk 慢慢到达，提供一个process_callback 获取下载进度
+  AutoModelForCausalLM.from_pretrained  Promise
+  Promise.all([])

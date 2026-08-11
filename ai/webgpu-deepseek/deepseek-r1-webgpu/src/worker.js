@@ -1,6 +1,7 @@
 import {
-  AutoTokenizer,
-  AutoModelForCausalLM,
+  AutoTokenizer,// 分词器
+  AutoModelForCausalLM,// 模型
+
   TextStreamer,
   InterruptableStoppingCriteria,
 } from "@huggingface/transformers";
@@ -33,7 +34,10 @@ class TextGenerationPipeline {
 
   static async getInstance(progress_callback = null) {
     // ??= 空值赋值：首次调用时初始化，后续复用
+    // AutoTokenizer 根据 model_id 自动选择对应分词器配置
+    // tokenizer model 等需要异步的下载并执行
     this.tokenizer ??= AutoTokenizer.from_pretrained(this.model_id, {
+      // 下载进度回调函数
       progress_callback,
     });
 
@@ -121,7 +125,7 @@ async function generate(messages) {
 
     max_new_tokens: 2048,       // 最多生成 2048 个新 token
     streamer,
-    stopping_criteria,
+    stopping_criteria,          // 可中断的停止条件
     return_dict_in_generate: true,
   });
   past_key_values_cache = past_key_values;

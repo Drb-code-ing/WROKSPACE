@@ -14,24 +14,24 @@ const EXAMPLES = [
 ];
 
 function App() {
-  // Create a reference to the worker object.
-  const worker = useRef(null);
+  // Web Worker 引用：负责在后台线程加载模型和生成文本，避免阻塞 UI
+  const worker = useRef<Worker | null>(null);
 
   const textareaRef = useRef(null);
   const chatContainerRef = useRef(null);
 
-  // Model loading and progress
-  const [status, setStatus] = useState(null);
-  const [error, setError] = useState(null);
-  const [loadingMessage, setLoadingMessage] = useState("");
-  const [progressItems, setProgressItems] = useState([]);
-  const [isRunning, setIsRunning] = useState(false);
+  // 模型加载状态与进度相关
+  const [status, setStatus] = useState(null);          // 当前状态：null/loading/ready
+  const [error, setError] = useState(null);            // 错误信息
+  const [loadingMessage, setLoadingMessage] = useState("");  // 加载阶段的提示文案
+  const [progressItems, setProgressItems] = useState([]);    // 各文件的下载进度列表
+  const [isRunning, setIsRunning] = useState(false);   // 是否正在生成文本
 
-  // Inputs and outputs
-  const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([]);
-  const [tps, setTps] = useState(null);
-  const [numTokens, setNumTokens] = useState(null);
+  // 输入输出相关
+  const [input, setInput] = useState("");               // 用户输入框内容
+  const [messages, setMessages] = useState([]);         // 聊天消息列表（user/assistant）
+  const [tps, setTps] = useState(null);                 // tokens/second 生成速度
+  const [numTokens, setNumTokens] = useState(null);     // 已生成 token 数
 
   function onEnter(message) {
     setMessages((prev) => [...prev, { role: "user", content: message }]);
@@ -41,49 +41,48 @@ function App() {
   }
 
   function onInterrupt() {
-    // NOTE: We do not set isRunning to false here because the worker
-    // will send a 'complete' message when it is done.
+    // 注意：这里不主动把 isRunning 置为 false
+    // 因为 worker 中断完成后会发回 'complete' 消息，由那里统一处理状态切换
     worker.current.postMessage({ type: "interrupt" });
   }
 
+  // 输入框高度自适应：内容多时自动变高，最高 200px
   useEffect(() => {
-    resizeInput();
-  }, [input]);
-
-  function resizeInput() {
     if (!textareaRef.current) return;
-
     const target = textareaRef.current;
-    target.style.height = "auto";
+    target.style.height = "auto";  // 先重置，才能正确读取 scrollHeight
     const newHeight = Math.min(Math.max(target.scrollHeight, 24), 200);
     target.style.height = `${newHeight}px`;
-  }
+  }, [input]);
 
-  // We use the `useEffect` hook to setup the worker as soon as the `App` component is mounted.
+  // 用 useEffect 在 App 组件挂载时立即初始化 worker
   useEffect(() => {
-    // Create the worker if it does not yet exist.
+    // 如果 worker 还不存在，就创建一个（懒加载，只创建一次）
     if (!worker.current) {
       worker.current = new Worker(new URL("./worker.js", import.meta.url), {
         type: "module",
       });
-      worker.current.postMessage({ type: "check" }); // Do a feature check
+      worker.current.postMessage({ type: "check" }); // 发送检测指令，检查 WebGPU 是否可用
     }
 
-    // Create a callback function for messages from the worker thread.
+    // 处理 worker 发回来的消息
     const onMessageReceived = (e) => {
       switch (e.data.status) {
         case "loading":
-          // Model file start load: add a new progress item to the list.
+          // 模型开始加载：更新状态和提示文案
           setStatus("loading");
           setLoadingMessage(e.data.data);
           break;
 
         case "initiate":
+          // 某个文件开始下载：把该文件加入进度列表
+          // 给函数为了获取最新状态
+          // 多个文件并发下载时进度回调频繁触发
           setProgressItems((prev) => [...prev, e.data]);
           break;
 
         case "progress":
-          // Model file progress: update one of the progress items.
+          // 某个文件下载进度更新：更新列表中对应文件的进度
           setProgressItems((prev) =>
             prev.map((item) => {
               if (item.file === e.data.file) {
@@ -95,20 +94,20 @@ function App() {
           break;
 
         case "done":
-          // Model file loaded: remove the progress item from the list.
+          // 某个文件下载完成：从进度列表中移除
           setProgressItems((prev) =>
             prev.filter((item) => item.file !== e.data.file),
           );
           break;
 
         case "ready":
-          // Pipeline ready: the worker is ready to accept messages.
+          // 管道就绪：worker 可以接收 generate 消息了
           setStatus("ready");
           break;
 
         case "start":
           {
-            // Start generation
+            // 开始生成：在消息列表末尾追加一条空的 assistant 消息
             setMessages((prev) => [
               ...prev,
               { role: "assistant", content: "" },
@@ -118,8 +117,7 @@ function App() {
 
         case "update":
           {
-            // Generation update: update the output text.
-            // Parse messages
+            // 生成中：把新输出的文本追加到 assistant 消息
             const { output, tps, numTokens, state } = e.data;
             setTps(tps);
             setNumTokens(numTokens);
@@ -131,7 +129,8 @@ function App() {
                 content: last.content + output,
               };
               if (data.answerIndex === undefined && state === "answering") {
-                // When state changes to answering, we set the answerIndex
+                // 状态从 thinking 切换到 answering 时，记录答案在文本中的起始位置
+                // 用于在 UI 上区分「思考过程」和「最终回答」
                 data.answerIndex = last.content.length;
               }
               cloned[cloned.length - 1] = data;
@@ -141,7 +140,7 @@ function App() {
           break;
 
         case "complete":
-          // Generation complete: re-enable the "Generate" button
+          // 生成完成：恢复按钮可点击状态
           setIsRunning(false);
           break;
 
@@ -155,28 +154,28 @@ function App() {
       console.error("Worker error:", e);
     };
 
-    // Attach the callback function as an event listener.
+    // 绑定消息和错误监听器
     worker.current.addEventListener("message", onMessageReceived);
     worker.current.addEventListener("error", onErrorReceived);
 
-    // Define a cleanup function for when the component is unmounted.
+    // 组件卸载时移除监听器，避免内存泄漏
     return () => {
       worker.current.removeEventListener("message", onMessageReceived);
       worker.current.removeEventListener("error", onErrorReceived);
     };
   }, []);
 
-  // Send the messages to the worker thread whenever the `messages` state changes.
+  // 当 messages 变化时，把消息列表发送给 worker 触发生成
   useEffect(() => {
     if (messages.filter((x) => x.role === "user").length === 0) {
-      // No user messages yet: do nothing.
+      // 还没有用户消息：什么都不做
       return;
     }
     if (messages.at(-1).role === "assistant") {
-      // Do not update if the last message is from the assistant
+      // 最后一条是 assistant：说明正在生成中，不再触发新的生成
       return;
     }
-    setTps(null);
+// setTps(null) 已在 onEnter 中调用，此处重复调用会导致 effect 内同步 setState 引发级联渲染，故移除
     worker.current.postMessage({ type: "generate", data: messages });
   }, [messages, isRunning]);
 
@@ -346,7 +345,6 @@ function App() {
           ref={textareaRef}
           className="scrollbar-thin w-[550px] dark:bg-gray-700 px-3 py-4 rounded-lg bg-transparent border-none outline-hidden text-gray-800 disabled:text-gray-400 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 disabled:placeholder-gray-200 resize-none disabled:cursor-not-allowed"
           placeholder="Type your message..."
-          type="text"
           rows={1}
           value={input}
           disabled={status !== "ready"}
@@ -358,11 +356,11 @@ function App() {
               e.key === "Enter" &&
               !e.shiftKey
             ) {
-              e.preventDefault(); // Prevent default behavior of Enter key
+              e.preventDefault(); // 阻止回车键的默认行为（换行），改为发送消息
               onEnter(input);
             }
           }}
-          onInput={(e) => setInput(e.target.value)}
+          onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)}
         />
         {isRunning ? (
           <div className="cursor-pointer" onClick={onInterrupt}>
