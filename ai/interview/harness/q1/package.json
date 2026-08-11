@@ -1,0 +1,17 @@
+{
+  "name": "q1",
+  "version": "1.0.0",
+  "description": "用工程化手段，进一步解决llm 幻觉和落地",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "openai": "^7.4.0"
+  }
+}
