@@ -1,0 +1,11 @@
+{
+  "version": "v064",
+  "title": "WebGPU 端侧推理推进：??= 空值赋值、异步下载进度与思考/回答流式状态机",
+  "covered_sources": {
+    "ai/webgpu-deepseek/readme.md": "06ec8e9",
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js": "06ec8e9",
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": "06ec8e9",
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/components/Progress.tsx": "06ec8e9",
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/main.tsx": "06ec8e9"
+  }
+}

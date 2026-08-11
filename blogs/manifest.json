@@ -516,19 +516,29 @@
       "label": "memo 记忆组件 Demo / RegularChild vs MemoChild"
     },
     "ai/webgpu-deepseek/readme.md": {
-      "hash": "64c016c665d44df8f329217e9b388dd91efa2376e793d5718c2aa4e54cc4b97a",
+      "hash": "642a2cdfbcf23cdcc1d4a3509ec3da10d3d581252bd2b9d2637eadfb3abb9632",
       "path": "E:/WROKSPACE/ai/webgpu-deepseek/readme.md",
-      "label": "WebGPU 端侧推理 / Transformers.js / 单例模式笔记"
+      "label": "WebGPU 端侧推理 / Transformers.js / ??= 空值赋值与下载进度笔记"
     },
-    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/work.js": {
-      "hash": "5323d868dac88e50c6ddf351aee3e823dd24fced9e8e6272d1cda178c7cbf05d",
-      "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/work.js",
-      "label": "Worker 端模型加载 / TextGenerationPipeline 单例 / 流式生成"
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js": {
+      "hash": "4765bf6a4d0043f03cb38d1029bffa39a068ba233f40814bae734d7f26b0b88d",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js",
+      "label": "Worker 端模型加载 / TextGenerationPipeline 单例 / 思考回答状态机"
     },
     "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": {
-      "hash": "ce938ec178c4fdc7b87f0792fe9c786c719247c85b1281b543c168f269d27efa",
+      "hash": "c8be1af096cdac18f0349848e8efb315258d32c6e763c1839c83e04db90c68ce",
       "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx",
       "label": "React App / Web Worker 通信 / 进度与流式对话状态机"
+    },
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/components/Progress.tsx": {
+      "hash": "3f9580326f8f65157951057de8b5691f2b46d9c25836bf8236f2dab4d4738d4b",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/components/Progress.tsx",
+      "label": "Progress 进度条组件 / formatBytes / ??= 兜底"
+    },
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/main.tsx": {
+      "hash": "e4a3a5de82cabd70dcdc4757183cebe5836c2dd9eb055f1c24371e5197018101",
+      "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/main.tsx",
+      "label": "入口 main.tsx / 移除 StrictMode 避免 worker 双创建"
     },
     "ai/webgpu-deepseek/singieton/readme.md": {
       "hash": "a268d37c37a6d279eadd3a36116278fff546481b8054f312d54a75a12487f4bb",
@@ -1159,6 +1169,18 @@
         "ai/interview/ts/type_interface/type-interface/src/cpmponents/UserCard.tsx": "3bac91d",
         "ai/interview/harness/q1/readme.md": "61fa691",
         "ai/interview/harness/q1/index.mjs": "61fa691"
+      }
+    },
+    {
+      "id": "v064",
+      "date": "2026-08-11",
+      "title": "WebGPU 端侧推理推进：??= 空值赋值、异步下载进度与思考/回答流式状态机",
+      "covered_sources": {
+        "ai/webgpu-deepseek/readme.md": "06ec8e9",
+        "ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js": "06ec8e9",
+        "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": "06ec8e9",
+        "ai/webgpu-deepseek/deepseek-r1-webgpu/src/components/Progress.tsx": "06ec8e9",
+        "ai/webgpu-deepseek/deepseek-r1-webgpu/src/main.tsx": "06ec8e9"
       }
     }
   ]
