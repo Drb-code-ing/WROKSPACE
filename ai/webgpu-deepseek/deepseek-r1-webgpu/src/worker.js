@@ -1,9 +1,8 @@
 import {
   AutoTokenizer,// 分词器
   AutoModelForCausalLM,// 模型
-
-  TextStreamer,
-  InterruptableStoppingCriteria,
+  TextStreamer,// 文本流式输出
+  InterruptableStoppingCriteria, // 可中断的停止条件：模型每生成一个 token 前检查中断标记，用户点「停止」时触发中断
 } from "@huggingface/transformers";
 
 /**
@@ -55,29 +54,37 @@ class TextGenerationPipeline {
 const stopping_criteria = new InterruptableStoppingCriteria();
 
 // KV Cache：缓存上一轮的 key/value，加速多轮对话
+// 每次对话，都会KV 计算 大量算力消耗
+// messages 数组 添加上一条，缓存之前的计算，跳过了
 let past_key_values_cache = null;
 async function generate(messages) {
   // 获取文本生成管道（tokenizer + model）
   const [tokenizer, model] = await TextGenerationPipeline.getInstance();
 
   // 应用聊天模板，把 messages 数组转成模型输入
+  // llm 的模版，deepseek/qwen 训练时使用的模版
+  // <|im_start|>user
+  // content<|im_end|>   字符串
   const inputs = tokenizer.apply_chat_template(messages, {
-    add_generation_prompt: true,  // 加上助手角色的开头标记
-    return_dict: true,
+    add_generation_prompt: true,  // 加上助手角色的开头标记 <|im_start|>assistant\n
+    return_dict: true,// 返回字典格式（含 input_ids 和 attention_mask），可直接展开传给 model.generate
+    // {
+    //   input_ids: tensor([151649, 151650, ...]),  <- token id 序列
+    //   attention_mask: tensor([1, 1, 1, ...]),  <- 注意力掩码，用于忽略 padding token
+    // }
   });
 
-  // 思考开始/结束标记的 token id（DeepSeek-R1 用 think 标签包裹思考过程）
-  // 151648 是思考开始 token，151649 是思考结束 token
-  const thinkEnd = String.fromCharCode(0x3C, 0x2F, 0x74, 0x68, 0x69, 0x6E, 0x6B, 0x3E);
+  // 生成是两部分
+  // 思考推理部分 + 模型生成部分
   const [START_THINKING_TOKEN_ID, END_THINKING_TOKEN_ID] = tokenizer.encode(
-    thinkEnd,
-    { add_special_tokens: false },
+      "<think></think>",
+      { add_special_tokens: false },
   );
 
   let state = "thinking"; // 当前状态：thinking(思考中) 或 answering(回答中)
-  let startTime;
-  let numTokens = 0;
-  let tps;
+  let startTime;// 开始时间
+  let numTokens = 0;// 处理的token总数
+  let tps;// 每秒生成token数
   // 每生成一个 token 的回调：统计 token 数和 TPS（每秒生成 token 数）
   const token_callback_function = (tokens) => {
     startTime ??= performance.now();
@@ -112,6 +119,8 @@ async function generate(messages) {
   // 通知主线程：开始生成
   self.postMessage({ status: "start" });
 
+  // past_key_values 上一轮的 key/value，用于继续生成
+  // sequences 生成的 token 序列，需要解码成文本，才能显示
   const { past_key_values, sequences } = await model.generate({
     ...inputs,
     // TODO: 修复后启用 KV Cache 复用
@@ -124,7 +133,7 @@ async function generate(messages) {
     // temperature: 0.2,         // 温度（越低越确定）
 
     max_new_tokens: 2048,       // 最多生成 2048 个新 token
-    streamer,
+    streamer,                   // 流式输出器：边生成边输出，不用等全部完成
     stopping_criteria,          // 可中断的停止条件
     return_dict_in_generate: true,
   });
@@ -188,6 +197,7 @@ self.addEventListener("message", async (e) => {
 
     case "interrupt":
       // 中断生成
+      // interrupted 设置为true，llm 实例的属性 每次生成token 检测
       stopping_criteria.interrupt();
       break;
 
