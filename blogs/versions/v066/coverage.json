@@ -1,0 +1,7 @@
+{
+  "version": "v066",
+  "title": "WebGPU 端侧模型推理生成：聊天模板、think 标记 token 化与可中断的流式对话",
+  "covered_sources": {
+    "ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js": "a41ff92"
+  }
+}

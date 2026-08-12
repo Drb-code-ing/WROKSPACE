@@ -521,9 +521,9 @@
       "label": "WebGPU 端侧推理 / Transformers.js / ??= 空值赋值与下载进度笔记"
     },
     "ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js": {
-      "hash": "4765bf6a4d0043f03cb38d1029bffa39a068ba233f40814bae734d7f26b0b88d",
+      "hash": "1441659d65a04a9ee98ad5d21bddd63bc0e9c348ab763a0e683607c824bc6bd4",
       "path": "E:/WROKSPACE/ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js",
-      "label": "Worker 端模型加载 / TextGenerationPipeline 单例 / 思考回答状态机"
+      "label": "Worker 端模型加载 / 聊天模板与 think 标记 token 化 / 可中断流式生成"
     },
     "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": {
       "hash": "c8be1af096cdac18f0349848e8efb315258d32c6e763c1839c83e04db90c68ce",
@@ -1224,6 +1224,14 @@
         "fe/React/basic/todos-fullstack/frontend/todos/src/pages/Todos.jsx": "1398a83",
         "fe/React/basic/todos-fullstack/frontend/todos/mock/todos.js": "1398a83",
         "fe/React/basic/todos-fullstack/frontend/todos/vite.config.js": "1398a83"
+      }
+    },
+    {
+      "id": "v066",
+      "date": "2026-08-12",
+      "title": "WebGPU 端侧模型推理生成：聊天模板、think 标记 token 化与可中断的流式对话",
+      "covered_sources": {
+        "ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js": "a41ff92"
       }
     }
   ]
