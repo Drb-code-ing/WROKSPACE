@@ -1,0 +1,12 @@
+{
+  "version": "v065",
+  "title": "前端接口工程：axios 统一封装、baseURL 一键切换与 Mock 先行的并行开发",
+  "covered_sources": {
+    "fe/React/basic/todos-fullstack/readme.md": "1398a83",
+    "fe/React/basic/todos-fullstack/frontend/todos/src/api/config.js": "1398a83",
+    "fe/React/basic/todos-fullstack/frontend/todos/src/api/todos.js": "1398a83",
+    "fe/React/basic/todos-fullstack/frontend/todos/src/pages/Todos.jsx": "1398a83",
+    "fe/React/basic/todos-fullstack/frontend/todos/mock/todos.js": "1398a83",
+    "fe/React/basic/todos-fullstack/frontend/todos/vite.config.js": "1398a83"
+  }
+}

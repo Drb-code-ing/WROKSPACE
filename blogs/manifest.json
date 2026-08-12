@@ -594,6 +594,36 @@
       "hash": "f4a76d76204e754339810be8ce9aea671cdb9ce7d4f165b31de3cf2b0aba53bf",
       "path": "E:/WROKSPACE/ai/interview/harness/q1/index.mjs",
       "label": "Harness 流水线 / 生成评测择优三阶段"
+    },
+    "fe/React/basic/todos-fullstack/readme.md": {
+      "hash": "18865e1f5121d4c4af4c1d05e3c36b5bdf22fa1ef54d5e869ef9195ca34f505e",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-fullstack/readme.md",
+      "label": "全栈Todos / 前端接口工程笔记"
+    },
+    "fe/React/basic/todos-fullstack/frontend/todos/src/api/config.js": {
+      "hash": "40d6d21b1d9b5497e26f9fc51c44b593432ea3c9ec63385a883651438ea2f1ab",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-fullstack/frontend/todos/src/api/config.js",
+      "label": "axios 实例 / baseURL 一键切换"
+    },
+    "fe/React/basic/todos-fullstack/frontend/todos/src/api/todos.js": {
+      "hash": "8dcd09eea9ddbfb96f91848e6d80f53f0ae07a3fedf68381749130e76eea6554",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-fullstack/frontend/todos/src/api/todos.js",
+      "label": "API 模块 / getTodos 接口封装"
+    },
+    "fe/React/basic/todos-fullstack/frontend/todos/src/pages/Todos.jsx": {
+      "hash": "f80bba37496c325d8d20e2d8aeda93a5ca8de80da80af26109d4d46cc5e7f7fe",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-fullstack/frontend/todos/src/pages/Todos.jsx",
+      "label": "Todos 页面 / useEffect + IIFE 请求"
+    },
+    "fe/React/basic/todos-fullstack/frontend/todos/mock/todos.js": {
+      "hash": "ee1b87492562fe2376b0b15b2c018d2d280747adfa65d7158ef451454fad58a3",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-fullstack/frontend/todos/mock/todos.js",
+      "label": "Mock 数据 / vite-plugin-mock 接口伪造"
+    },
+    "fe/React/basic/todos-fullstack/frontend/todos/vite.config.js": {
+      "hash": "6fe79336a0d155ae46d1b74c95a2cfdaa04e5db1e4e826b5745cc1d8e444b960",
+      "path": "E:/WROKSPACE/fe/React/basic/todos-fullstack/frontend/todos/vite.config.js",
+      "label": "vite 配置 / viteMockServe 启用 mock"
     }
   },
   "versions": [
@@ -1181,6 +1211,19 @@
         "ai/webgpu-deepseek/deepseek-r1-webgpu/src/App.tsx": "06ec8e9",
         "ai/webgpu-deepseek/deepseek-r1-webgpu/src/components/Progress.tsx": "06ec8e9",
         "ai/webgpu-deepseek/deepseek-r1-webgpu/src/main.tsx": "06ec8e9"
+      }
+    },
+    {
+      "id": "v065",
+      "date": "2026-08-12",
+      "title": "前端接口工程：axios 统一封装、baseURL 一键切换与 Mock 先行的并行开发",
+      "covered_sources": {
+        "fe/React/basic/todos-fullstack/readme.md": "1398a83",
+        "fe/React/basic/todos-fullstack/frontend/todos/src/api/config.js": "1398a83",
+        "fe/React/basic/todos-fullstack/frontend/todos/src/api/todos.js": "1398a83",
+        "fe/React/basic/todos-fullstack/frontend/todos/src/pages/Todos.jsx": "1398a83",
+        "fe/React/basic/todos-fullstack/frontend/todos/mock/todos.js": "1398a83",
+        "fe/React/basic/todos-fullstack/frontend/todos/vite.config.js": "1398a83"
       }
     }
   ]
