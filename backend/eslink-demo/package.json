@@ -1,0 +1,15 @@
+{
+  "name": "eslink-demo",
+  "version": "1.0.0",
+  "description": "eslint 代码风格的重要保证\r 强制团队写成一致风格的代码，严格检查代码，潜在的bug\r npx eslint --init",
+  "main": "eslint.config.js",
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
