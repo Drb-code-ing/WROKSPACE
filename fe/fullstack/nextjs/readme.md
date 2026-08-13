@@ -95,3 +95,12 @@ next.js 是给react 开发者的开箱即用的利器
 第三层
 SSR 服务器端渲染
 /post/:id  一个页面  千万偏  ssr 整站被seo 收录的内容给你加权
+
+## 客户端组件
+next.js 将react server component 带到服务器端渲染 SSR开发模式
+jsx -> html  seo 友好
+有些页面强交互
+'use client' 声明
+不是只在浏览器渲染，先在服务端把能渲染的渲染完，再去客户端渲染
+水合模式(hydration)：浏览器拿到静态HTML 之后，挂载客户端 js、绑定点击事件、激活交互
+csr 组件会执行俩次，一次在服务器，第二次在客户端，打补丁
