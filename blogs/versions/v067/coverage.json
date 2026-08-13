@@ -1,0 +1,11 @@
+{
+  "version": "v067",
+  "title": "Next.js 全栈框架：CSR 与 SSR 的本质差异、SEO 的三层做法，与 App Router 的文件即路由",
+  "covered_sources": {
+    "fe/fullstack/nextjs/readme.md": "7a81453",
+    "fe/fullstack/nextjs/next-demo/app/layout.tsx": "7a81453",
+    "fe/fullstack/nextjs/next-demo/app/page.tsx": "7a81453",
+    "fe/fullstack/nextjs/next-demo/app/dashboard/layout.tsx": "7a81453",
+    "fe/fullstack/nextjs/spa-demo/src/App.jsx": "7a81453"
+  }
+}

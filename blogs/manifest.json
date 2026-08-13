@@ -624,6 +624,31 @@
       "hash": "6fe79336a0d155ae46d1b74c95a2cfdaa04e5db1e4e826b5745cc1d8e444b960",
       "path": "E:/WROKSPACE/fe/React/basic/todos-fullstack/frontend/todos/vite.config.js",
       "label": "vite 配置 / viteMockServe 启用 mock"
+    },
+    "fe/fullstack/nextjs/readme.md": {
+      "hash": "1ca24ca20a3ef84ef3de23ee5aa8c4fb30a0eac8e206a525363ae05aeec17010",
+      "path": "E:/WROKSPACE/fe/fullstack/nextjs/readme.md",
+      "label": "Next.js 全栈 / CSR与SSR / SEO三层做法笔记"
+    },
+    "fe/fullstack/nextjs/next-demo/app/layout.tsx": {
+      "hash": "817e058130ed581bf316b8ddc1f920267749f476062a010d89f58d1ad9e5460d",
+      "path": "E:/WROKSPACE/fe/fullstack/nextjs/next-demo/app/layout.tsx",
+      "label": "根布局 / metadata / nav 导航与 children 嵌套"
+    },
+    "fe/fullstack/nextjs/next-demo/app/page.tsx": {
+      "hash": "0eb00baef4cee7753841565ceb828b92386fced99753afaf68f2a9c0f4ecfda7",
+      "path": "E:/WROKSPACE/fe/fullstack/nextjs/next-demo/app/page.tsx",
+      "label": "服务端组件 / jsx 编译为 html"
+    },
+    "fe/fullstack/nextjs/next-demo/app/dashboard/layout.tsx": {
+      "hash": "981c69761d611d93976b7aac21e2f24632c6ee531fb9f22e9570957a46728ea3",
+      "path": "E:/WROKSPACE/fe/fullstack/nextjs/next-demo/app/dashboard/layout.tsx",
+      "label": "嵌套布局 / 目录即路由结构"
+    },
+    "fe/fullstack/nextjs/spa-demo/src/App.jsx": {
+      "hash": "7f89394a67eee963118aa51f09a6596af2d1e22632f205f4d073bb362f990ea5",
+      "path": "E:/WROKSPACE/fe/fullstack/nextjs/spa-demo/src/App.jsx",
+      "label": "SPA 计数器 / useState 客户端渲染对照"
     }
   },
   "versions": [
@@ -1232,6 +1257,18 @@
       "title": "WebGPU 端侧模型推理生成：聊天模板、think 标记 token 化与可中断的流式对话",
       "covered_sources": {
         "ai/webgpu-deepseek/deepseek-r1-webgpu/src/worker.js": "a41ff92"
+      }
+    },
+    {
+      "id": "v067",
+      "date": "2026-08-13",
+      "title": "Next.js 全栈框架：CSR 与 SSR 的本质差异、SEO 的三层做法，与 App Router 的文件即路由",
+      "covered_sources": {
+        "fe/fullstack/nextjs/readme.md": "7a81453",
+        "fe/fullstack/nextjs/next-demo/app/layout.tsx": "7a81453",
+        "fe/fullstack/nextjs/next-demo/app/page.tsx": "7a81453",
+        "fe/fullstack/nextjs/next-demo/app/dashboard/layout.tsx": "7a81453",
+        "fe/fullstack/nextjs/spa-demo/src/App.jsx": "7a81453"
       }
     }
   ]
