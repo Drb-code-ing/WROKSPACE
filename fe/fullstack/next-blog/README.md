@@ -79,8 +79,28 @@ path
   - html
     head
       title
-      meta
+      meta keywords description
     body
       page.js
   - nav 侧边栏，导航栏
+  - section 语义化标签
   - children page.js
+  - to be continue  注释大法
+    规划未来做的，有利于团队协作，记忆，维护  注释写好要做的事情
+
+## 数据服务
+- 选择了redis  key:value 的NOSQL 内存数据库
+  6379 端口  没有数据表，不是关系型，不用SQL 驱动，在内存中
+  有点像localStorage 直接key:value 存储数据
+  高级的地方 对不同类型的数据 有优化的存储方式 不同的方法
+  字符串 直接set/get 哈希 hset/hget
+  缓存、计数器、榜单
+  redis + MYSQL 数据库
+  掘金首页，文章列表 几分钟之内不变的
+  第一个用户来的时候 查mysql 数据库 posts 列表  key:value 存到redis中
+  下一个用户来，直接从redis中读取
+- lib 目录下redis.js
+  next.js 数据业务逻辑都放在lib目录下
+  / -> lib notes -> sidebar -> seo 良好的导航
+- /app/api/route.js ?
+  接口的rpc 远程调用
