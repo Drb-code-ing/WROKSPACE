@@ -649,6 +649,46 @@
       "hash": "7f89394a67eee963118aa51f09a6596af2d1e22632f205f4d073bb362f990ea5",
       "path": "E:/WROKSPACE/fe/fullstack/nextjs/spa-demo/src/App.jsx",
       "label": "SPA 计数器 / useState 客户端渲染对照"
+    },
+    "fe/fullstack/next-blog/README.md": {
+      "hash": "280667e033e4f7b38c6e4be260a889bd7c55778b6d28d039bcb851ca568b0d85",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/README.md",
+      "label": "Next.js 全栈笔记系统 / Redis 与组件拆分笔记"
+    },
+    "fe/fullstack/next-blog/lib/redis.js": {
+      "hash": "18bfcb83fb43e429847882a5d0d16e7a9319c7ae00a92e813bd299127d96a66c",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/lib/redis.js",
+      "label": "ioredis 客户端 / hash 存笔记 / 懒初始化"
+    },
+    "fe/fullstack/next-blog/components/Sidebar.js": {
+      "hash": "cc323e2a42279ec8370542d57d5ef800be108950a936619f5bbc09d40a9edc56",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/components/Sidebar.js",
+      "label": "Sidebar 服务端组件 / 读 Redis / 语义化布局"
+    },
+    "fe/fullstack/next-blog/components/SidebarNoteList.js": {
+      "hash": "0c9e22386bca391167f820fdd6d2104c63ac6c23ff406a8885a3640095fddf9d",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/components/SidebarNoteList.js",
+      "label": "RSC 列表组件 / Object.entries + JSON.parse"
+    },
+    "fe/fullstack/next-blog/components/SidebarNoteItem.js": {
+      "hash": "8f35f96344a7896835e6fb8bc98915a739e361419f5d66c170191fea006bd11b",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/components/SidebarNoteItem.js",
+      "label": "dayjs 时间格式化 / content 截断预览"
+    },
+    "fe/fullstack/next-blog/components/SidebarNoteItemContent.js": {
+      "hash": "002e40782756b6bcf9985751c53abe4ddfdf829cacebfd68b3dc093f0b153c82",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/components/SidebarNoteItemContent.js",
+      "label": "'use client' 交互占位 / RSC-CSR 边界"
+    },
+    "fe/fullstack/next-blog/app/layout.js": {
+      "hash": "52141a7beb04ccd36d231d14a14d3c39863550f16b36e45dfcb3f69911b15c39",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/app/layout.js",
+      "label": "根布局 / metadata SEO / Sidebar + children"
+    },
+    "fe/fullstack/next-blog/app/page.js": {
+      "hash": "2223d31c6e9aebceb483fd945eec7bbc34d5842c6b65827a037c86be82b82346",
+      "path": "E:/WROKSPACE/fe/fullstack/next-blog/app/page.js",
+      "label": "空状态占位页面"
     }
   },
   "versions": [
@@ -1269,6 +1309,21 @@
         "fe/fullstack/nextjs/next-demo/app/page.tsx": "7a81453",
         "fe/fullstack/nextjs/next-demo/app/dashboard/layout.tsx": "7a81453",
         "fe/fullstack/nextjs/spa-demo/src/App.jsx": "7a81453"
+      }
+    },
+    {
+      "id": "v068",
+      "date": "2026-08-14",
+      "title": "Next.js 全栈实战：Redis 数据层、规范驱动组件规划，与 RSC/CSR 的拆分边界",
+      "covered_sources": {
+        "fe/fullstack/next-blog/README.md": "9015011",
+        "fe/fullstack/next-blog/lib/redis.js": "9015011",
+        "fe/fullstack/next-blog/components/Sidebar.js": "9015011",
+        "fe/fullstack/next-blog/components/SidebarNoteList.js": "9015011",
+        "fe/fullstack/next-blog/components/SidebarNoteItem.js": "9015011",
+        "fe/fullstack/next-blog/components/SidebarNoteItemContent.js": "9015011",
+        "fe/fullstack/next-blog/app/layout.js": "9015011",
+        "fe/fullstack/next-blog/app/page.js": "9015011"
       }
     }
   ]

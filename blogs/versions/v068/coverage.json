@@ -1,0 +1,14 @@
+{
+  "version": "v068",
+  "title": "Next.js 全栈实战：Redis 数据层、规范驱动组件规划，与 RSC/CSR 的拆分边界",
+  "covered_sources": {
+    "fe/fullstack/next-blog/README.md": "9015011",
+    "fe/fullstack/next-blog/lib/redis.js": "9015011",
+    "fe/fullstack/next-blog/components/Sidebar.js": "9015011",
+    "fe/fullstack/next-blog/components/SidebarNoteList.js": "9015011",
+    "fe/fullstack/next-blog/components/SidebarNoteItem.js": "9015011",
+    "fe/fullstack/next-blog/components/SidebarNoteItemContent.js": "9015011",
+    "fe/fullstack/next-blog/app/layout.js": "9015011",
+    "fe/fullstack/next-blog/app/page.js": "9015011"
+  }
+}
