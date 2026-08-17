@@ -32,3 +32,21 @@ npm/pnpm run start
 装饰器模式: 不改变原对象,动态地给它加功能
 @
 class
+
+## 开发流程
+AppModule import 里面植入我们的Module
+Module 是nestjs 的独立业务模块
+xx.module.ts 定义 组装
+xx.controller.ts 控制器
+xx.service.ts providers 数据业务
+  @Injectable() 自动依赖注入
+  自动注入到controller 或如何用它的地方
+  controller 里的一个属性
+  MVC 本质
+  装饰器模式用到极致
+
+- NotFoundException
+  nestjs 内置的错误类
+  如何处理后端报错？
+  try catch finally  ts独苗 线程挂
+  nestjs 提供了各种错误类，标准化错误输出
