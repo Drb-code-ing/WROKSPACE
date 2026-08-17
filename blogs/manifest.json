@@ -689,6 +689,56 @@
       "hash": "2223d31c6e9aebceb483fd945eec7bbc34d5842c6b65827a037c86be82b82346",
       "path": "E:/WROKSPACE/fe/fullstack/next-blog/app/page.js",
       "label": "空状态占位页面"
+    },
+    "backend/nestjs/readme.md": {
+      "hash": "29e7caa",
+      "path": "E:/WROKSPACE/backend/nestjs/readme.md",
+      "label": "NestJS 全栈 / 工厂与装饰器 / MVC 笔记"
+    },
+    "backend/nestjs/factory_demo/readme.md": {
+      "hash": "ab07c39",
+      "path": "E:/WROKSPACE/backend/nestjs/factory_demo/readme.md",
+      "label": "工厂模式笔记"
+    },
+    "backend/nestjs/factory_demo/1.mjs": {
+      "hash": "ab07c39",
+      "path": "E:/WROKSPACE/backend/nestjs/factory_demo/1.mjs",
+      "label": "蜜雪冰城工厂模式 Demo / MixueFactory"
+    },
+    "backend/nestjs/hello/src/main.ts": {
+      "hash": "ab07c39",
+      "path": "E:/WROKSPACE/backend/nestjs/hello/src/main.ts",
+      "label": "入口 / NestFactory.create / MVC 分层注释"
+    },
+    "backend/nestjs/hello/src/app.module.ts": {
+      "hash": "29e7caa",
+      "path": "E:/WROKSPACE/backend/nestjs/hello/src/app.module.ts",
+      "label": "根模块 / imports 植入业务模块 / 装饰器"
+    },
+    "backend/nestjs/hello/src/app.controller.ts": {
+      "hash": "ab07c39",
+      "path": "E:/WROKSPACE/backend/nestjs/hello/src/app.controller.ts",
+      "label": "根控制器 / 依赖注入 / @Get"
+    },
+    "backend/nestjs/hello/src/app.service.ts": {
+      "hash": "ab07c39",
+      "path": "E:/WROKSPACE/backend/nestjs/hello/src/app.service.ts",
+      "label": "@Injectable 根服务 / 响应数据"
+    },
+    "backend/nestjs/hello/src/todos/todos.module.ts": {
+      "hash": "29e7caa",
+      "path": "E:/WROKSPACE/backend/nestjs/hello/src/todos/todos.module.ts",
+      "label": "Todos 业务模块 / controllers+providers 组装"
+    },
+    "backend/nestjs/hello/src/todos/todos.controller.ts": {
+      "hash": "29e7caa",
+      "path": "E:/WROKSPACE/backend/nestjs/hello/src/todos/todos.controller.ts",
+      "label": "Todos 控制器 / 路由装饰器 / PUT vs PATCH"
+    },
+    "backend/nestjs/hello/src/todos/todos.service.ts": {
+      "hash": "29e7caa",
+      "path": "E:/WROKSPACE/backend/nestjs/hello/src/todos/todos.service.ts",
+      "label": "@Injectable / CRUD / NotFoundException"
     }
   },
   "versions": [
@@ -1324,6 +1374,23 @@
         "fe/fullstack/next-blog/components/SidebarNoteItemContent.js": "9015011",
         "fe/fullstack/next-blog/app/layout.js": "9015011",
         "fe/fullstack/next-blog/app/page.js": "9015011"
+      }
+    },
+    {
+      "id": "v069",
+      "date": "2026-08-17",
+      "title": "NestJS 初探：工厂模式、装饰器与依赖注入，如何驱动一个 MVC 后端",
+      "covered_sources": {
+        "backend/nestjs/readme.md": "29e7caa",
+        "backend/nestjs/factory_demo/readme.md": "ab07c39",
+        "backend/nestjs/factory_demo/1.mjs": "ab07c39",
+        "backend/nestjs/hello/src/main.ts": "ab07c39",
+        "backend/nestjs/hello/src/app.module.ts": "29e7caa",
+        "backend/nestjs/hello/src/app.controller.ts": "ab07c39",
+        "backend/nestjs/hello/src/app.service.ts": "ab07c39",
+        "backend/nestjs/hello/src/todos/todos.module.ts": "29e7caa",
+        "backend/nestjs/hello/src/todos/todos.controller.ts": "29e7caa",
+        "backend/nestjs/hello/src/todos/todos.service.ts": "29e7caa"
       }
     }
   ]

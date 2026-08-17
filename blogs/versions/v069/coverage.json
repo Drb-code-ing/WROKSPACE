@@ -1,0 +1,16 @@
+{
+  "version": "v069",
+  "title": "NestJS 初探：工厂模式、装饰器与依赖注入，如何驱动一个 MVC 后端",
+  "covered_sources": {
+    "backend/nestjs/readme.md": "29e7caa",
+    "backend/nestjs/factory_demo/readme.md": "ab07c39",
+    "backend/nestjs/factory_demo/1.mjs": "ab07c39",
+    "backend/nestjs/hello/src/main.ts": "ab07c39",
+    "backend/nestjs/hello/src/app.module.ts": "29e7caa",
+    "backend/nestjs/hello/src/app.controller.ts": "ab07c39",
+    "backend/nestjs/hello/src/app.service.ts": "ab07c39",
+    "backend/nestjs/hello/src/todos/todos.module.ts": "29e7caa",
+    "backend/nestjs/hello/src/todos/todos.controller.ts": "29e7caa",
+    "backend/nestjs/hello/src/todos/todos.service.ts": "29e7caa"
+  }
+}
