@@ -1,0 +1,9 @@
+{
+  "version": "v071",
+  "title": "TS 工具类型七件套：Pick、Omit、Partial、Record，与 Omit 的三步底层实现",
+  "covered_sources": {
+    "fe/ts/pick_partial/readme.md": "5cc1df9",
+    "fe/ts/pick_partial/1.ts": "5cc1df9",
+    "fe/ts/pick_partial/2.ts": "5cc1df9"
+  }
+}

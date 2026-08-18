@@ -754,6 +754,21 @@
       "hash": "2686134",
       "path": "E:/WROKSPACE/backend/docker/demo/nginx.conf",
       "label": "nginx 配置 / events 块 / proxy_pass 反向代理"
+    },
+    "fe/ts/pick_partial/readme.md": {
+      "hash": "5cc1df9",
+      "path": "E:/WROKSPACE/fe/ts/pick_partial/readme.md",
+      "label": "TS 高级类型 / 工具类型清单笔记"
+    },
+    "fe/ts/pick_partial/1.ts": {
+      "hash": "5cc1df9",
+      "path": "E:/WROKSPACE/fe/ts/pick_partial/1.ts",
+      "label": "Pick/Omit/Partial/Record/ReturnType/Exclude 示例"
+    },
+    "fe/ts/pick_partial/2.ts": {
+      "hash": "5cc1df9",
+      "path": "E:/WROKSPACE/fe/ts/pick_partial/2.ts",
+      "label": "keyof → Exclude → Pick 三步推导 Omit 原理"
     }
   },
   "versions": [
@@ -1416,6 +1431,16 @@
         "backend/docker/readme.md": "2686134",
         "backend/docker/demo/index.js": "2686134",
         "backend/docker/demo/nginx.conf": "2686134"
+      }
+    },
+    {
+      "id": "v071",
+      "date": "2026-08-18",
+      "title": "TS 工具类型七件套：Pick、Omit、Partial、Record，与 Omit 的三步底层实现",
+      "covered_sources": {
+        "fe/ts/pick_partial/readme.md": "5cc1df9",
+        "fe/ts/pick_partial/1.ts": "5cc1df9",
+        "fe/ts/pick_partial/2.ts": "5cc1df9"
       }
     }
   ]
