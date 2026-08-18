@@ -739,6 +739,21 @@
       "hash": "29e7caa",
       "path": "E:/WROKSPACE/backend/nestjs/hello/src/todos/todos.service.ts",
       "label": "@Injectable / CRUD / NotFoundException"
+    },
+    "backend/docker/readme.md": {
+      "hash": "2686134",
+      "path": "E:/WROKSPACE/backend/docker/readme.md",
+      "label": "Docker 容器化 / 镜像与容器 / nginx 反向代理笔记"
+    },
+    "backend/docker/demo/index.js": {
+      "hash": "2686134",
+      "path": "E:/WROKSPACE/backend/docker/demo/index.js",
+      "label": "Node http 服务 / CommonJS / 监听 1314 端口"
+    },
+    "backend/docker/demo/nginx.conf": {
+      "hash": "2686134",
+      "path": "E:/WROKSPACE/backend/docker/demo/nginx.conf",
+      "label": "nginx 配置 / events 块 / proxy_pass 反向代理"
     }
   },
   "versions": [
@@ -1391,6 +1406,16 @@
         "backend/nestjs/hello/src/todos/todos.module.ts": "29e7caa",
         "backend/nestjs/hello/src/todos/todos.controller.ts": "29e7caa",
         "backend/nestjs/hello/src/todos/todos.service.ts": "29e7caa"
+      }
+    },
+    {
+      "id": "v070",
+      "date": "2026-08-18",
+      "title": "Docker 初探：镜像与容器的关系，与 nginx 反向代理的部署链路",
+      "covered_sources": {
+        "backend/docker/readme.md": "2686134",
+        "backend/docker/demo/index.js": "2686134",
+        "backend/docker/demo/nginx.conf": "2686134"
       }
     }
   ]

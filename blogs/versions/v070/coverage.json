@@ -1,0 +1,9 @@
+{
+  "version": "v070",
+  "title": "Docker 初探：镜像与容器的关系，与 nginx 反向代理的部署链路",
+  "covered_sources": {
+    "backend/docker/readme.md": "2686134",
+    "backend/docker/demo/index.js": "2686134",
+    "backend/docker/demo/nginx.conf": "2686134"
+  }
+}
