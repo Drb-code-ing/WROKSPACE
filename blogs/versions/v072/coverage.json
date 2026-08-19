@@ -1,0 +1,17 @@
+{
+  "version": "v072",
+  "title": "JWT 登录鉴权：无状态凭证的颁发与验证、zustand 全局状态，与 axios 拦截器的自动携带",
+  "covered_sources": {
+    "fe/React/jwt-demo/readme.md": "7c86f1a",
+    "fe/React/jwt-demo/login-demo/mock/user.js": "7c86f1a",
+    "fe/React/jwt-demo/login-demo/src/api/config.js": "7c86f1a",
+    "fe/React/jwt-demo/login-demo/src/api/user.js": "e9716ae",
+    "fe/React/jwt-demo/login-demo/src/api/repo.js": "7c86f1a",
+    "fe/React/jwt-demo/login-demo/src/store/user.js": "7c86f1a",
+    "fe/React/jwt-demo/login-demo/src/store/todos.js": "e9716ae",
+    "fe/React/jwt-demo/login-demo/src/components/RequireAuth.jsx": "e9716ae",
+    "fe/React/jwt-demo/login-demo/src/components/Nav.jsx": "7c86f1a",
+    "fe/React/jwt-demo/login-demo/src/page/Login.jsx": "7c86f1a",
+    "fe/React/jwt-demo/login-demo/vite.config.js": "7c86f1a"
+  }
+}

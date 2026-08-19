@@ -769,6 +769,61 @@
       "hash": "5cc1df9",
       "path": "E:/WROKSPACE/fe/ts/pick_partial/2.ts",
       "label": "keyof → Exclude → Pick 三步推导 Omit 原理"
+    },
+    "fe/React/jwt-demo/readme.md": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/readme.md",
+      "label": "JWT 登录鉴权 / 无状态凭证笔记"
+    },
+    "fe/React/jwt-demo/login-demo/mock/user.js": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/mock/user.js",
+      "label": "mock 服务端 / jwt.sign 签发 与 jwt.verify 验证"
+    },
+    "fe/React/jwt-demo/login-demo/src/api/config.js": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/api/config.js",
+      "label": "axios 实例 / request & response 拦截器"
+    },
+    "fe/React/jwt-demo/login-demo/src/api/user.js": {
+      "hash": "e9716ae",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/api/user.js",
+      "label": "登录 API / axios.post 封装"
+    },
+    "fe/React/jwt-demo/login-demo/src/api/repo.js": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/api/repo.js",
+      "label": "受保护资源 API / getRepo 调用"
+    },
+    "fe/React/jwt-demo/login-demo/src/store/user.js": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/store/user.js",
+      "label": "zustand 全局身份 store / setAuth 持久化"
+    },
+    "fe/React/jwt-demo/login-demo/src/store/todos.js": {
+      "hash": "e9716ae",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/store/todos.js",
+      "label": "zustand 子仓 / 大型项目多 store 拆分"
+    },
+    "fe/React/jwt-demo/login-demo/src/components/RequireAuth.jsx": {
+      "hash": "e9716ae",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/components/RequireAuth.jsx",
+      "label": "路由守卫 / 未登录 Navigate 重定向"
+    },
+    "fe/React/jwt-demo/login-demo/src/components/Nav.jsx": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/components/Nav.jsx",
+      "label": "导航栏 / token 条件渲染 Login-Logout"
+    },
+    "fe/React/jwt-demo/login-demo/src/page/Login.jsx": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/src/page/Login.jsx",
+      "label": "登录页 / 表单校验 + setAuth + navigate"
+    },
+    "fe/React/jwt-demo/login-demo/vite.config.js": {
+      "hash": "7c86f1a",
+      "path": "E:/WROKSPACE/fe/React/jwt-demo/login-demo/vite.config.js",
+      "label": "vite 配置 / viteMockServe mock 插件"
     }
   },
   "versions": [
@@ -1441,6 +1496,24 @@
         "fe/ts/pick_partial/readme.md": "5cc1df9",
         "fe/ts/pick_partial/1.ts": "5cc1df9",
         "fe/ts/pick_partial/2.ts": "5cc1df9"
+      }
+    },
+    {
+      "id": "v072",
+      "date": "2026-08-19",
+      "title": "JWT 登录鉴权：无状态凭证的颁发与验证、zustand 全局状态，与 axios 拦截器的自动携带",
+      "covered_sources": {
+        "fe/React/jwt-demo/readme.md": "7c86f1a",
+        "fe/React/jwt-demo/login-demo/mock/user.js": "7c86f1a",
+        "fe/React/jwt-demo/login-demo/src/api/config.js": "7c86f1a",
+        "fe/React/jwt-demo/login-demo/src/api/user.js": "e9716ae",
+        "fe/React/jwt-demo/login-demo/src/api/repo.js": "7c86f1a",
+        "fe/React/jwt-demo/login-demo/src/store/user.js": "7c86f1a",
+        "fe/React/jwt-demo/login-demo/src/store/todos.js": "e9716ae",
+        "fe/React/jwt-demo/login-demo/src/components/RequireAuth.jsx": "e9716ae",
+        "fe/React/jwt-demo/login-demo/src/components/Nav.jsx": "7c86f1a",
+        "fe/React/jwt-demo/login-demo/src/page/Login.jsx": "7c86f1a",
+        "fe/React/jwt-demo/login-demo/vite.config.js": "7c86f1a"
       }
     }
   ]
