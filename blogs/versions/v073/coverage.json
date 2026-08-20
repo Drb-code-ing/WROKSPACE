@@ -1,0 +1,14 @@
+{
+  "version": "v073",
+  "title": "SDD 规范驱动开发：文档即代码，两次创造与 proposal/design/task 三份规范",
+  "covered_sources": {
+    "ai/sdd/readme.md": "f7e5826",
+    "ai/sdd/action/readme.md": "b71dd39",
+    "E:/chrome-extension-en-transiation/docs/proposal.md": "931da61",
+    "E:/chrome-extension-en-transiation/docs/design.md": "931da61",
+    "E:/chrome-extension-en-transiation/docs/tasks.md": "931da61",
+    "E:/chrome-extension-en-transiation/src/config/manifest.config.ts": "608120a",
+    "E:/chrome-extension-en-transiation/src/panel/App.tsx": "608120a",
+    "E:/chrome-extension-en-transiation/vite.config.ts": "608120a"
+  }
+}
