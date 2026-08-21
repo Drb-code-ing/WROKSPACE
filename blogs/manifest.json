@@ -864,6 +864,66 @@
       "hash": "608120a",
       "path": "E:/chrome-extension-en-transiation/vite.config.ts",
       "label": "vite 配置 / @crxjs 插件集成"
+    },
+    "fe/fullstack/ai-next/readme.md": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/readme.md",
+      "label": "Next.js 全栈 / 框架思维与选型笔记"
+    },
+    "fe/fullstack/ai-next/my-app/README.md": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/README.md",
+      "label": "App Router 文件路由约定 / Link 客户端导航与预加载"
+    },
+    "fe/fullstack/ai-next/my-app/app/layout.tsx": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/app/layout.tsx",
+      "label": "根布局 / next/font 字体优化 / 全局导航"
+    },
+    "fe/fullstack/ai-next/my-app/app/page.tsx": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/app/page.tsx",
+      "label": "首页 / next/image priority / shadcn Button"
+    },
+    "fe/fullstack/ai-next/my-app/app/blog/page.tsx": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/app/blog/page.tsx",
+      "label": "博客列表页 / posts 数据渲染"
+    },
+    "fe/fullstack/ai-next/my-app/app/blog/[slug]/page.tsx": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/app/blog/[slug]/page.tsx",
+      "label": "详情页 / generateStaticParams 静态生成 + generateMetadata"
+    },
+    "fe/fullstack/ai-next/my-app/app/not-found.tsx": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/app/not-found.tsx",
+      "label": "404 页面 / 复用 shadcn Button"
+    },
+    "fe/fullstack/ai-next/my-app/components/ui/button.tsx": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/components/ui/button.tsx",
+      "label": "shadcn Button / base-ui 原语 + cva 变体 + cn 合并"
+    },
+    "fe/fullstack/ai-next/my-app/lib/utils.ts": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/lib/utils.ts",
+      "label": "cn() / clsx 拼接 + tailwind-merge 冲突覆盖"
+    },
+    "fe/fullstack/ai-next/my-app/lib/posts.ts": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/lib/posts.ts",
+      "label": "Post 类型与数据 / getPostBySlug"
+    },
+    "fe/fullstack/ai-next/my-app/components.json": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/components.json",
+      "label": "shadcn 配置 / style 与路径别名"
+    },
+    "fe/fullstack/ai-next/my-app/app/globals.css": {
+      "hash": "ff2fdb5",
+      "path": "E:/WROKSPACE/fe/fullstack/ai-next/my-app/app/globals.css",
+      "label": "全局样式 / oklch 主题变量 / Tailwind v4 @theme"
     }
   },
   "versions": [
@@ -1569,6 +1629,25 @@
         "E:/chrome-extension-en-transiation/src/config/manifest.config.ts": "608120a",
         "E:/chrome-extension-en-transiation/src/panel/App.tsx": "608120a",
         "E:/chrome-extension-en-transiation/vite.config.ts": "608120a"
+      }
+    },
+    {
+      "id": "v074",
+      "date": "2026-08-21",
+      "title": "Next.js 性能优化与 shadcn/ui 组件库：静态生成、next/font、next/image 与「复制进项目」的组件落地",
+      "covered_sources": {
+        "fe/fullstack/ai-next/readme.md": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/README.md": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/app/layout.tsx": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/app/page.tsx": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/app/blog/page.tsx": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/app/blog/[slug]/page.tsx": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/app/not-found.tsx": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/components/ui/button.tsx": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/lib/utils.ts": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/lib/posts.ts": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/components.json": "ff2fdb5",
+        "fe/fullstack/ai-next/my-app/app/globals.css": "ff2fdb5"
       }
     }
   ]

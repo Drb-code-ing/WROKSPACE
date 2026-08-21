@@ -1,0 +1,18 @@
+{
+  "version": "v074",
+  "title": "Next.js 性能优化与 shadcn/ui 组件库：静态生成、next/font、next/image 与「复制进项目」的组件落地",
+  "covered_sources": {
+    "fe/fullstack/ai-next/readme.md": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/README.md": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/app/layout.tsx": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/app/page.tsx": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/app/blog/page.tsx": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/app/blog/[slug]/page.tsx": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/app/not-found.tsx": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/components/ui/button.tsx": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/lib/utils.ts": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/lib/posts.ts": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/components.json": "ff2fdb5",
+    "fe/fullstack/ai-next/my-app/app/globals.css": "ff2fdb5"
+  }
+}
