@@ -926,32 +926,32 @@
       "label": "全局样式 / oklch 主题变量 / Tailwind v4 @theme"
     },
     "E:/wx-md/README.md": {
-      "hash": "auto",
+      "hash": "c08169a",
       "path": "E:/wx-md/README.md",
       "label": "md-wx / 需求文档方法论与 AI 辅助需求"
     },
     "E:/wx-md/docs/proposal.md": {
-      "hash": "auto",
+      "hash": "c08169a",
       "path": "E:/wx-md/docs/proposal.md",
       "label": "md-wx 需求文档 / 定位目标与验收边界"
     },
     "E:/wx-md/docs/design.md": {
-      "hash": "auto",
+      "hash": "c08169a",
       "path": "E:/wx-md/docs/design.md",
       "label": "md-wx 技术架构 / 选型与 juice 内联样式方案"
     },
     "E:/wx-md/docs/design_guide.md": {
-      "hash": "auto",
+      "hash": "c08169a",
       "path": "E:/wx-md/docs/design_guide.md",
       "label": "md-wx 设计指南 / 可访问性性能与实现建议"
     },
     "E:/wx-md/docs/tasks.md": {
-      "hash": "auto",
+      "hash": "c08169a",
       "path": "E:/wx-md/docs/tasks.md",
       "label": "md-wx 任务拆分 / 渐进式阶段与验收标准"
     },
     "E:/wx-md/docs/ui-design.html": {
-      "hash": "auto",
+      "hash": "c08169a",
       "path": "E:/wx-md/docs/ui-design.html",
       "label": "md-wx 玻璃拟态高保真交互原型"
     }
@@ -1685,12 +1685,12 @@
       "date": "2026-08-24",
       "title": "微信公众号 Markdown 渲染组件：需求文档的验收清单、juice 内联样式的复制链路，与渐进式任务拆分",
       "covered_sources": {
-        "E:/wx-md/README.md": "auto",
-        "E:/wx-md/docs/proposal.md": "auto",
-        "E:/wx-md/docs/design.md": "auto",
-        "E:/wx-md/docs/design_guide.md": "auto",
-        "E:/wx-md/docs/tasks.md": "auto",
-        "E:/wx-md/docs/ui-design.html": "auto"
+        "E:/wx-md/README.md": "c08169a",
+        "E:/wx-md/docs/proposal.md": "c08169a",
+        "E:/wx-md/docs/design.md": "c08169a",
+        "E:/wx-md/docs/design_guide.md": "c08169a",
+        "E:/wx-md/docs/tasks.md": "c08169a",
+        "E:/wx-md/docs/ui-design.html": "c08169a"
       }
     }
   ]

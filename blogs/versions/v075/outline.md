@@ -32,11 +32,11 @@
 
 ## 引用说明
 
-- 基于第六十四天学习笔记（E:\wx-md，非 git 仓库，hash 记 `auto`）：
-  - `E:/wx-md/README.md`（需求文档方法论 / AI 原型 / tavily / 任务拆分与项目规则）——`auto`；
-  - `E:/wx-md/docs/proposal.md`（需求文档：定位/目标/成功标准/双层用户/功能规则/验收/边界）——`auto`；
-  - `E:/wx-md/docs/design.md`（技术架构：选型/目录/编码规范/公众号内联样式复制链路）——`auto`；
-  - `E:/wx-md/docs/design_guide.md`（设计指南：可访问性/性能/组件架构建议/维护扩展）——`auto`；
-  - `E:/wx-md/docs/tasks.md`（任务拆分：阶段一基础/阶段二核心预览/阶段三主题系统）——`auto`；
-  - `E:/wx-md/docs/ui-design.html`（玻璃拟态高保真交互原型）——`auto`。
+- 基于第六十四天学习笔记（E:\wx-md，独立 git 仓库，首次提交 `c08169a`）：
+  - `E:/wx-md/README.md`（需求文档方法论 / AI 原型 / tavily / 任务拆分与项目规则）——`c08169a`；
+  - `E:/wx-md/docs/proposal.md`（需求文档：定位/目标/成功标准/双层用户/功能规则/验收/边界）——`c08169a`；
+  - `E:/wx-md/docs/design.md`（技术架构：选型/目录/编码规范/公众号内联样式复制链路）——`c08169a`；
+  - `E:/wx-md/docs/design_guide.md`（设计指南：可访问性/性能/组件架构建议/维护扩展）——`c08169a`；
+  - `E:/wx-md/docs/tasks.md`（任务拆分：阶段一基础/阶段二核心预览/阶段三主题系统）——`c08169a`；
+  - `E:/wx-md/docs/ui-design.html`（玻璃拟态高保真交互原型）——`c08169a`。
 - 素材说明：今日笔记为 SDD（第六十二天，v073）方法论在"微信公众号 Markdown 渲染组件"项目上的完整应用（proposal/design/tasks + 原型），未涉及 npm 依赖、构建产物等非讲解价值文件。

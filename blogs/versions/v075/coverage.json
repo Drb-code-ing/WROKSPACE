@@ -2,11 +2,11 @@
   "version": "v075",
   "title": "微信公众号 Markdown 渲染组件：需求文档的验收清单、juice 内联样式的复制链路，与渐进式任务拆分",
   "covered_sources": {
-    "E:/wx-md/README.md": "auto",
-    "E:/wx-md/docs/proposal.md": "auto",
-    "E:/wx-md/docs/design.md": "auto",
-    "E:/wx-md/docs/design_guide.md": "auto",
-    "E:/wx-md/docs/tasks.md": "auto",
-    "E:/wx-md/docs/ui-design.html": "auto"
+    "E:/wx-md/README.md": "c08169a",
+    "E:/wx-md/docs/proposal.md": "c08169a",
+    "E:/wx-md/docs/design.md": "c08169a",
+    "E:/wx-md/docs/design_guide.md": "c08169a",
+    "E:/wx-md/docs/tasks.md": "c08169a",
+    "E:/wx-md/docs/ui-design.html": "c08169a"
   }
 }
