@@ -106,12 +106,64 @@ CREATE TABLE `user_like_post` (
 ```
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` longtext COLLATE 'utf8mb4_unicode_ci',
+  `content` longtext COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   `postId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   <!-- 评论的评论 -->
   `parentId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `postId` (`postId`),
-)
+  KEY `userId` (`userId`),
+  KEY `parentId` (`parentId`),
+  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`parentId`) REFERENCES `comment` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `comment_ibfk_3` FOREIGN KEY (`postId`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4_unicode_ci;
 ```
+
+## tag 表
+```
+CREATE TABLE `tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4_unicode_ci;
+```
+
+```
+CREATE TABLE `post_tag` (
+  `postId` int(11) NOT NULL,
+  `tagId` int(11) NOT NULL,
+  PRIMARY KEY (`postId`,`tagId`),
+  KEY `tagId` (`tagId`),
+  CONSTRAINT `post_tag_ibfk_1` FOREIGN KEY (`postId`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `post_tag_ibfk_2` FOREIGN KEY (`tagId`) REFERENCES `tag` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4_unicode_ci;
+```
+
+## 文件表
+```
+CREATE TABLE `file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `originalFilename` varchar(255) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `mimetype` varchar(255) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `filename` varchar(255) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `size` int(11) NOT NULL,
+  `postId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `width` smallint(6) NOT NULL,
+  `height` smallint(6) NOT NULL,
+  `metadata` json DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `postId` (`postId`),
+  KEY `userId` (`userId`),
+  CONSTRAINT `file_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+  CONSTRAINT `file_ibfk_2` FOREIGN KEY (`postId`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4_unicode_ci;
+```
+
+## 项目准备
+目录下有个database 文件夹
+  blog.sql 数据表设计文档
+  准备些假数据
