@@ -954,6 +954,36 @@
       "hash": "c08169a",
       "path": "E:/wx-md/docs/ui-design.html",
       "label": "md-wx 玻璃拟态高保真交互原型"
+    },
+    "backend/sql/readme.md": {
+      "hash": "9225c50",
+      "path": "E:/WROKSPACE/backend/sql/readme.md",
+      "label": "SQL 表设计 / DNS 解析 / nginx 反代 / CDN 笔记"
+    },
+    "backend/docker/file/readme.md": {
+      "hash": "9225c50",
+      "path": "E:/WROKSPACE/backend/docker/file/readme.md",
+      "label": "Dockerfile SOP 配方 / todos 全栈项目 / 跨域"
+    },
+    "backend/docker/file/my-docker-demo/Dockerfile": {
+      "hash": "9225c50",
+      "path": "E:/WROKSPACE/backend/docker/file/my-docker-demo/Dockerfile",
+      "label": "最小 Dockerfile / FROM-WORKDIR-COPY-CMD"
+    },
+    "backend/docker/todos-fullstall/todos-backend/src/main.ts": {
+      "hash": "9225c50",
+      "path": "E:/WROKSPACE/backend/docker/todos-fullstall/todos-backend/src/main.ts",
+      "label": "NestJS 入口 / app.enableCors 跨域放行"
+    },
+    "backend/docker/todos-fullstall/src/api/config.ts": {
+      "hash": "9225c50",
+      "path": "E:/WROKSPACE/backend/docker/todos-fullstall/src/api/config.ts",
+      "label": "axios 实例 / baseURL '/api' 配合 Nginx 反代"
+    },
+    "backend/docker/todos-fullstall/src/store/todoStore.ts": {
+      "hash": "9225c50",
+      "path": "E:/WROKSPACE/backend/docker/todos-fullstall/src/store/todoStore.ts",
+      "label": "zustand store / fetch('/api/todos') 走 Nginx 代理"
     }
   },
   "versions": [
@@ -1691,6 +1721,19 @@
         "E:/wx-md/docs/design_guide.md": "c08169a",
         "E:/wx-md/docs/tasks.md": "c08169a",
         "E:/wx-md/docs/ui-design.html": "c08169a"
+      }
+    },
+    {
+      "id": "v076",
+      "date": "2026-08-25",
+      "title": "博客后端的 SQL 表设计：主键、联合主键与外键级联的取舍，与 nginx 反代下的跨域解法",
+      "covered_sources": {
+        "backend/sql/readme.md": "9225c50",
+        "backend/docker/file/readme.md": "9225c50",
+        "backend/docker/file/my-docker-demo/Dockerfile": "9225c50",
+        "backend/docker/todos-fullstall/todos-backend/src/main.ts": "9225c50",
+        "backend/docker/todos-fullstall/src/api/config.ts": "9225c50",
+        "backend/docker/todos-fullstall/src/store/todoStore.ts": "9225c50"
       }
     }
   ]

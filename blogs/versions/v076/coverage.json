@@ -1,0 +1,12 @@
+{
+  "version": "v076",
+  "title": "博客后端的 SQL 表设计：主键、联合主键与外键级联的取舍，与 nginx 反代下的跨域解法",
+  "covered_sources": {
+    "backend/sql/readme.md": "9225c50",
+    "backend/docker/file/readme.md": "9225c50",
+    "backend/docker/file/my-docker-demo/Dockerfile": "9225c50",
+    "backend/docker/todos-fullstall/todos-backend/src/main.ts": "9225c50",
+    "backend/docker/todos-fullstall/src/api/config.ts": "9225c50",
+    "backend/docker/todos-fullstall/src/store/todoStore.ts": "9225c50"
+  }
+}
