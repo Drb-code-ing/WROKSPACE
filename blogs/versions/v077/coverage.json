@@ -1,0 +1,14 @@
+{
+  "version": "v077",
+  "title": "Next.js 后台的认证与权限防线：首个超级管理员的事务锁初始化、会话令牌哈希，与四道管理员保护规则",
+  "covered_sources": {
+    "E:/ai-coding/danci/README.md": "a30e4e6",
+    "E:/ai-coding/danci/danci-admin/lib/schema.ts": "a30e4e6",
+    "E:/ai-coding/danci/danci-admin/lib/db.ts": "a30e4e6",
+    "E:/ai-coding/danci/danci-admin/lib/auth.ts": "a30e4e6",
+    "E:/ai-coding/danci/danci-admin/lib/api-auth.ts": "a30e4e6",
+    "E:/ai-coding/danci/danci-admin/app/api/auth/signup/route.ts": "a30e4e6",
+    "E:/ai-coding/danci/danci-admin/app/api/admin-users/[id]/route.ts": "a30e4e6",
+    "E:/ai-coding/danci/danci-admin/app/admin-users/admin-users.tsx": "a30e4e6"
+  }
+}

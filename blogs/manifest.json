@@ -984,6 +984,46 @@
       "hash": "9225c50",
       "path": "E:/WROKSPACE/backend/docker/todos-fullstall/src/store/todoStore.ts",
       "label": "zustand store / fetch('/api/todos') 走 Nginx 代理"
+    },
+    "E:/ai-coding/danci/README.md": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/README.md",
+      "label": "danci 单词后台 / supabase BaaS / drizzle ORM / 数据清洗概念笔记"
+    },
+    "E:/ai-coding/danci/danci-admin/lib/schema.ts": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/danci-admin/lib/schema.ts",
+      "label": "drizzle schema / admin-users 与 admin-session / pgEnum + 外键级联"
+    },
+    "E:/ai-coding/danci/danci-admin/lib/db.ts": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/danci-admin/lib/db.ts",
+      "label": "drizzle 连接 / postgres 驱动 / db 操作句柄"
+    },
+    "E:/ai-coding/danci/danci-admin/lib/auth.ts": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/danci-admin/lib/auth.ts",
+      "label": "认证核心 / bcrypt 密码哈希 / 会话令牌哈希 / 单会话与过期"
+    },
+    "E:/ai-coding/danci/danci-admin/lib/api-auth.ts": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/danci-admin/lib/api-auth.ts",
+      "label": "权限守卫 / requireApiUser / 401 未登录与 403 无权限"
+    },
+    "E:/ai-coding/danci/danci-admin/app/api/auth/signup/route.ts": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/danci-admin/app/api/auth/signup/route.ts",
+      "label": "首个账号初始化 / pg_advisory_xact_lock 事务锁"
+    },
+    "E:/ai-coding/danci/danci-admin/app/api/admin-users/[id]/route.ts": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/danci-admin/app/api/admin-users/[id]/route.ts",
+      "label": "管理员更新 PATCH / 四道保护规则 / 改密与停用强制下线"
+    },
+    "E:/ai-coding/danci/danci-admin/app/admin-users/admin-users.tsx": {
+      "hash": "a30e4e6",
+      "path": "E:/ai-coding/danci/danci-admin/app/admin-users/admin-users.tsx",
+      "label": "管理员管理前端 / isSelf 锁定角色与状态选项"
     }
   },
   "versions": [
@@ -1734,6 +1774,21 @@
         "backend/docker/todos-fullstall/todos-backend/src/main.ts": "9225c50",
         "backend/docker/todos-fullstall/src/api/config.ts": "9225c50",
         "backend/docker/todos-fullstall/src/store/todoStore.ts": "9225c50"
+      }
+    },
+    {
+      "id": "v077",
+      "date": "2026-08-26",
+      "title": "Next.js 后台的认证与权限防线：首个超级管理员的事务锁初始化、会话令牌哈希，与四道管理员保护规则",
+      "covered_sources": {
+        "E:/ai-coding/danci/README.md": "a30e4e6",
+        "E:/ai-coding/danci/danci-admin/lib/schema.ts": "a30e4e6",
+        "E:/ai-coding/danci/danci-admin/lib/db.ts": "a30e4e6",
+        "E:/ai-coding/danci/danci-admin/lib/auth.ts": "a30e4e6",
+        "E:/ai-coding/danci/danci-admin/lib/api-auth.ts": "a30e4e6",
+        "E:/ai-coding/danci/danci-admin/app/api/auth/signup/route.ts": "a30e4e6",
+        "E:/ai-coding/danci/danci-admin/app/api/admin-users/[id]/route.ts": "a30e4e6",
+        "E:/ai-coding/danci/danci-admin/app/admin-users/admin-users.tsx": "a30e4e6"
       }
     }
   ]
