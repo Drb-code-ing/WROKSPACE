@@ -1024,6 +1024,81 @@
       "hash": "a30e4e6",
       "path": "E:/ai-coding/danci/danci-admin/app/admin-users/admin-users.tsx",
       "label": "管理员管理前端 / isSelf 锁定角色与状态选项"
+    },
+    "E:/ai-coding/danci/README.md": {
+      "hash": "c68eb6a",
+      "path": "E:/ai-coding/danci/README.md",
+      "label": "第六十六天 README / 数据清洗 / words 表 / 多端 / h5 web 应用 / Prompt 颗粒度"
+    },
+    "E:/ai-coding/danci/danci-admin/scripts/json2csv.mjs": {
+      "hash": "447988b",
+      "path": "E:/ai-coding/danci/danci-admin/scripts/json2csv.mjs",
+      "label": "数据清洗 json→csv 转换脚本 / 括号配对解析器 / BOM"
+    },
+    "E:/ai-coding/danci/danci-admin/lib/schema.ts": {
+      "hash": "d301b13",
+      "path": "E:/ai-coding/danci/danci-admin/lib/schema.ts",
+      "label": "words json 列 / books 数组列与唯一键"
+    },
+    "E:/ai-coding/danci/danci-admin/lib/books.ts": {
+      "hash": "d301b13",
+      "path": "E:/ai-coding/danci/danci-admin/lib/books.ts",
+      "label": "单词书载荷校验 / parseBookPayload / parseTags"
+    },
+    "E:/ai-coding/danci/danci-admin/app/api/books/route.ts": {
+      "hash": "d301b13",
+      "path": "E:/ai-coding/danci/danci-admin/app/api/books/route.ts",
+      "label": "单词书列表与新增 / 409 bookId 去重"
+    },
+    "E:/ai-coding/danci/danci-admin/app/api/books/[id]/route.ts": {
+      "hash": "d301b13",
+      "path": "E:/ai-coding/danci/danci-admin/app/api/books/[id]/route.ts",
+      "label": "单词书更新删除 / PATCH 排除自身去重 / DELETE 事务级联删词"
+    },
+    "E:/ai-coding/danci/danci-admin/app/books/books.tsx": {
+      "hash": "d301b13",
+      "path": "E:/ai-coding/danci/danci-admin/app/books/books.tsx",
+      "label": "单词书管理前端 / 搜索 / 分页 / Dialog / AlertDialog"
+    },
+    "E:/ai-coding/danci/danci-admin/drizzle/0001_striped_killraven.sql": {
+      "hash": "d301b13",
+      "path": "E:/ai-coding/danci/danci-admin/drizzle/0001_striped_killraven.sql",
+      "label": "books 表迁移 SQL / uuid 主键 / book_id 唯一 / tags 数组列"
+    },
+    "E:/ai-coding/danci/nextjs-typescript-starter/app/schema.ts": {
+      "hash": "ace6c40",
+      "path": "E:/ai-coding/danci/nextjs-typescript-starter/app/schema.ts",
+      "label": "H5 schema / User 纳入 drizzle / books·words 只映射 / user_learning_progress"
+    },
+    "E:/ai-coding/danci/nextjs-typescript-starter/app/db.ts": {
+      "hash": "ace6c40",
+      "path": "E:/ai-coding/danci/nextjs-typescript-starter/app/db.ts",
+      "label": "H5 数据库连接 / getUser / createUser + bcrypt"
+    },
+    "E:/ai-coding/danci/nextjs-typescript-starter/drizzle.config.ts": {
+      "hash": "ace6c40",
+      "path": "E:/ai-coding/danci/nextjs-typescript-starter/drizzle.config.ts",
+      "label": "共库迁移隔离 / 独立迁移表与 schema"
+    },
+    "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0000_complex_screwball.sql": {
+      "hash": "ace6c40",
+      "path": "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0000_complex_screwball.sql",
+      "label": "User 表迁移 / IF NOT EXISTS / DO 块兼容已有约束"
+    },
+    "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0001_known_miracleman.sql": {
+      "hash": "ace6c40",
+      "path": "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0001_known_miracleman.sql",
+      "label": "user_learning_progress 建表迁移 / 联合唯一 / 双索引"
+    },
+    "E:/ai-coding/danci/nextjs-typescript-starter/docs/proposal.md": {
+      "hash": "341db6c",
+      "path": "E:/ai-coding/danci/nextjs-typescript-starter/docs/proposal.md",
+      "label": "H5 需求文档 / 页面路由 / 线框 / 接口需求"
+    },
+    "E:/ai-coding/danci/nextjs-typescript-starter/docs/design.md": {
+      "hash": "341db6c",
+      "path": "E:/ai-coding/danci/nextjs-typescript-starter/docs/design.md",
+      "label": "H5 技术设计 / 现有表 / 进度表设计 / 迁移步骤与要求"
     }
   },
   "versions": [
@@ -1789,6 +1864,28 @@
         "E:/ai-coding/danci/danci-admin/app/api/auth/signup/route.ts": "a30e4e6",
         "E:/ai-coding/danci/danci-admin/app/api/admin-users/[id]/route.ts": "a30e4e6",
         "E:/ai-coding/danci/danci-admin/app/admin-users/admin-users.tsx": "a30e4e6"
+      }
+    },
+    {
+      "id": "v078",
+      "date": "2026-08-27",
+      "title": "单词数据入库与多端学习应用：脚本化清洗、drizzle 建表，与两项目共库的迁移隔离",
+      "covered_sources": {
+        "E:/ai-coding/danci/README.md": "c68eb6a",
+        "E:/ai-coding/danci/danci-admin/scripts/json2csv.mjs": "447988b",
+        "E:/ai-coding/danci/danci-admin/lib/schema.ts": "d301b13",
+        "E:/ai-coding/danci/danci-admin/lib/books.ts": "d301b13",
+        "E:/ai-coding/danci/danci-admin/app/api/books/route.ts": "d301b13",
+        "E:/ai-coding/danci/danci-admin/app/api/books/[id]/route.ts": "d301b13",
+        "E:/ai-coding/danci/danci-admin/app/books/books.tsx": "d301b13",
+        "E:/ai-coding/danci/danci-admin/drizzle/0001_striped_killraven.sql": "d301b13",
+        "E:/ai-coding/danci/nextjs-typescript-starter/app/schema.ts": "ace6c40",
+        "E:/ai-coding/danci/nextjs-typescript-starter/app/db.ts": "ace6c40",
+        "E:/ai-coding/danci/nextjs-typescript-starter/drizzle.config.ts": "ace6c40",
+        "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0000_complex_screwball.sql": "ace6c40",
+        "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0001_known_miracleman.sql": "ace6c40",
+        "E:/ai-coding/danci/nextjs-typescript-starter/docs/proposal.md": "341db6c",
+        "E:/ai-coding/danci/nextjs-typescript-starter/docs/design.md": "341db6c"
       }
     }
   ]

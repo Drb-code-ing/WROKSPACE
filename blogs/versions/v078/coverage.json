@@ -1,0 +1,21 @@
+{
+  "version": "v078",
+  "title": "单词数据入库与多端学习应用：脚本化清洗、drizzle 建表，与两项目共库的迁移隔离",
+  "covered_sources": {
+    "E:/ai-coding/danci/README.md": "c68eb6a",
+    "E:/ai-coding/danci/danci-admin/scripts/json2csv.mjs": "447988b",
+    "E:/ai-coding/danci/danci-admin/lib/schema.ts": "d301b13",
+    "E:/ai-coding/danci/danci-admin/lib/books.ts": "d301b13",
+    "E:/ai-coding/danci/danci-admin/app/api/books/route.ts": "d301b13",
+    "E:/ai-coding/danci/danci-admin/app/api/books/[id]/route.ts": "d301b13",
+    "E:/ai-coding/danci/danci-admin/app/books/books.tsx": "d301b13",
+    "E:/ai-coding/danci/danci-admin/drizzle/0001_striped_killraven.sql": "d301b13",
+    "E:/ai-coding/danci/nextjs-typescript-starter/app/schema.ts": "ace6c40",
+    "E:/ai-coding/danci/nextjs-typescript-starter/app/db.ts": "ace6c40",
+    "E:/ai-coding/danci/nextjs-typescript-starter/drizzle.config.ts": "ace6c40",
+    "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0000_complex_screwball.sql": "ace6c40",
+    "E:/ai-coding/danci/nextjs-typescript-starter/drizzle/0001_known_miracleman.sql": "ace6c40",
+    "E:/ai-coding/danci/nextjs-typescript-starter/docs/proposal.md": "341db6c",
+    "E:/ai-coding/danci/nextjs-typescript-starter/docs/design.md": "341db6c"
+  }
+}
