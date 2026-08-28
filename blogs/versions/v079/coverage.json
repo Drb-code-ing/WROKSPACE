@@ -1,0 +1,9 @@
+{
+  "version": "v079",
+  "title": "Milvus 向量数据库：AI 日记本的三组件部署、集合字段建模与余弦索引",
+  "covered_sources": {
+    "E:/WROKSPACE/backend/docker/milvus-docker/readme.md": "3104f16",
+    "E:/WROKSPACE/backend/docker/milvus-docker/index.mjs": "3104f16",
+    "E:/WROKSPACE/backend/docker/milvus-docker/milvus-standalone-docker-compose.yml": "3104f16"
+  }
+}
