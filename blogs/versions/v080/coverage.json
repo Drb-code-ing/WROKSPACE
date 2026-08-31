@@ -1,0 +1,18 @@
+{
+  "version": "v080",
+  "title": "全栈项目部署到公网：五步部署链路、DNS 与安全组，和 nginx 反向代理的分流",
+  "covered_sources": {
+    "E:/WROKSPACE/backend/online/readme.md": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/pages/Home.jsx": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleCard.jsx": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleForm.jsx": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/WaterfallLayout.jsx": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/hooks/useInfiniteScroll.js": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/services/api.js": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/app.ts": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/config/db.ts": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/controllers/capsuleController.ts": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/routes/capsule.ts": "cf31ee6",
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/types/index.ts": "cf31ee6"
+  }
+}

@@ -1114,6 +1114,66 @@
       "hash": "3104f16",
       "path": "E:/WROKSPACE/backend/docker/milvus-docker/milvus-standalone-docker-compose.yml",
       "label": "Milvus standalone 三组件 compose / etcd / minio / healthcheck"
+    },
+    "E:/WROKSPACE/backend/online/readme.md": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/readme.md",
+      "label": "全栈项目部署全流程 / 运维笔记"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/pages/Home.jsx": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/pages/Home.jsx",
+      "label": "Future Capsule 首页 / 瀑布流 + FAB + 错误横幅"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleCard.jsx": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleCard.jsx",
+      "label": "时间胶囊卡片 / 倒计时解锁 / ref 防重复触发"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleForm.jsx": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleForm.jsx",
+      "label": "新建胶囊表单 / 本地时间最小值与校验"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/WaterfallLayout.jsx": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/WaterfallLayout.jsx",
+      "label": "瀑布流布局 / 响应式列数 / index%columns 分列"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/hooks/useInfiniteScroll.js": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/hooks/useInfiniteScroll.js",
+      "label": "无限滚动 Hook / 分页追加 / loadingRef 并发闸门 / refresh"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/services/api.js": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/services/api.js",
+      "label": "axios API 层 / VITE_API_URL 部署切换"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/app.ts": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/app.ts",
+      "label": "Express 入口 / 中间件 / 启动前 testConnection"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/config/db.ts": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/config/db.ts",
+      "label": "MySQL 连接池 / 连接测试错误分类"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/controllers/capsuleController.ts": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/controllers/capsuleController.ts",
+      "label": "胶囊控制器 / 分页 / 服务端 is_unlocked 解锁逻辑"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/routes/capsule.ts": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/routes/capsule.ts",
+      "label": "胶囊路由 / GET POST"
+    },
+    "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/types/index.ts": {
+      "hash": "cf31ee6",
+      "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/types/index.ts",
+      "label": "胶囊类型契约 / content: string | null / PaginatedResponse"
     }
   },
   "versions": [
@@ -1911,6 +1971,25 @@
         "E:/WROKSPACE/backend/docker/milvus-docker/readme.md": "3104f16",
         "E:/WROKSPACE/backend/docker/milvus-docker/index.mjs": "3104f16",
         "E:/WROKSPACE/backend/docker/milvus-docker/milvus-standalone-docker-compose.yml": "3104f16"
+      }
+    },
+    {
+      "id": "v080",
+      "date": "2026-08-31",
+      "title": "全栈项目部署到公网：五步部署链路、DNS 与安全组，和 nginx 反向代理的分流",
+      "covered_sources": {
+        "E:/WROKSPACE/backend/online/readme.md": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/pages/Home.jsx": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleCard.jsx": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/CapsuleForm.jsx": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/components/WaterfallLayout.jsx": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/hooks/useInfiniteScroll.js": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/client/src/services/api.js": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/app.ts": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/config/db.ts": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/controllers/capsuleController.ts": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/routes/capsule.ts": "cf31ee6",
+        "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/types/index.ts": "cf31ee6"
       }
     }
   ]
