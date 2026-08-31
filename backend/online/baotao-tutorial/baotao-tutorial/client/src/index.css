@@ -1,0 +1,368 @@
+/* Neobrutalism Geek Theme */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-card: #1a1a1a;
+  --accent: #00ff00;
+  --accent-dim: #00cc00;
+  --text-primary: #ffffff;
+  --text-secondary: #00ff00;
+  --border: #00ff00;
+  --shadow: #00ff00;
+  --error: #ff3333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom: 3px solid var(--accent);
+}
+
+.header h1 {
+  color: var(--accent);
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Waterfall Layout */
+.waterfall-container {
+  display: flex;
+  gap: 16px;
+}
+
+.waterfall-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Capsule Card */
+.capsule-card {
+  background: var(--bg-card);
+  border: 3px solid var(--accent);
+  box-shadow: 4px 4px 0 var(--accent);
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.capsule-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+.capsule-card.locked {
+  border-color: var(--accent-dim);
+  box-shadow: 4px 4px 0 var(--accent-dim);
+}
+
+.capsule-content {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  word-break: break-word;
+}
+
+.capsule-locked {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.lock-icon {
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.5; }
+}
+
+.countdown {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.capsule-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--accent);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.capsule-author {
+  color: var(--accent);
+}
+
+.capsule-time {
+  opacity: 0.8;
+}
+
+/* FAB Button */
+.fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 64px;
+  height: 64px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: 3px solid var(--accent);
+  box-shadow: 4px 4px 0 var(--bg-primary);
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fab:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--bg-primary);
+}
+
+.fab:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--bg-primary);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border: 3px solid var(--accent);
+  box-shadow: 8px 8px 0 var(--accent);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 3px solid var(--accent);
+}
+
+.modal-header h2 {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.close-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* Form */
+form {
+  padding: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  color: var(--text-primary);
+  padding: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.error-message {
+  background: var(--error);
+  color: var(--text-primary);
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 2px solid var(--error);
+}
+
+.submit-btn {
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: 3px solid var(--accent);
+  padding: 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--bg-primary);
+  transition: all 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--bg-primary);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading & States */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.loading span {
+  animation: blink 1s infinite;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-state p:first-child {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.end-message {
+  text-align: center;
+  padding: 40px;
+  color: var(--accent);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.error-banner {
+  background: var(--error);
+  color: var(--text-primary);
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.error-banner button {
+  background: var(--text-primary);
+  color: var(--error);
+  border: none;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .fab {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    bottom: 24px;
+    right: 24px;
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+}
