@@ -24,3 +24,12 @@ Memory 截断(slice(-4))、总结、检索
 调用大模型，返回(AIMMessage) 直接添加到history
 getMessages 来获取所有message 每个message 对象
 HumanMessage/AIMMessage/ToolMessage, 实例 type content 等属性
+
+## 长时记忆
+- 文件
+- 向量数据库
+
+## memory 逻辑
+- 存储逻辑
+  内存 文件 数据库
+- 管理逻辑
