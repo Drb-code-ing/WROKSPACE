@@ -1,0 +1,12 @@
+{
+  "version": "v081",
+  "title": "Agent 记忆管理：InMemory 短期记忆、文件持久化，与上下文截断的取舍",
+  "covered_sources": {
+    "E:/WROKSPACE/ai/agent/memory/readme.md": "1eb2823",
+    "E:/WROKSPACE/ai/agent/memory/history-test.mjs": "d6158ff",
+    "E:/WROKSPACE/ai/agent/memory/history-test2.mjs": "1eb2823",
+    "E:/WROKSPACE/ai/agent/memory/history-test3.mjs": "1eb2823",
+    "E:/WROKSPACE/ai/agent/memory/truncation-memory.mjs": "1eb2823",
+    "E:/WROKSPACE/ai/agent/memory/chat_history.json": "1eb2823"
+  }
+}

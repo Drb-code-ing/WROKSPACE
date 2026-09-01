@@ -1174,6 +1174,36 @@
       "hash": "cf31ee6",
       "path": "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/types/index.ts",
       "label": "胶囊类型契约 / content: string | null / PaginatedResponse"
+    },
+    "E:/WROKSPACE/ai/agent/memory/readme.md": {
+      "hash": "1eb2823",
+      "path": "E:/WROKSPACE/ai/agent/memory/readme.md",
+      "label": "Agent 记忆原理 / LLM 无状态 / 存储与管理逻辑"
+    },
+    "E:/WROKSPACE/ai/agent/memory/history-test.mjs": {
+      "hash": "d6158ff",
+      "path": "E:/WROKSPACE/ai/agent/memory/history-test.mjs",
+      "label": "InMemoryChatMessageHistory / 临时记忆 / 两轮对话"
+    },
+    "E:/WROKSPACE/ai/agent/memory/history-test2.mjs": {
+      "hash": "1eb2823",
+      "path": "E:/WROKSPACE/ai/agent/memory/history-test2.mjs",
+      "label": "FileSystemChatMessageHistory / 文件持久化 / 1.x 改名"
+    },
+    "E:/WROKSPACE/ai/agent/memory/history-test3.mjs": {
+      "hash": "1eb2823",
+      "path": "E:/WROKSPACE/ai/agent/memory/history-test3.mjs",
+      "label": "从文件恢复历史 / 跨重启接续对话"
+    },
+    "E:/WROKSPACE/ai/agent/memory/truncation-memory.mjs": {
+      "hash": "1eb2823",
+      "path": "E:/WROKSPACE/ai/agent/memory/truncation-memory.mjs",
+      "label": "上下文截断 / slice 按条数 / trimMessages 按 token"
+    },
+    "E:/WROKSPACE/ai/agent/memory/chat_history.json": {
+      "hash": "1eb2823",
+      "path": "E:/WROKSPACE/ai/agent/memory/chat_history.json",
+      "label": "文件持久化产物 / 按 sessionId 分组的存储结构"
     }
   },
   "versions": [
@@ -1990,6 +2020,19 @@
         "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/controllers/capsuleController.ts": "cf31ee6",
         "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/routes/capsule.ts": "cf31ee6",
         "E:/WROKSPACE/backend/online/baotao-tutorial/baotao-tutorial/server/src/types/index.ts": "cf31ee6"
+      }
+    },
+    {
+      "id": "v081",
+      "date": "2026-09-01",
+      "title": "Agent 记忆管理：InMemory 短期记忆、文件持久化，与上下文截断的取舍",
+      "covered_sources": {
+        "E:/WROKSPACE/ai/agent/memory/readme.md": "1eb2823",
+        "E:/WROKSPACE/ai/agent/memory/history-test.mjs": "d6158ff",
+        "E:/WROKSPACE/ai/agent/memory/history-test2.mjs": "1eb2823",
+        "E:/WROKSPACE/ai/agent/memory/history-test3.mjs": "1eb2823",
+        "E:/WROKSPACE/ai/agent/memory/truncation-memory.mjs": "1eb2823",
+        "E:/WROKSPACE/ai/agent/memory/chat_history.json": "1eb2823"
       }
     }
   ]
