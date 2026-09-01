@@ -1,0 +1,19 @@
+{
+  "name": "memory",
+  "version": "1.0.0",
+  "description": "Agent = LLM + Harness(tool + RAG + memory + ...)\r 个模型扩展Tool，不只是回答问题，干活\r RAG，基于query 获取向量数据库的相关知识放入prompt\r 都依赖**Memory**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@langchain/community": "^1.1.28",
+    "@langchain/core": "^1.2.5",
+    "@langchain/openai": "^1.5.4",
+    "dotenv": "^17.4.2"
+  }
+}
