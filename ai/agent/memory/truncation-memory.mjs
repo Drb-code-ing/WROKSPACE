@@ -2,7 +2,7 @@
 import { InMemoryChatMessageHistory } from '@langchain/core/chat_history'
 import {
   HumanMessage, 
-  SystemMessage,
+  AIMessage,
   trimMessages // langchain 提供的截断函数，裁剪老的，保留新的
 } from '@langchain/core/messages'
 import { getEncoding } from 'js-tiktoken' // 用于计算 token 开销
@@ -26,7 +26,7 @@ async function messageCountTruncation() {
     if (msg.type === 'human') {
       await history.addMessage(new HumanMessage(msg.content))
     } else {
-      await history.addMessage(new SystemMessage(msg.content))
+      await history.addMessage(new AIMessage(msg.content))
     }
   }
 
@@ -65,25 +65,29 @@ async function tokenCountTruncation() {
   if (msg.type === 'human') {
     await history.addMessage(new HumanMessage(msg.content))
   } else {
-    await history.addMessage(new SystemMessage(msg.content))
+    await history.addMessage(new AIMessage(msg.content))
   }
  }
 
  let allMessages = await history.getMessages()
  const enc = getEncoding('cl100k_base') // 编码
  // 最近的，content 定制的token 长度计算 截取 
- const trimmedMessages = trimMessages(allMessages, {
-  maxLength: maxTokens,
+ const trimmedMessages = await trimMessages(allMessages, {
+  maxTokens: maxTokens, // 注意是 maxTokens，不是 maxLength（那是 Python 版写法）
   // 自定义 token 计算函数，不同模型的 token 计算方式不同
   // 二分查找，找到最大的消息数量，使 token 数量不超过 maxTokens
   // 这里假设 token 数量是单调递增的，所以可以使用二分查找来优化
   tokenCounter: async (msgs) => countTokens(msgs, enc),
-  strategy: 'latest',
+  strategy: 'last',
  })
+
+ console.log(trimmedMessages, '-----------------------')
+ const totalTokens = countTokens(trimmedMessages, enc)
+ console.log(`保留 token 数量：${totalTokens}`)
 }
 
 async function runAll() {
-  await messageCountTruncation() // 按消息数量截断 简单 slice
+  //await messageCountTruncation() // 按消息数量截断 简单 slice
   await tokenCountTruncation() // 按 token 数量截断 复杂 计算token开销
 }
 runAll()
