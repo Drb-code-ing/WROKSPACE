@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Client Demo</title>
+</head>
+<body>
+  <h1>WebSocket Client</h1>
+
+  <script>
+    // 连接websocket server
+    // http:// -> ws://
+    const ws = new WebSocket('ws://localhost:8080/ws')
+    // 监听websocket 连接事件
+    ws.onopen = () => {
+      console.log('websocket connected')
+      ws.send('hello server')
+    }
+    // 监听websocket 消息事件
+    ws.onmessage = (event) => {
+      console.log('websocket received message:', event.data)
+      // 不能在这里 send，否则服务器收到后又回复，形成无限循环
+      // ws.send('hello client')
+    }
+    // 监听websocket 关闭事件
+    ws.onclose = () => {
+      console.log('websocket closed')
+    }
+  </script>
+</body>
+</html>
