@@ -23,6 +23,38 @@ const StateAnnotation = Annotation.Root({
 const router = (state) => {
   const isMath = /[+\-*/]/.test(state.query)
   return {
-    
+    route: isMath ? 'math' : 'chat',
   }
 }
+
+const mathNode = (state) => {
+  try {
+    return { answer: String(eval(state.query)) }
+  } catch (error) {
+    return { answer: '数学表达式有误' }
+  }
+}
+
+const chatNode = (state) => {
+  return { answer: `你说的是：${state.query}` }
+}
+
+const graph = new StateGraph(StateAnnotation)
+  .addNode('router', router)
+  .addNode('math', mathNode)
+  .addNode('chat', chatNode)
+  .addEdge(START, 'router')
+  .addConditionalEdges('router', (state) => state.route, {
+    math: 'math',
+    chat: 'chat',
+  })
+  .addEdge('math', END)
+  .addEdge('chat', END)
+  .compile()
+ 
+const drawable = await graph.getGraphAsync()
+const mermaid = drawable.drawMermaid({ withStyle: true })
+// console.log(mermaid)
+
+const result = await graph.invoke({ query: '1+2' })
+console.log(result)
