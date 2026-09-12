@@ -34,6 +34,12 @@ const GraphState = Annotation.Root({
   k: Annotation,
   strategy: Annotation,
   routeReason: Annotation,
+  subQuestions: Annotation,
+  nextSubIdx: Annotation, // 下一个子问题的索引 用于跳出循环
+  currentQuery: Annotation, // 当前子问题
+  retrieveCount: Annotation, // 检索次数
+  maxRetrievals: Annotation, // 最大检索次数
+  plannedNext: Annotation, // 计划下一个子问题
   documents: Annotation,
   generation: Annotation
 })
@@ -42,7 +48,12 @@ const RouteSchema = z.object({
   // 枚举
   strategy: z.enum(["simple", "complex"]),
   reason: z.string()
-});
+})
+
+const DecomposeSchema = z.object({
+  sub_questions: z.array(z.string().min(1)).max(8), // max 加在数组上：最多 8 条（原写法限的是每条 8 个字）
+  reason: z.string()
+})
 // llm 完成问题的分辨
 // RouteSchema 结构化输出约束
 const routeQuestionNode = async (state) => {
@@ -97,6 +108,42 @@ const directAnswerNode = async (state) => {
   }
 }
 
+// plan llm + prompt
+const decomposeQuestionNode = async (state) => {
+  console.log('___DECOMPOSE-QUESTION___')
+  const decomposer = model.withStructuredOutput(DecomposeSchema, { method: "jsonMode" })
+  const out = await decomposer.invoke(`
+   你是《天龙八部》对多跳回答的【子问题拆解器】
+   用户原始问题：
+   ${state.question}
+
+   任务：将问题拆成**有序**子问题列表 sub_questions，用于**依次向量检索**。要求：
+   1. 链式推理、多层关系、应果先后的问题，必须拆成多条；单跳即可答的也可只输出1条。
+   2. 每条子问题必须是**可独立检索**的完整中文问句，**禁止**使用「他/她/此人/上文」等指代；可写全人物名与事件名。
+   3. 顺序必须符合推理链：先搞清前置实体/事实，再查后续结论。
+   4. **不要**把整句原题原样复制成唯一一条（除非确实无法拆分）；不要拆成过碎的关键词列表。
+   5. 输出 1～8 条即可。
+
+   请只输出 JSON 对象，格式为：
+   {"sub_questions": ["子问题1", "子问题2", ...], "reason": "拆解理由"}
+  `)
+  // 去除空格，排除不需要的question
+  const subQuestions = out.sub_questions.map((s) => s.trim()).filter(Boolean)
+  if(subQuestions.length === 0) {
+    throw new Error("decompose_question: sub_questions 为空")
+  }
+
+  console.log(`拆解${subQuestions.length}条子问题(${out.reason || "无理由"})`)
+  subQuestions.forEach((q, i) => {
+    console.log(`[${i+1}] ${q}`)
+  })
+  return {
+    subQuestions,
+    nextSubIdx: 0,
+    currentQuery: subQuestions[0],
+  }
+}
+
 let vectorStore
 async function retrieveRelevantContent(question, k=5) {
   try {
@@ -117,13 +164,52 @@ async function retrieveRelevantContent(question, k=5) {
   }
 }
 
+// 合并去重
+function mergeUnique(existingDocs, newDocs) {
+  const map = new Map()
+  for(const d of [...existingDocs, ...newDocs]) {
+    const key = String(d.id)
+    const prev = map.get(key)
+    if(!prev || +d.score > +prev.score) {
+      map.set(key, d)
+    }
+  }
+  return [...map.values()].sort((a, b) => +b.score - +a.score)
+}
 
 const retrieveNode = async (state) => {
-  const documents = await retrieveRelevantContent(state.question, state.k)
+  const subs = state.subQuestions ?? []
+  const idx = state.nextSubIdx ?? 0
+  const q = subs[idx]?.trim() // 当前子问题
+
+  if(!q) {
+    throw new Error(`retrieve: 子问题下标${idx} 无有效文本，共${subs.length}条`)
+  }
+  const round = (state.retrieveCount ?? 0) + 1
+  console.log(`------第${round}轮 子问题：${idx+1}/${subs.length}------`)
+  console.log(`------查询：${q}------`)
+  const newDocs = await retrieveRelevantContent(q, state.k)
+  // 多轮检索可能有重复，浪费资源
+  // 重复可能让llm 认为我们在强调，错觉
+  const merged = mergeUnique(state.documents ?? [], newDocs)
+  if(newDocs.length === 0) {
+    console.log(`第${round}轮 无新文档`)
+  } else {
+    console.log(`第${round}轮 新文档${newDocs.length}条, 合并去重后${merged.length}条`)
+    newDocs.forEach((item, i) => {
+      const preview = item.content.length > 120
+      ? `${item.content.substring(0, 120)}...`
+      : item.content
+      console.log(`[R${i+1}] score=${+item.score.toFixed(4)} chapter=${item.chapter_num} index=${item.index}`)
+      console.log(`${preview}`)
+    })
+  }
+
   return {
-    question: state.question,
-    k: state.k,
-    documents
+    documents: merged,
+    retrieveCount: round,
+    nextSubIdx: idx + 1,
+    currentQuery: q,
   }
 }
 
@@ -161,20 +247,35 @@ const generateNode = async (state) => {
 }
 
 const decideNext = (state) => {
-  return state.strategy === "simple" ? "direct_answer" : "retrieve"
+  return state.strategy === "simple" ? "direct_answer" : "decompose_question"
+}
+
+// 多跳循环的判断：还有子问题 且 未超检索上限 → 继续 retrieve；否则 → 生成
+const routeAfterRetrieve = (state) => {
+  const subs = state.subQuestions ?? []
+  const idx = state.nextSubIdx ?? 0
+  const count = state.retrieveCount ?? 0
+  const max = state.maxRetrievals ?? subs.length
+  if (idx < subs.length && count < max) return "retrieve"
+  return "rag_generate"
 }
 
 const graph = new StateGraph(GraphState)
   .addNode("route_question", routeQuestionNode)
   .addNode("direct_answer", directAnswerNode)
+  .addNode("decompose_question", decomposeQuestionNode)
   .addNode("retrieve", retrieveNode)
   .addNode("rag_generate", generateNode)
   .addEdge(START, "route_question")
   .addConditionalEdges("route_question", decideNext, {
     direct_answer: "direct_answer",
-    retrieve: "retrieve"
+    decompose_question: "decompose_question"
   })
-  .addEdge("retrieve", "rag_generate")
+  .addEdge("decompose_question", "retrieve")
+  .addConditionalEdges("retrieve", routeAfterRetrieve, {
+    retrieve: "retrieve",          // 还有子问题 → 自循环回到 retrieve
+    rag_generate: "rag_generate"   // 子问题查完 → 去生成
+  })
   .addEdge("rag_generate", END)
   .addEdge("direct_answer", END)
   .compile()
@@ -184,7 +285,7 @@ const mermaid = drawable.drawMermaid({ withStyle: true })
 console.log(mermaid)
 
 async function main() {
-  const question = "《天龙八部》中【四大恶人】排行第二的是谁呢？此人之子在身世揭晓前，在江湖上的身份是什么"; // complex：需要检索小说情节（与 rag-mutihop 同题对比）
+  const question = "《天龙八部》中【四大恶人】排行第二的是谁呢？此人之子在身世揭晓前，在江湖上的身份是什么" // complex：需要检索小说情节
   const k = 5
   vectorStore = await Milvus.fromExistingCollection(embeddings, {
     collectionName: "ebook_collection",
@@ -209,6 +310,10 @@ async function main() {
       question,
       k, // 检索数量
       routeReason: "",
+      subQuestions: [],
+      nextSubIdx: 0,
+      retrieveCount: 0,
+      maxRetrievals: 8, // 安全上限：防止拆解异常导致无限循环
       documents: [],
       generation: ""
     })
