@@ -51,7 +51,7 @@ const RouteSchema = z.object({
 })
 
 const DecomposeSchema = z.object({
-  sub_questions: z.array(z.string().min(1)).max(8), // max 加在数组上：最多 8 条（原写法限的是每条 8 个字）
+  sub_questions: z.array(z.string()).min(1).max(8), // max 加在数组上：最多 8 条（原写法限的是每条 8 个字）
   reason: z.string()
 })
 // llm 完成问题的分辨
@@ -80,7 +80,13 @@ const routeQuestionNode = async (state) => {
     question: state.question,
     k: state.k,
     strategy: route.strategy,
-    routeReason: route.reason
+    routeReason: route.reason,
+    retrieveCount: 0, // 检索次数
+    maxRetrievals: state.maxRetrievals ?? 8, // 最大检索次数
+    documents: [],
+    subQuestions: [],
+    nextSubIdx: 0, // 下一个子问题的索引 用于跳出循环
+    currentQuery: '',
   }
 }
 
@@ -246,12 +252,12 @@ const generateNode = async (state) => {
   return { generation }
 }
 
-const decideNext = (state) => {
+const afterRoute = (state) => {
   return state.strategy === "simple" ? "direct_answer" : "decompose_question"
 }
 
 // 多跳循环的判断：还有子问题 且 未超检索上限 → 继续 retrieve；否则 → 生成
-const routeAfterRetrieve = (state) => {
+const planNextStepNode = (state) => {
   const subs = state.subQuestions ?? []
   const idx = state.nextSubIdx ?? 0
   const count = state.retrieveCount ?? 0
@@ -267,12 +273,12 @@ const graph = new StateGraph(GraphState)
   .addNode("retrieve", retrieveNode)
   .addNode("rag_generate", generateNode)
   .addEdge(START, "route_question")
-  .addConditionalEdges("route_question", decideNext, {
+  .addConditionalEdges("route_question", afterRoute, {
     direct_answer: "direct_answer",
     decompose_question: "decompose_question"
   })
   .addEdge("decompose_question", "retrieve")
-  .addConditionalEdges("retrieve", routeAfterRetrieve, {
+  .addConditionalEdges("retrieve", planNextStepNode, {
     retrieve: "retrieve",          // 还有子问题 → 自循环回到 retrieve
     rag_generate: "rag_generate"   // 子问题查完 → 去生成
   })

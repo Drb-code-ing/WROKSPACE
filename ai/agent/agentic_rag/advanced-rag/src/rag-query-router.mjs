@@ -184,7 +184,7 @@ const mermaid = drawable.drawMermaid({ withStyle: true })
 console.log(mermaid)
 
 async function main() {
-  const question = "《天龙八部》中【四大恶人】排行第二的是谁呢？此人之子在身世揭晓前，在江湖上的身份是什么"; // complex：需要检索小说情节（与 rag-mutihop 同题对比）
+  const question = "阿朱和乔峰是怎么认识的？"; // complex：需要检索小说情节
   const k = 5
   vectorStore = await Milvus.fromExistingCollection(embeddings, {
     collectionName: "ebook_collection",
