@@ -1,0 +1,8 @@
+{
+  "version": "v082",
+  "title": "ES 关键词检索：倒排索引、ik 分词与 BM25——给 RAG 装上精确匹配这条腿",
+  "covered_sources": {
+    "E:/WROKSPACE/ai/agent/agentic_rag/readme.md": "b93816f",
+    "E:/WROKSPACE/ai/agent/agentic_rag/elastic-search/readme.md": "b93816f"
+  }
+}

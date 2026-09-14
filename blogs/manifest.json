@@ -1204,6 +1204,16 @@
       "hash": "1eb2823",
       "path": "E:/WROKSPACE/ai/agent/memory/chat_history.json",
       "label": "文件持久化产物 / 按 sessionId 分组的存储结构"
+    },
+    "E:/WROKSPACE/ai/agent/agentic_rag/readme.md": {
+      "hash": "b93816f",
+      "path": "E:/WROKSPACE/ai/agent/agentic_rag/readme.md",
+      "label": "Agentic RAG 总纲 / 混合检索与倒排索引"
+    },
+    "E:/WROKSPACE/ai/agent/agentic_rag/elastic-search/readme.md": {
+      "hash": "b93816f",
+      "path": "E:/WROKSPACE/ai/agent/agentic_rag/elastic-search/readme.md",
+      "label": "ES 关键词检索 / 倒排索引、mapping 与 ik 分词器"
     }
   },
   "versions": [
@@ -2033,6 +2043,15 @@
         "E:/WROKSPACE/ai/agent/memory/history-test3.mjs": "1eb2823",
         "E:/WROKSPACE/ai/agent/memory/truncation-memory.mjs": "1eb2823",
         "E:/WROKSPACE/ai/agent/memory/chat_history.json": "1eb2823"
+      }
+    },
+    {
+      "id": "v082",
+      "date": "2026-09-14",
+      "title": "ES 关键词检索：倒排索引、ik 分词与 BM25——给 RAG 装上精确匹配这条腿",
+      "covered_sources": {
+        "E:/WROKSPACE/ai/agent/agentic_rag/readme.md": "b93816f",
+        "E:/WROKSPACE/ai/agent/agentic_rag/elastic-search/readme.md": "b93816f"
       }
     }
   ]
