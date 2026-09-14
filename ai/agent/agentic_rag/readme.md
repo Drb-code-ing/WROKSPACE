@@ -43,3 +43,50 @@ langgraph 设计一个graph表示 Agentic RAG 流程
 本地知识库没有的内容，不会主动去网络搜索补充，容易编造答案
 
 网络搜索结果，增强prompt
+混合检索 = 向量数据库 + 网络搜索 + elastic search
+
+## 倒排索引
+ES 相比于MySql 最大的核心优势，基于**倒排索引**底层机制
+
+普通MySql 使用的是基于正向索引：
+以一行为单位存储完整数据，检索文本内容时，需要逐行遍历，逐字匹配内容。
+数据量越大，文本越长，模糊/文本搜索就越慢，性能越差，不适合打范围关键词检索。
+ES 使用倒排索引机制：
+正向索引：文档 -> 关键词
+会自动对text 类型字段进行分词处理，才结尾一个个独立词条，再以词条为核心，反向关联所有包含该词条的文档
+倒排索引：关键词 -> 文档
+
+用户输入关键词检索，ES 只需通过词条快速匹配相关的文档，无需遍历全表，实现**海量**文本下**毫秒**级的全文检索
+
+- 基于请求
+  GET 查询 /_cat/indices
+  输出所有索引  table 组织并显示
+- 创建索引 PUT /article
+  建表一样 mappings  schema
+  properties 和搜索相关各个字段
+  title, content 分词  type: text
+  author  不分词  type: keyword
+- 自动去分词建索引 将ID放入列表
+  keyword 类型字段 不分词，整值精确匹配
+  type = "text"  type = "keyword"
+  **全文检索** 加 **精确过滤**
+
+- 检索API
+  GET /article/_search
+  {
+    "query": {
+      "match": {
+        "title": "高血糖"
+      }
+    }
+  }
+
+- DSL
+  MySql SQL
+  Milvus embedding
+  DSL 全称 Domain-Specific Language 领域特定语言
+  Elastic Search   http 查询
+
+- ik_max_word + ik_smart 中文友好的两种分词器
+  存的时候 ik_max_word 尽量多存索引，粒度更细
+  检索的时候 ik_smart
