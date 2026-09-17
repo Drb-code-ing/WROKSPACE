@@ -2053,6 +2053,19 @@
         "E:/WROKSPACE/ai/agent/agentic_rag/readme.md": "b93816f",
         "E:/WROKSPACE/ai/agent/agentic_rag/elastic-search/readme.md": "b93816f"
       }
+    },
+    {
+      "id": "v083",
+      "date": "2026-09-17",
+      "title": "Agentic RAG 四级进化：路由分流、多跳拆解与联网兜底——把死板的\"检索-生成\"升级成会思考的闭环",
+      "covered_sources": {
+        "E:/WROKSPACE/ai/agent/agentic_rag/readme.md": "69c7554",
+        "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/ebook-writter.mjs": "ac7926a",
+        "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/native-rag.mjs": "ac7926a",
+        "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/rag-query-router.mjs": "5499c90",
+        "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/rag-mutihop.mjs": "5499c90",
+        "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/rag-webfallback.mjs": "69c7554"
+      }
     }
   ]
 }
