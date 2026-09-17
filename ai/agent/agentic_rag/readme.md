@@ -89,4 +89,6 @@ ES 使用倒排索引机制：
 
 - ik_max_word + ik_smart 中文友好的两种分词器
   存的时候 ik_max_word 尽量多存索引，粒度更细
-  检索的时候 ik_smart
+  检索的时候 ik_smart 尽量少存索引，粒度更粗
+  适合中文文本检索
+
