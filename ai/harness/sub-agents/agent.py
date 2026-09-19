@@ -1,4 +1,5 @@
 #系统模块
+from asyncio import Handle
 import os
 # 写爬虫？爬取到内容，找我们需要的部分，用正则
 import re
@@ -233,6 +234,47 @@ PARENT_TOOLS = CHLD_TOOLD + [
   }
 ]
 
+
+# 启动子agent，传入用户认为文本，返回执行结果
+def run_subagent(prompt: str) -> str:
+  sub_messages = [{"role": "user", "content": prompt}]
+  # 子Agent 循环上限30次  _ 表示不使用循环变量，占位
+  for _ in range(30):
+    response = client.chat.completions.create(
+      model = "deepseek-v4-flash", # 修复：Model 变量不存在，直接用模型名字符串
+      messages = [{"role": "system", "content": SUB_SYSTEM}] + sub_messages,
+      tools = CHLD_TOOLD,
+      max_tokens = 8000,
+    )
+    # 取出模型第一条返回对象
+    msg = response.choices[0].message
+    # 把子Agent 回复添加到上下文 model_dump() 把消息转换为字典
+    sub_messages.append(msg.model_dump())
+
+    if response.choices[0].finish_reason != "tool_calls":
+      break
+
+    results = []
+    for tool_call in msg.tool_calls:
+      func_name = tool_call.function.name
+      # 解析参数为 Python 字典
+      args = json.loads(tool_call.function.arguments)
+      handler = TOOL_HANDLERS.get(func_name) # get拿不到返回 None，而不是报错
+      # 调用工具函数  ** 相当于 ... 展开运算符
+      output = handler(**args) if handler else f"Unknown tool: {func_name}"
+      results.append({
+        "role": "tool",
+        "tool_call_id": tool_call.id,
+        "content": str(output)[:50000],
+      })
+    # 工具执行结果批量回填子Agent 上下文（放在 for 循环外，避免重复追加）
+    sub_messages.extend(results)
+
+  # 循环结束（模型不再要求调工具），返回子Agent 的最终回答
+  return msg.content or "(no summary)"
+
+
+
 def agent_loop(messages: list):
   # Agent 主循环：问模型 → 模型要调工具就执行 → 结果回传 → 再问模型，直到不用调工具
   while True:
@@ -243,13 +285,11 @@ def agent_loop(messages: list):
       max_tokens = 8000,
     )
     msg = response.choices[0].message
-    print(msg.content, "??")
     # 把Agent 回复添加到上下文
-    # 递归调用，继续处理子Agent 回复
     messages.append(msg.model_dump())
     # finish_reason == "tool_calls" 表示模型想调工具；否则就是最终回答，循环结束
     if response.choices[0].finish_reason != "tool_calls":
-      return
+      return msg.content # 把最终回答返回给调用方
     results = []
     # Tool Calls（tool_calls 可能是 None，先判空）
     msg = response.choices[0].message
@@ -260,6 +300,30 @@ def agent_loop(messages: list):
         func = tool_call.function
         # 参数是文本 '{"command": "ls"}'，解析成 Python 字典才能用
         args = json.loads(func.arguments)
+        # 主Agent 分配任务给子Agent
+        if func.name == "task":
+          # 拿到description字段，没有就默认是"subtask"
+          desc = args.get("description", "subtask")
+          prompt = args.get("prompt", "")
+          print(f"> task({desc}): {prompt[:80]}")
+          # 调用子Agent 执行任务
+          output = run_subagent(prompt)
+        else:
+          # 主Agent 也可以自己做任务
+          handler = TOOL_HANDLERS.get(func.name)
+          output = handler(**args) if handler else f"Unknown tool: {func.name}"
+
+        
+        results.append({
+          "role": "tool",
+          "tool_call_id": tool_call.id,
+          "content": str(output),
+        })
+    
+    # 把子Agent 回复添加到上下文
+    messages.extend(results)
+
+
 
 # 主Agent 主循环  处理用户输入
 if __name__ == "__main__":
@@ -273,9 +337,10 @@ if __name__ == "__main__":
     # ctrl + d  ctrl + c  触发 EOFError、KeyboardInterrupt
     except (EOFError, KeyboardInterrupt):
       break
-    print(query)
     if query.strip().lower() in ("q", "exit", ""):
       break
     history.append({"role": "user", "content": query})
-    agent_loop(history)
+    # 接住 agent_loop 返回的最终回答并打印
+    answer = agent_loop(history)
+    print(f"\n[final] {answer}\n")
 

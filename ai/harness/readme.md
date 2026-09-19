@@ -78,3 +78,6 @@ AI Agent 开发工程师 Harness Agent  FDE
   主system 规划、分工
   子system 执行任务
 - 子进程
+- 独立的上下文
+- 子Agent 返回结果，有全新的上下文，不会干扰主Agent 上下文
+- 主Agent 怎么将任务交给子Agent的？
