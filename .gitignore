@@ -6,3 +6,12 @@ ai/wnd/nlp-demo/.env
 .playwright-mcp/
 backend/bun/.env
 .env
+
+# docker 数据挂载目录（二进制数据文件，不进仓库）
+backend/docker/milvus-docker/volumes/
+
+# python 编译缓存
+__pycache__/
+
+# 测试产物
+ai/harness/sub-agents/t.txt
