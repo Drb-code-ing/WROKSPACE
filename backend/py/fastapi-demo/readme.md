@@ -23,3 +23,8 @@ pip install "fastapi[standard]"
 uvicorn 是异步web服务器，用来运行FastAPI 应用
 pip install "uvicorn[standard]"
 pip show fastapi uvicorn 查看安装信息
+
+# Annotated
+丰富类型注解 Annotated[类型, ...]
+Annotated[int, Path(ge=2)]
+自动做类型转换
