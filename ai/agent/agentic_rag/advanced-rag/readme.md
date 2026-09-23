@@ -65,3 +65,12 @@ milvus
   - Kibana：挂 `kibana.yml` 配置即可，数据在 ES 里
   - 效果：`docker compose down/up` 数据还在；`down -v`（删命名卷）或手动删挂载目录才会清空
   - 坑：挂载目录里全是二进制数据文件（rdb_data/*.log、xl.meta 等），不要 git add 进仓库，用 .gitignore 挡掉
+
+## 混合检索
+用户问题 -> 大模型改写 -> 生成3-5个不同角度问题 -> 每个问题都去ES + Milvus 检索 -> 合并去重 -> 丢给Rerank 模型排序 -> 只取前几条 -> 送入大模型生成最终回答
+
+rag 中怎么提升召回质量
+改写3-5个不同角度的问题，更多的文档
+rag 中怎么提升召回质量
+es + milvus
+ReRank
