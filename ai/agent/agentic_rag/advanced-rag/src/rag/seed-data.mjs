@@ -183,7 +183,7 @@ async function seedMilvus(collectionName, rows, emb) {
     // 向量化准备
     const texts = rows.map(row => `${row.note_title} ${row.note_body}`)
     console.log('生成向量嵌入...')
-    const vector = await emb.embedQuery(texts);
+    const vector = await emb.embedDocuments(texts); // 批量文本用 embedDocuments（embedQuery 只收单个字符串，且只返回 1 条向量）
     const dim = vector[0].length // 向量维度
     console.log(`向量维度: ${dim}`)
 
@@ -220,10 +220,9 @@ async function seedMilvus(collectionName, rows, emb) {
       collection_name: collectionName,
       field_name: EMBEDDING,
       index_type: IndexType.IVF_FLAT,
-      metric_type: MetricType.L2, // L2 欧式距离 
+      metric_type: MetricType.L2, // L2 欧式距离
       params: {
-        M: 8,
-        efConstruction: 64, // 构建索引时的参数，用于控制索引的性能和内存占用
+        nlist: 128, // 聚类桶数：建索引时把全库向量聚成 128 桶，查询端用 nprobe 选桶（M/efConstruction 是 HNSW 的参数，和 IVF_FLAT 不配）
       }
     })
 
@@ -255,7 +254,7 @@ async function seedMilvus(collectionName, rows, emb) {
     // 同步等待完成。insert 返回只代表写进了缓冲区(WAL)，不调 flush 的话
     // 落盘时机由后台自动决定——灌库脚本结尾调一次，保证"脚本退出 = 数据已持久化"。
     // 类比：文件 write() 之后的 fsync()（ES 的 refresh 是"可搜"，flush 是"落盘"，两码事）
-    await milvusClient.flushSync({ collection_names: collectionName })
+    await milvusClient.flushSync({ collection_names: [collectionName] }) // 注意：flushSync 的 collection_names 是数组，传字符串会被 SDK 的 Array.isArray 校验拒掉
     const cnt = Number(insertResult.inserted_cnt) || rows.length
     console.log(`写入${cnt}条文档`)
   } catch (err) {

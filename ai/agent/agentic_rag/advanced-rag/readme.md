@@ -74,3 +74,21 @@ rag 中怎么提升召回质量
 rag 中怎么提升召回质量
 es + milvus
 ReRank
+
+## 总结
+
+Agentic RAG , 基于 LangGraph 实现大模型自主决策的RAG 闭环系统
+- RAG 线性
+- 所有问题都走检索，区分简单问题，节省资源
+- 多步检索的复杂问题
+- 评估机制
+- 网络搜索兜底、
+- 多路检索 + 重排 提升召回率和质量
+
+## 后续
+- PSQL = mysql + milvus
+- LangSmith 全链路Agent 观察
+- DeepAgents  开箱即用的skill、上下文压缩件
+- Redis 后端缓存
+- LangFuse 部署Agent
+- Agent 开发
