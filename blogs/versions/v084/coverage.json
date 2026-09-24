@@ -1,0 +1,11 @@
+{
+  "version": "v084",
+  "title": "混合检索 RAG 全链路：查询增强、双路召回与重排——向量库和搜索引擎联手补齐召回",
+  "covered_sources": {
+    "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/rag/hybrid-retrieval.mjs": "241597c",
+    "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/rag/query-augment.mjs": "241597c",
+    "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/rag/seed-data.mjs": "241597c",
+    "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/src/rerank/dashscope-rerank.mjs": "cf052bf",
+    "E:/WROKSPACE/ai/agent/agentic_rag/advanced-rag/readme.md": "241597c"
+  }
+}
