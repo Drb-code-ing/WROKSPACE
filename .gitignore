@@ -9,6 +9,7 @@ backend/bun/.env
 
 # docker 数据挂载目录（二进制数据文件，不进仓库）
 backend/docker/milvus-docker/volumes/
+backend/psql/psql_test/volumes/
 
 # python 编译缓存
 __pycache__/
