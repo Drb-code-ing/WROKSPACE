@@ -11,3 +11,15 @@ DeepAgent 大幅度降低复杂Agent的开发门槛，适合快速落地复杂�
 跳过重复的底层基建，直接聚焦Agent的业务逻辑与能力迭代，是LangGraph生态面向生产落地的高阶方案
 状态管理state，循环路由 持久化执行能力  底层
 任务规划、长期记忆、子Agent的调度、上下文压缩等核心能力
+
+## createAgent  LangChain
+快速启动Agent 开发，帮我们打理底层的活
+messages
+配置model, tools, systemPrompt, middleware
+
+## middleware 中间件
+用户 request 对象  中间件（函数）生成
+response
+中间件插入到每一次Agent 运行中，提供一些格外功能
+生命周期
+添加状态
