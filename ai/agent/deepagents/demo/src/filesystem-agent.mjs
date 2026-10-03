@@ -56,10 +56,10 @@ const agent = createAgent({
     // `createFilesystemMiddleware` 是`deepagents` 提供的 文件系统中间件工厂 
     // 一行给 agent 装上完整的文件操作能力：
     createFilesystemMiddleware({
+      permissions, // 文件系统权限
       // FilesystemBackend 让工具真正读写文件
       backend: new FilesystemBackend({
         rootDir: workspaceDir, // 工作区根路径
-        permissions, // 文件系统权限
         virtualMode : true, // 开启虚拟模式，Agent操作虚拟路径，映射到工作区路径
       })
     })
@@ -77,7 +77,31 @@ async function run(label, prompt) {
   )
 }
 
-await run(
-  "允许的操作",
-  "write_file 创建 /todo.md（三条待办）"
-);
+async function expectDenied(label, prompt) {
+  console.log(`\n == ${label} (拒绝预期) === \n`, prompt, '\n')
+  try {
+    const { messages } = await agent.invoke(
+      { messages: [new HumanMessage(prompt)] },
+      { recursionLimit: 10 } // 递归调用限制，防止无限循环
+    )
+    // 权限拒绝不抛异常，而是返回 status 为 error 的 ToolMessage
+    // i 标志必须保留：实际错误文本大小写不固定（permission denied / Permission denied）
+    const denied = messages.some(
+      (m) => m.getType?.() === 'tool' &&
+        m.status === 'error' &&
+        /permission denied/i.test(String(m.content))
+    )
+    console.log(denied ? 'OK: 已拒绝' : '未触发拒绝（异常）')
+  } catch (e) {
+    const msg = e.cause?.messages ?? e.message
+    console.log('X', msg)
+  }
+}
+
+// await run(
+//   "允许的操作",
+//   "write_file 创建 /todo.md（三条待办），edit_file 把一条标记为已完成，ls /，一句话总结"
+// );
+
+// await expectDenied('禁止读', '只调用read_file 读取 /secret.txt')
+await expectDenied('禁止写', '只调用write_file 写入 /hack.txt, 内容：text')

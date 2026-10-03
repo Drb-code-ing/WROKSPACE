@@ -157,12 +157,14 @@ const model = new ChatOpenAI({
   temperature: 0,
 })
 
+// 创建主编排Agent
 export function createIntelligenceDeskAgent() {
   const apiKey = process.env.OPENAI_API_KEY?.trim()
   if (!apiKey) {
     throw new Error("Model API Key 未配置")
   }
 
+  // 配置文件系统后端, 用于存储调研计划、原始资料、草稿、终稿等文件
   const backend = new FilesystemBackend({
     rootDir: projectDir,
     virtualMode: true,
@@ -171,7 +173,7 @@ export function createIntelligenceDeskAgent() {
   return createDeepAgent({
     model,
     systemPrompt: orchestratorPrompt,
-    subAgents: [researchSubAgent, analystSubAgent, editorSubAgent],
+    subagents: [researchSubAgent, analystSubAgent, editorSubAgent], // 注意：参数名全小写，写成 subAgents 会被静默忽略
     memory: [path.join(projectDir, 'AGENTS.md')], // 自动读取 AGENTS.md 文件
     backend,
     skills: ["/skills/"]
