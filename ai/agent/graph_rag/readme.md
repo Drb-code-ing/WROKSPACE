@@ -130,4 +130,4 @@ MATCH (i: Ingredient {name: "芋圆"})-[r]-() // 删除所有关系
 DELETE r, i
 
 MATCH (n) // 删除所有节点
-DELETE n
+DETACH DELETE n
