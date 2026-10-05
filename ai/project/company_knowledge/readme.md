@@ -61,3 +61,53 @@ AI时代，知识库非常普遍的内部**基建**项目。
   图状数据库
   es/milvus 语义/关键词 检索  query -> 单条document 匹配，有些不足
   GraphRAG
+
+## 功能模块
+
+### 知识库核心功能
+文档管理 + 问答助手 + 知识图谱
+
+1. 文本类文件
+   支持格式 PDF、DOCX、DOC、XLSX、XLS、PPTX、PPT、TXT、MD、CSV、JSON
+   langchain/community/document_loaders 支持以上格式
+   支持输入网页URL，系统自动抓取页面正文并导入知识库归档检索
+2. 图片文件(JPG、PNG等)
+   上传后通过视觉嵌入模型提取图片特征，同时调用大模型 OCR/图片理解生成图片描述文本
+   文字搜图片 以图搜图
+3. 音频文件(MP3、WAV、M4A等)
+   上传自动执行 ASR (Automatic Speech Recognition) 语音转文字，
+   将完整转录文本归档，依托文本内容参与检索
+4. 视频文件
+   用视频理解模型做全维度内容解析，同步提取音频文字与画面视觉信息，整合成完整文本内容用于检索，
+   并输出多模态向量，实现图文视频跨模态检索
+
+#### 权限管理
+部门、权限等 在检索前筛选  psql 实现
+
+### 问答助手
+- 混合Elasticsearch 全文检索、Milvus 向量语义检索、知识图谱
+- 流式输出以及源文件引用
+- 主动引导用户追问
+- 语音输入
+
+## 简历中的表述
+
+项目描述：
+
+企业内部知识库碎片化严重，跨部门资料无统一归集渠道，传统文档检索效率低下。
+为盘活企业各类知识资产，集中管理高效复用，因此主导开发了企业级知识库管理平台。
+包括文档管理、AI 问答、全文检索、知识图谱、用户权限控制、数据统计等功能。
+
+技术栈：
+LangChain, LangGraph, DeepAgents, Vercel AI SDK, Nest, Redis, PostgreSQL,
+Elasticsearch, Neo4j, MinIO, Docker Compose, Mem0, LangSmith, LangFuse
+
+项目亮点：
+1. 向量 + 关键词(PGVetor + Elasticsearch) 实现混合检索，用Reranker 模型重排，实现多路召回，
+   提高检索准确率
+2. 利用Neo4j 构建知识图谱，通过LLM 抽取文档实体，关系自动存入数据库。用户问题会利用LLM 抽取实体，
+   执行多跳检索，把推理链路和RAG 的结果融合送入Prompt 上下文，提升复杂业务问题回答的完整性与逻辑性
+3. 支持PDF、Word、TxT 等图文格式文档，支持图片，音频等多模态文件，统一解析成Markdown 文档，
+   会自动提取文档中的图片上传到Minio，并替换文档中的图片为url，图片基于OCR 实现解析、音频基于ASR、
+   视频基于分片 + 视频理解模型解析成文档
+4. Redis 实现短期记忆存储，Mem0 实现长期记忆分层存储，包括用户级，会话级记忆
