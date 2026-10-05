@@ -16,3 +16,5 @@ __pycache__/
 
 # 测试产物
 ai/harness/sub-agents/t.txt
+# Neo4j runtime data
+ai/agent/graph_rag/neo4j-graphrag/volumes/
