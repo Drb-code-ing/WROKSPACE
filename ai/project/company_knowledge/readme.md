@@ -111,3 +111,81 @@ Elasticsearch, Neo4j, MinIO, Docker Compose, Mem0, LangSmith, LangFuse
    会自动提取文档中的图片上传到Minio，并替换文档中的图片为url，图片基于OCR 实现解析、音频基于ASR、
    视频基于分片 + 视频理解模型解析成文档
 4. Redis 实现短期记忆存储，Mem0 实现长期记忆分层存储，包括用户级，会话级记忆
+5. 搭建分层权限管理体系，落地页面、菜单、按钮三级细粒度权限拦截
+   同时联动检索逻辑做数据权限隔离，依旧当前用户角色过滤文档池，不同人员仅查询自身权限范围内的知识资料，
+   实现功能权限与数据权限双重隔离，满足多部门资料的分级保密需求
+6. 基于LangGraph 实现Agentic RAG 架构，Agent 自动判别问题复杂度，动态决策调用混合检索、图谱推理等工具，
+   灵活适配多维度复杂业务提问，规避固定检索流程带来的回答局限性。
+7. 基于ASR + 流式TTS 实现语音交互，SSE 实现文字流式输出，WebSocket + 流式TTS 实现同步流式播放
+8. 本地开发用LangSmith 调试，线上用LangFuse 搜索数据，实现全链路观测，记录检索耗时，LLM 调用成本、
+   回答召回来源、模型报错日志等。搭建RAG和Agent 效果量化评估机制，自动跑实验了评估检索效果。
+
+比较能打的Agent 项目
+
+Vercel AI SDK, MinIO, Mem0, LangFuse, Memory, PostgreSQL 关系型数据库建表 分层,
+GraphRAG, WebSocket, ASR, TTS, RFF 融合
+
+## 数据库设计
+
+项目会涉及到一些数据库(PSQL)、中间件(es, redis, neo4j 图数据库....)，用于存储数据
+
+PSQL 带PGVector 扩展
+存储结构化业务数据 + 文档分片向量
+
+### User 表
+1. 登录，身份注册
+   username  unique
+2. 权限管理
+3. 日常管理
+status 0 禁用 1 启用
+delete false true
+id,
+role,
+username,
+password,
+
+CREATE TABLE IF NOT EXISTS kh_user {
+   id BIGINT PRIMARY KEY,  -- 用户ID(雪花算法)
+   username VARCHAR(50) NOT NULL,  -- 登录用户名
+   password VARCHAR(255) NOT NULL,  -- 密码(bcrypt 哈希加密)
+   email VARCHAR(100),  -- 邮箱(可选)
+   email_verified SMALLINT NOT NULL DEFAULT 1,  -- 邮箱是否验证 0 未验证 1 已验证
+   real_name VARCHAR(50),  -- 真实姓名(可选)
+   avatar VARCHAR(500),  -- 头像URL(可选)
+   status SMALLINT NOT NULL DEFAULT 1,  -- 状态 0 禁用 1 启用
+   last_login_at TIMESTAMP,  -- 最后登录时间
+   created_at TIMESTAMP NOT NULL DEFAULT NOW(),  -- 创建时间
+   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),  -- 更新时间
+   deleted BOOLEAN NOT NULL DEFAULT false,  -- 是否删除 软删除标记
+}
+
+CREATE UNIQUE INDEX IF NOT EXISTS uk_kh_user_username ON kh_user (username)
+WHERE deleted = false;
+
+INT 4字节 最大值约21亿
+BIGINT 8字节 最大值约922亿
+
+### Role 表
+用户、角色、权限RBAC 数据(Role Based Access Control) 基于角色的访问控制
+
+// 角色表
+CREATE TABLE IF NOT EXISTS kh_role {
+   id BIGINT PRIMARY KEY,
+   role_name VARCHAR(50) NOT NULL,
+   role_code VARCHAR(50) NOT NULL UNIQUE, // 角色编码(唯一)
+   description VARCHAR(200)
+   status SMALLINT NOT NULL DEFAULT 1,  -- 状态 0 禁用 1 启用
+}
+
+// 用户角色关联表
+CREATE TABLE IF NOT EXISTS kh_user_role {
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL REFERENCES kh_user (id), // 用户ID
+  role_id BIGINT NOT NULL REFERENCES kh_role (id), // 角色ID
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  UNIQUE (user_id, role_id) // 用户角色组合唯一
+}
+
+// 用户角色关联表 索引
+CREATE INDEX IF NOT EXISTS idx_kh_user_role_user_id ON kh_user_role (user_id)
+WHERE deleted = false;
