@@ -12,6 +12,8 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^18.0.6",
-    "tencentcloud-sdk-nodejs-tts": "^4.1.237"
+    "tencentcloud-sdk-nodejs": "^4.1.324",
+    "tencentcloud-sdk-nodejs-tts": "^4.1.237",
+    "ws": "^8.22.0"
   }
 }

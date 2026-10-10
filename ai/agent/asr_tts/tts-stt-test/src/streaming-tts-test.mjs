@@ -1,7 +1,7 @@
 import "dotenv/config";
 import WebSocket from "ws";// tencent 流式tts ws 协议
 import crypto from "node:crypto"; // 加密
-import fs from "node:fs";
+import fs from "node:fs"; // 文件操作
 
 const SECRET_ID = process.env.SECRET_ID;
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -72,17 +72,50 @@ function buildWsUrl() {
   }
 }
 
+async function sendTexts(ws, sessionId) {
+  for(let i = 0; i < TEXTS.length; i++) {
+    ws.send(JSON.stringify({
+      SessionId: sessionId,
+      message_id: `msg_${i}`,
+      action: "ACTION_SYNTHESIS", // 指令：把 data 里的文字拿去合成语音
+      data: TEXTS[i],
+    }));
+    console.log(`[发送] 文本: ${TEXTS[i]}`);
+    if(i < TEXTS.length - 1) await sleep(TEXT_INTERVAL_MS);
+  }
+  // 发送完所有文本后，发送 complete 指令，通知服务端合成结束
+  ws.send(JSON.stringify({
+    SessionId: sessionId,
+    action: "ACTION_COMPLETE",
+  }));
+  console.log(`[文本] 已发送 complete 指令，通知服务端合成结束`);
+}
+
 function streamTTS() {
   if (!SECRET_ID || !SECRET_KEY || !APP_ID) {
     throw new Error("请先在 .env 文件中配置 SECRET_ID, SECRET_KEY, APP_ID");
   }
   const { url, sessionId } = buildWsUrl();
   const ws = new WebSocket(url); // 连接 WebSocket 服务器
+  // 水管子，一头扎入目标文件，一头连到 ws 服务器，用于写入音频数据，写入文件
+  const writeStream = fs.createWriteStream(OUTPUT_FILE, { flags: 'w' });
   let totalBytes = 0;
   let closed = false;
   let sent = false;
 
-  const closeAll = () => {}
+  // closeAll：统一收口函数，无论哪条路径结束（写完/final/报错）都调它，保证只清理一次
+  const closeAll = () => {
+    if (closed) return; // 幂等守卫：已经收过尾就不再重复执行
+    closed = true;
+    // 关闭写入流，结束文件写入
+    // end() 的回调：等缓冲区数据全部落盘后才触发，此时打印统计才是准的
+    writeStream.end(() => {
+      console.log(`[完成] 音频已保存至${OUTPUT_FILE}, 共写入${totalBytes}字节`);
+    });
+    // readyState 按 0连接中→1已连接→2关闭中→3已关死 排序
+    // < 3 = "还没彻底关死"才补一刀 close；已关死(CLOSED=3)再调无意义，跳过
+    if(ws.readyState < WebSocket.CLOSED) ws.close(); // 关闭 ws 连接
+  }
   // 连接成功
   ws.on('open', () => {
     console.log("[连接] WebSocket 已建立，等待服务器就绪...");
@@ -101,15 +134,27 @@ function streamTTS() {
       // 服务器就绪 可以发送文本了
       if(msg.ready === 1 && !sent) {
         sent = true
+        await sendTexts(ws, sessionId)
       }
       if(msg.code && msg.code !== 0) {
         console.log(`[错误] 服务器返回错误码: ${msg.code}, 错误描述: ${msg.msg}`)
-      } else if (msg.final === 1) {
+        closeAll();
+      } else if (msg.final === 1) { // 合成结束
         console.log('[完成] 服务器返回最终数据')
       }
     } catch (error) {
       console.error("[错误] 处理消息时出错:", error);
     }
+  })
+
+  ws.on('error', (error) => {
+    console.error("[错误] WebSocket 错误:", error);
+    closeAll();
+  })
+
+  ws.on('close', (err) => {
+    console.log("[关闭] WebSocket 已关闭，错误码:", err);
+    closeAll();
   })
 }
 
