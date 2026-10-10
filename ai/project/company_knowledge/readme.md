@@ -144,6 +144,8 @@ role,
 username,
 password,
 
+表名前缀 kh_ 表示知识库相关表
+
 CREATE TABLE IF NOT EXISTS kh_user {
    id BIGINT PRIMARY KEY,  -- 用户ID(雪花算法)
    username VARCHAR(50) NOT NULL,  -- 登录用户名
@@ -186,6 +188,6 @@ CREATE TABLE IF NOT EXISTS kh_user_role {
   UNIQUE (user_id, role_id) // 用户角色组合唯一
 }
 
-// 用户角色关联表 索引
+// 按用户ID建索引：加速"查询某用户拥有哪些角色"
+// （注意：kh_user_role 没有 deleted 列，不要带 WHERE deleted 条件）
 CREATE INDEX IF NOT EXISTS idx_kh_user_role_user_id ON kh_user_role (user_id)
-WHERE deleted = false;
