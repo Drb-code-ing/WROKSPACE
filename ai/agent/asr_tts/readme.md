@@ -10,3 +10,16 @@
 为啥不直接用SSE 返回音频呢？
 因为SSE 是基于HTTP 协议的，需要转base64才行，而音频是二进制数据，WebSocket 更合适
 SSE 是get 请求
+
+Content-Type: text/event-stream
+
+## ASR 前端功能
+- 静态服务器 @nestjs/serve-static
+- 录音功能
+  asr.html 用户交互
+  navigator.mediaDevices.getUserMedia 获取麦克风权限 进行录音
+  MediaRecorder 录音API stream -> chunk
+- 二进制音频 提交到nest 服务端
+- 服务端再调用腾讯云ASR 返回文本
+- 向大模型 发送流式请求 sse
+- 显示文本

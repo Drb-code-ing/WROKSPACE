@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASR 录音测试</title>
+  <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        max-width: 720px;
+        margin: 40px auto;
+        padding: 0 16px;
+        line-height: 1.6;
+      }
+      button {
+        margin-right: 8px;
+        margin-bottom: 8px;
+        padding: 8px 14px;
+      }
+      .status {
+        margin: 12px 0;
+        color: #444;
+      }
+      pre {
+        background: #f6f8fa;
+        padding: 12px;
+        border-radius: 6px;
+        white-space: pre-wrap;
+      }
+    </style>
+</head>
+<body>
+  <h1>ASR 录音上传测试</h1>
+  <p>点击开始录音，结束后自动上传到<code>/speech/asr</code>。</p>
+  <button id="startBtn">开始录音</button>
+  <button id="stopBtn" disabled>结束录音并上传</button>
+  <div id="status">状态：未开始</div>
+  <h3>识别结果</h3>
+  <pre id="result">(暂无)</pre>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const statusEl = document.getElementById('status');
+    const resultEl = document.getElementById('result');
+    let mediaRecorder = null; // 录音对象
+    let chunks = []; // 录音数据块
+    const recordFilename = 'record.ogg';
+
+    function setStatus(text) {
+      statusEl.textContent = "状态：" + text;
+    }
+
+    startBtn.addEventListener('click', async () => {
+      try{
+        // 请求麦克风权限
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        chunks = []; // 清空录音数据块
+        // 指定音频MIME 类型，采用ogg 封装，opus 编码，用于浏览器录音输出音频格式
+        const preferredMimeType = 'audio/ogg;codecs=opus'
+        // 是否支持指定的MIME类型（标准API是 isTypeSupported）
+        mediaRecorder = MediaRecorder.isTypeSupported(preferredMimeType)
+        ? new MediaRecorder(stream, { mimeType: preferredMimeType })
+        : new MediaRecorder(stream); // 默认的
+
+        // 拿到录音数据块
+        mediaRecorder.ondataavailable = (event) => {
+          console.log('收到录音分片：', event.data); // 每250ms一片，控制台直接看Blob
+          if(event.data && event.data.size > 0) {
+            chunks.push(event.data);
+          }
+        }
+
+        mediaRecorder.onstop = async () => {
+          setStatus('录音结束, 正在上传...');
+          try {
+            console.log('录音完整包：', chunks); // 数组里每个元素都是Blob，展开可看size/type
+            // 把所有搜集到的录音数据Blob块合并成一个完整Blob
+            const blob = new Blob(chunks, {
+              type: mediaRecorder.mimeType || 'audio/webm'
+            })
+            if(!blob.size) {
+              throw new Error('录音数据为空, 请至少录音1秒再上传');
+            }
+
+            const formData = new FormData(); // 大文件上传
+            // 包装音频文件到 FormData 中，key 为 audio，value 为 blob
+            formData.append('audio', blob, recordFilename);
+            
+            const response = await fetch('/speech/asr', {
+              method: 'POST',
+              body: formData
+            });
+
+            if(!response.ok) {
+              const text = await response.text();
+              throw new Error(text || '上传失败');
+            }
+
+            const data = await response.json();
+            resultEl.textContent = data.text || '暂无识别结果';
+            setStatus('上传成功');
+          } catch (error) {
+            setStatus('上传失败：' + error.message);
+          } finally {
+            // 无论是否成功，都要关闭录音流
+            stream.getTracks().forEach(track => track.stop());
+          }
+        }
+
+        // 点击"结束"→ 停止录音 → 依次触发最后一次ondataavailable + onstop（上传逻辑在onstop里）
+        stopBtn.addEventListener('click', () => {
+          if (mediaRecorder && mediaRecorder.state === 'recording') {
+            mediaRecorder.stop();
+          }
+        });
+
+        // 开始录音
+        // 250ms 采集一次音频数据 触发 ondataavailable 事件
+        mediaRecorder.start(250);
+        setStatus('录音中...');
+        stopBtn.disabled = false; // 录音中，"结束"可以点了
+        startBtn.disabled = true; // "开始"禁用，防止重复录音
+      } catch (error) {
+        setStatus('录音失败：' + error.message);
+      }
+    })
+  </script>
+</body>
+</html>
