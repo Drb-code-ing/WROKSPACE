@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AiModule } from './ai/ai.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { join } from 'path';
       rootPath: join(process.cwd(), 'public'),
       renderPath: '/',
     }),
+    AiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
