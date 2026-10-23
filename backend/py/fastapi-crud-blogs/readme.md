@@ -26,3 +26,9 @@ uvicorn 是 ASGI 服务器，负责把 FastAPI 应用跑起来。
 
 ## 验证
 访问 http://127.0.0.1:8000/docs 查看 fastapi 自动生成的交互式 api 文档，可直接测试各接口。
+
+## 状态码
+
+404 Not Found
+201 Created
+204 No Content

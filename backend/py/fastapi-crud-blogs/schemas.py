@@ -14,9 +14,10 @@ class UserCreate(BaseModel):
     password: str = Field(min_length=8, max_length=100)
 
 class UserUpdate(BaseModel):
-    username: str | None = None
+    username: str | None = Field(default=None, min_length=3, max_length=50)
     email: EmailStr | None = None
-    password: str | None = None
+    password: str | None = Field(default=None, min_length=8, max_length=100)
+    is_active: bool | None = None
 
 class UserResponse(BaseModel):
     # User 类， 查询 users orm 数据模型
@@ -27,3 +28,39 @@ class UserResponse(BaseModel):
     email: str
     is_active: bool
     created_at: datetime
+
+# 文章模块 schema
+class PostCreate(BaseModel):
+    title: str = Field(min_length=3, max_length=200)
+    content: str = Field(min_length=3, max_length=5000)
+    published: bool = Field(default=False)
+
+class PostResponse(BaseModel):
+    """返回的文章数据"""
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    title: str
+    content: str
+    published: bool
+    created_at: datetime
+    updated_at: datetime
+    user_id: int
+
+    author: UserResponse
+
+class PostWithAuthor(BaseModel):
+    """文章 + 作者信息（用于列表展示）"""
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    title: str
+    published: bool
+    created_at: datetime
+    author: UserResponse  # 嵌套另一个 Pydantic 模型
+
+class PostUpdate(BaseModel):
+    """更新文章时的请求体（所有字段可选）"""
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    content: str | None = Field(default=None, min_length=1, max_length=5000)
+    published: bool | None = None

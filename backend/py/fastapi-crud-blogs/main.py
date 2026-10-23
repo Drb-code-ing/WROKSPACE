@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 # 引入database 模块 
 from database import engine, Base
-from routers import users
+from routers import users, posts
 
 import models
 # python 实例化不用new 
@@ -21,4 +21,7 @@ def root():
     return {"message": "Blog API", "docs": "/docs"}
 
 # 模块路由
+# 用户路由模块
 app.include_router(users.router)
+# 文章路由模块
+app.include_router(posts.router)

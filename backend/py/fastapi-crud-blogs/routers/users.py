@@ -13,6 +13,7 @@ router = APIRouter(prefix="/users", tags=["用户管理"])
 # 约定
 # Schema 就是用来规范校验入参、约束返回字段，同时自动生成接口文档的数据模型。
 @router.post("/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+# Depends 依赖注入 db 会话对象, 自动调用 get_db 函数获取数据库会话对象
 def create_user(user_in: UserCreate, db: Session = Depends(get_db)):
   # controller 
   # 分层 controller -> service
@@ -46,3 +47,13 @@ def update_user(user_id: int, user_in: UserUpdate, db: Session = Depends(get_db)
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="用户不存在")
     return crud.update_user(db, user, user_in)
+
+@router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_user(user_id: int, db: Session = Depends(get_db)):
+    """删除用户"""
+    # orm 可以封装， sql 不具备
+    user = crud.get_user(db, user_id)
+    print(f"delete_user: user_id={user_id}, user={user}")
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="用户不存在")
+    crud.delete_user(db, user)

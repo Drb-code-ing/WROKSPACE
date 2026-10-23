@@ -1,7 +1,7 @@
 # 向外输出 egine, Base  import export default ? 
 # sql orm 工具 
 from sqlalchemy import create_engine
-# 用来当所有数据表模型类的父类，继承它就能变成 ORM 实体。
+# DeclarativeBase 用来当所有数据表模型类的父类，继承它就能变成 ORM 实体。
 # 造出数据库会话对象
 # 数据库会话，你增删改查都靠它跟数据库打交道。
 from sqlalchemy.orm import DeclarativeBase, sessionmaker, Session
