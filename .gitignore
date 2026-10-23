@@ -18,3 +18,8 @@ __pycache__/
 ai/harness/sub-agents/t.txt
 # Neo4j runtime data
 ai/agent/graph_rag/neo4j-graphrag/volumes/
+
+# Python sqlite 运行时生成的数据库
+*.db
+__pycache__/
+*.pyc

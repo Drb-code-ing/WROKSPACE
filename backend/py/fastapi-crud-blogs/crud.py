@@ -1,7 +1,7 @@
 from models import User
 from sqlalchemy.orm import Session
 from sqlalchemy import select 
-from schemas import UserCreate
+from schemas import UserCreate, UserUpdate
 import bcrypt # 密码加密
 
 def get_user_by_email(db: Session, email: str) -> User | None:
