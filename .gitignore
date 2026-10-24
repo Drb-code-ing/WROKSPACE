@@ -21,5 +21,8 @@ ai/agent/graph_rag/neo4j-graphrag/volumes/
 
 # Python sqlite 运行时生成的数据库
 *.db
+
+# 文件上传运行时产物
+backend/py/fastapi-file-upload/backend/app/uploads/
 __pycache__/
 *.pyc
