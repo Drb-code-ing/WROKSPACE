@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSS 攻击 - DOM 型</title>
+</head>
+<body>
+  <div id="msg"></div>
+  <script>
+    // new URLSearchParams(location.search) 把 URL 参数解析为对象，方便获取参数值
+    const params = new URLSearchParams(location.search);
+    // get('key') 获取参数值
+    const msg = params.get('msg');
+    // 把参数值渲染到页面
+    document.getElementById('msg').innerHTML = msg;
+  </script>
+</body>
+</html>

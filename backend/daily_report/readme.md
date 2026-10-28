@@ -44,3 +44,49 @@ proposal 遵循“目标层(Why)、范围层(What)、验收层” 的三层结�
 AI 严格遵循 proposal.md 中的规范，一次到位
 
 ## 架构设计
+how
+proposal.md 定义**做什么**，design.md 定义**如何做**
+
+运筹帷幄之中，决胜千里之外 -- 好的架构设计，往往在落地之前便已奠定胜局
+
+从proposal.md 到 design.md 关键的一步跨越
+堪称SDD 全流程中信息密度最高、思想跨越最大的关键一步
+
+先画地图，再行军
+
+本质并非“绘制图表”，而是在编码之前回答一系列**结构性**问题
+系统任何划分、模块间任何通信，采用何种技术栈及决策依据，任何保障非功能性要求
+
+如果这些问题没有在design.md 中明确，AI 会猜，生成代码往往并非我们所想
+
+design.md 4个核心组成部分
+
+- 系统架构
+  包括模块划分、职责定义、以及数据流向
+  设计需要遵循 **单一职责原则** 和 **关注点分离原则**
+  （单一职责原则：每个模块只负责一个功能，只有一个引起它变化的原因）
+  ```py
+  # 没有遵循单一职责原则，User 类负责了获取用户姓名和保存用户信息两个职责
+
+  class User:
+    def __init__(self, name, age):
+      self.name = name
+      self.age = age
+    # 职责一：获取用户姓名
+    def get_name(self):
+      return self.name
+    # 职责二：将用户信息保存到数据库
+    def save_to_db(self):
+      print(f"保存用户信息到数据库：{self.name}")
+  ```
+
+  ```py
+  class User:
+    def __init__(self, name, age):
+      self.name = name
+      self.age = age
+    
+  class UserRepository:
+    def save(self, user: User):
+      print(f"保存用户信息到数据库：{user.name}")
+  ```
