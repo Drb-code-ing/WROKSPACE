@@ -54,3 +54,68 @@ redis 几个特性，完美匹配Agent 短期记忆需求
   List 直接存对话列表
 
 ## 使用Redis
+- 连接
+- CRUD
+  - key 索引
+  - 数据结构
+    - String
+    适用场景：倒计时验证码、Token、登录会话、计数器、配置项、文本类短期记忆（总结）、文章阅读数、分布式锁
+    - 核心命令
+    set key value 存
+    get key 取
+    setex key 秒数 value 存过期时间
+    incr key 自增
+    decr key 自减
+    incrby key 步长 自增指定步长
+  - TTL
+
+## 二、Hash 哈希数据结构
+适用场景：用户信息、商品资料、购物车、结构化对话上下文
+
+hset key field value 存
+hmset key field1 value1 field2 value2 ... 批量存
+hget key field 取
+hgetall key 取所有字段
+hkeys key 取所有字段名
+hvals key 取所有字段值
+hincrby key field 增量
+
+## 三、List 列表数据结构
+适用场景：消息队列、任务队列、操作日志、聊天历史、有序记录
+双向的链表
+
+lpush key value1 value2 ... 从左端入队
+rpush key value1 value2 ... 从右端入队
+lrange key 0 -1 取所有元素
+lpop key 从左端出队
+rpop key 从右端出队
+llen key 取列表长度
+ltrim key 0 -1 截断列表
+
+## 四、Set 集合数据结构
+适用场景：数组去重、每日签到 IP 黑名单、共同好友、权限标签
+
+sadd key value1 value2 ... 存
+smembers key 取所有元素
+sismember key value 是否存在
+sinter key key2 ... 取交集
+sunion key key2 ... 取并集
+sdiff key key2 ... 取差集
+
+## 五、ZSet 有序集合数据结构
+适用场景：各类排行榜、内容热度排序、用户积分排名、权重队列
+zadd key score member 存
+zrange key 0 -1 取所有元素
+zrevrange key 0 -1 取所有元素（倒序）
+zscore key member 取元素分数
+zrank key member 取元素排名
+
+## 六、位图
+二进制
+
+## 七、Geo 地理位置数据结构
+适用场景：地图定位、距离计算、区域分析、附近门店、附近用户
+geoadd key 精度 维度 名称 ... 批量存
+geodist key member1 member2 取两个元素之间的距离
+
+## 基于redis 实现agent 短期记忆的存储
