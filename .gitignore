@@ -11,6 +11,7 @@ backend/bun/.env
 backend/docker/milvus-docker/volumes/
 backend/psql/psql_test/volumes/
 ai/agent/memory_readis/redis-test/volumes/
+ai/agent/oss/oss-test/minio-data/
 
 # python 编译缓存
 __pycache__/
