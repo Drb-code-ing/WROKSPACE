@@ -1,5 +1,5 @@
 import "dotenv/config"
-import Redis from 'redis'
+import Redis from 'ioredis'
 import * as readline from "node:readline/promises"
 import { stdin, stdout } from "node:process"
 import { ChatOpenAI } from "@langchain/openai";
@@ -7,7 +7,7 @@ import {
   createAgent, HumanMessage, summarizationMiddleware
 } from "langchain";
 import {
-  mapChatMessagestoStoredMessages, // 把前端传过来的消息转换为存储在redis中的格式
+  mapChatMessagesToStoredMessages, // 把前端传过来的消息转换为存储在redis中的格式
   mapStoredMessagesToChatMessages, // 把存储在redis中的消息转换为前端需要的格式
 } from '@langchain/core/messages';
 
@@ -49,7 +49,7 @@ class RedisMessageStore {
   }
 
   async saveMessages(sessionId, messages) {
-    const payload = JSON.stringify(mapChatMessagestoStoredMessages(messages));
+    const payload = JSON.stringify(mapChatMessagesToStoredMessages(messages));
     await this.redis.set(this.messagesKey(sessionId), payload, 
     'EX', this.ttlSeconds);
   }
@@ -98,10 +98,24 @@ const store = new RedisMessageStore({
   ttlSeconds: MEMORY_TTL,
 })
 
-console.log("输入 exit / quit / :q 退出，:clear 清除记忆\n")
+async function invokeWithMemory(agent, store, sessionId, userText) {
+  // 加载历史消息
+  const history = await store.loadMessages(sessionId)
+  const result = await agent.invoke(
+    { messages: [...history, new HumanMessage(userText)] },
+    { recursionLimit: 30 }, // 递归调用次数限制
+  )
+  console.log(result)
+  await store.saveMessages(sessionId, result.messages)
+  const ttl = await store.ttl(sessionId)
+  console.log(`记忆过期时间：${ttl} 秒`)
+  return result
+}
+
+console.log("输入 exit / quit / :q 退出 /clear 清除记忆\n")
 // 读取用户输入
 const rl = readline.createInterface({input: stdin, output: stdout})
-let prevCount = (await StorageEvent.loadMessages(SESSION_ID)).length
+let prevCount = (await store.loadMessages(SESSION_ID)).length
 
 try {
   while(true) {
@@ -109,7 +123,7 @@ try {
     if(!userText) continue
     if(["exit", "quit", ":q"].includes(userText.toLowerCase())) break
 
-    if(userText === ":clear") {
+    if(userText === "/clear") {
       await store.clear(SESSION_ID)
       prevCount = 0
       console.log("记忆已清除")
@@ -118,7 +132,14 @@ try {
 
     // 调用agent
     const { messages } = await invokeWithMemory(agent, store, SESSION_ID, userText)
+    console.log(messages)
+    console.log("\n 助手:", messages.at(-1)?.content)
+    console.log(`当前记忆长度：${messages.length} 条消息`)
+
   }
 } catch (error) {
   console.error("读取用户输入失败:", error)
+} finally {
+  rl.close()
+  await redis.quit()
 }

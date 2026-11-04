@@ -119,3 +119,18 @@ geoadd key 精度 维度 名称 ... 批量存
 geodist key member1 member2 取两个元素之间的距离
 
 ## 基于redis 实现agent 短期记忆的存储
+基于redis 实现agent 短期记忆的存储，具体的摘要+截断的压缩逻辑是用deepagents 的
+summarizationMiddleware 中间件
+
+Agent 基本都是基于Redis 做短期记忆的存储，用postgreSQL 做历史消息、长期记忆的存储
+我们学了Redis 的七种数据类型
+String
+Hash
+List
+Set
+ZSet
+Bitmap
+Geo
+redis + deepagents 实现agent 短期记忆的存储
+
+一般把每轮消息插入PSQL 做历史消息，还能用于基于向量做长期记忆检索
