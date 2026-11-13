@@ -4,11 +4,15 @@ import {
   Form,
   Input,
   Button,
+  message,
 } from 'antd'
+import { useNavigate } from 'react-router-dom'
 import BrandLogo from '../components/BrandLogo'
+import { authApi } from '../api'
 
 function LoginPage() {
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <div className="kh-login">
@@ -21,8 +25,16 @@ function LoginPage() {
         <Form
          layout='vertical'
          initialValues={{username:"user", password:"123456"}}
-         onFinish={async () => {
+         onFinish={async (values) => {
           setLoading(true)
+          try {
+            await authApi.login(values.username, values.password)
+            navigate('/')
+          } catch (error) {
+            message.error(error instanceof Error ? error.message : '登录失败')
+          } finally {
+            setLoading(false)
+          }
          }}
         >
           <Form.Item name="username" label="用户名"

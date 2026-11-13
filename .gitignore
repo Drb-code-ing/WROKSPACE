@@ -13,6 +13,7 @@ backend/psql/psql_test/volumes/
 ai/agent/memory_readis/redis-test/volumes/
 ai/agent/oss/oss-test/minio-data/
 ai/agent/rabbitmq-demo/rabbitmq_data/
+ai/agent/knowledge/backend/volumes/
 
 # python 编译缓存
 __pycache__/
