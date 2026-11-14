@@ -105,4 +105,17 @@ sessionId -> session 存储在后端内存中
 为什么有cookie 还要用jwt？
 - **客户端适配**：Cookie 受浏览器同源限制；JWT 放请求头，适配 APP、小程序、前后端分离跨域场景
 - **状态**：Cookie-Session 是有状态的，服务端要存会话；JWT 无状态，服务端不维护会话，分布式部署简单
-- **信息携带**：Session 只传id，每次需要查缓存；JWT payload 可直接带上用户、角色信息，减少查询
+- **信息携带**：Session 只传id，每次需要查缓存；JWT payload 可直接带上用户、角色信息，减少查询次数
+
+## ORM
+Entity(实体类) 是ORM 中**映射数据库表的类，类的实例对应数据库表的一条记录**
+- @nestjs/config
+- @nestjs/typeorm
+  useFactory 从环境变量中读取数据库配置
+  注册实体类 entities: [UserEntity]
+
+- auth 模块 鉴权模块
+  独立模块，处理jwt 登录，以后换、加任何的鉴权机制
+- user 模块 拥护模块
+  - CRUD user.entity.ts
+  - 注册

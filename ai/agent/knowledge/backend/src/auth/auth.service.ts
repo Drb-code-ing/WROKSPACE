@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { LoginDto } from './auth.dto';
+import { UserService } from '../user/user.service';
 
 // 登录结果
 export interface LoginResult {
@@ -11,7 +12,15 @@ export interface LoginResult {
 
 @Injectable()
 export class AuthService {
+  constructor(private readonly userService: UserService) {}
+
   async login(dto: LoginDto): Promise<LoginResult> {
+    // 验证用户凭证
+    const user = await this.userService.validateCredentials(
+      dto.username,
+      dto.password,
+    );
+
     return {
       accessToken: '123456',
       refreshToken: '123456',

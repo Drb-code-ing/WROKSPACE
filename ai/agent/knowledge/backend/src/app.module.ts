@@ -4,9 +4,34 @@ import { APP_PIPE } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UserEntity } from './user/entities/user.entity';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [AuthModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }), // 全局配置模块
+    AuthModule,
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService], // 从配置服务中获取数据库配置
+      useFactory: (config: ConfigService) => ({
+        type: 'postgres' as const,
+        host: config.get<string>('POSTGRES_HOST', 'localhost'),
+        port: config.get<number>('POSTGRES_PORT', 5432),
+        username: config.get<string>('POSTGRES_USER', 'user'),
+        password: config.get<string>('POSTGRES_PASSWORD', '123456'),
+        database: config.get<string>('POSTGRES_DB', 'knowledge_hub'),
+        // 实体类数组，用于自动加载实体类
+        entities: [UserEntity],
+        // 是否自动同步数据库表结构
+        synchronize: false,
+        // 是否开启日志记录
+        logging: true,
+      }),
+    }),
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [
     AppService,
