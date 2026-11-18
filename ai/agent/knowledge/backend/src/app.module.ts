@@ -8,11 +8,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserEntity } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
+import { UserRoleEntity } from './user/entities/user-role.entity';
+import { RoleEntity } from './user/entities/role.entity';
+import { PermissionEntity } from './user/entities/permission.entity';
+import { RolePermissionEntity } from './user/entities/role-permission.entity';
+import { UserPermissionEntity } from './user/entities/user-permission.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }), // 全局配置模块
-    AuthModule,
     TypeOrmModule.forRootAsync({
       inject: [ConfigService], // 从配置服务中获取数据库配置
       useFactory: (config: ConfigService) => ({
@@ -23,13 +27,21 @@ import { UserModule } from './user/user.module';
         password: config.get<string>('POSTGRES_PASSWORD', '123456'),
         database: config.get<string>('POSTGRES_DB', 'knowledge_hub'),
         // 实体类数组，用于自动加载实体类
-        entities: [UserEntity],
+        entities: [
+          UserEntity,
+          UserRoleEntity,
+          RoleEntity,
+          PermissionEntity,
+          RolePermissionEntity,
+          UserPermissionEntity,
+        ],
         // 是否自动同步数据库表结构
         synchronize: false,
         // 是否开启日志记录
         logging: true,
       }),
     }),
+    AuthModule,
     UserModule,
   ],
   controllers: [AppController],

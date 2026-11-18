@@ -119,3 +119,44 @@ Entity(实体类) 是ORM 中**映射数据库表的类，类的实例对应数�
 - user 模块 拥护模块
   - CRUD user.entity.ts
   - 注册
+
+## ORM 流程
+- Enntity 实体类  数据库表在代码里的镜像
+  typeorm 提供了装饰器定义实体的字段和约束
+- DTO(数据传输对象)
+  出入接口的表单效验器，指定前端能传什么、后端返回什么，挡掉脏数据。
+  class-validator + class-transformer
+  ValidationPipe 全局配置 报错
+- Repository 仓库
+  跟数据库对话的“专属服务员”，封装增删改查，不用手写SQL
+  - 在Module 里TypeOrmModule.forFeature([UserEntity]) 注册实体类，提供Repository 实例
+  - 在Service 里通过@InjectRepository 注入Repository 实例
+  - Service 调用 repository 方法(find, findOne, save, update, delete...)
+
+- nestjs 提供了丰富的错误处理机制
+  - 状态码
+  - 错误信息
+
+## 角色
+1. role entity
+role-code 角色编码 和 role-name 解耦
+role-name 可以改变 role-code 不能改变
+status 角色状态 1 正常 0 禁用
+
+## 模块划分的准则
+- 每个模块负责一个功能
+  entity
+- 如果业务复杂，我们可以划分多个模块
+  auth 鉴权，token 从user 模块剥离出来
+  permission 有路由守卫，从user 模块剥离出来
+- 依赖注入 模块间相互调用
+
+## 基于角色的权限管理
+- user
+- role
+- permission
+- role_permission
+- user_permission
+基于角色做权限管理，把权限和用户解耦，用户只绑定角色，角色绑定权限，方便批量管控权限
+- id & parent_id 树状结构 用于多级权限展示，sort 排序
+- 既可以基于角色分配权限，也可以基于用户分配权限（慎用）
