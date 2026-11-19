@@ -9,6 +9,8 @@ import { PermissionEntity } from './entities/permission.entity';
 import { RolePermissionEntity } from './entities/role-permission.entity';
 import { UserPermissionEntity } from './entities/user-permission.entity';
 import { PermissionService } from './permission.service';
+import { TeamService } from '../team/team.service';
+import { AuthUser } from '../auth/auth-user.interface';
 
 @Injectable()
 // 导出 UserService，方便auth 等模块鉴权使用
@@ -28,6 +30,7 @@ export class UserService {
     @InjectRepository(UserPermissionEntity)
     private readonly userPermissionRepo: Repository<UserPermissionEntity>,
     private readonly permissionService: PermissionService,
+    private readonly teamService: TeamService,
   ) {}
 
   async validateCredentials(username: string, password: string) {
@@ -56,11 +59,10 @@ export class UserService {
     const permissions = await this.permissionService.getUserPermissionCodes(
       user.id,
     );
-    return {
-      username,
-      password,
-    };
+
+    return await this.toAuthUser(user, roles, permissions);
   }
+
   // ts 可以通过函数返回值约束 数据库操作 promise 一行用户记录
   async findByUsername(username: string): Promise<UserEntity | null> {
     return this.userRepo.findOne({
@@ -84,5 +86,33 @@ export class UserService {
       .getRawMany<{ roleCode: string }>();
 
     return rows.map((item) => item.roleCode);
+  }
+
+  // 更新用户最后登录时间
+  async touchLastLogin(userId: string): Promise<void> {
+    await this.userRepo.update(userId, {
+      lastLoginAt: new Date(),
+    });
+  }
+
+  // 转换为认证用户
+  // 包含用户角色、权限、团队ID列表
+  async toAuthUser(
+    user: UserEntity,
+    roles: string[],
+    permissions: string[],
+  ): Promise<AuthUser> {
+    // 获得用户可访问的团队ID列表
+    const teamIds = await this.teamService.listAccessibleTeamIds(user.id);
+    return {
+      userId: user.id,
+      username: user.username,
+      realName: user.realName,
+      email: user.email,
+      avatar: user.avatar,
+      roles,
+      permissions,
+      teamIds,
+    };
   }
 }

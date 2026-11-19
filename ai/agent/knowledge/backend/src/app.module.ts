@@ -4,6 +4,7 @@ import { APP_PIPE } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { TeamModule } from './team/team.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserEntity } from './user/entities/user.entity';
@@ -13,6 +14,8 @@ import { RoleEntity } from './user/entities/role.entity';
 import { PermissionEntity } from './user/entities/permission.entity';
 import { RolePermissionEntity } from './user/entities/role-permission.entity';
 import { UserPermissionEntity } from './user/entities/user-permission.entity';
+import { TeamEntity } from './team/entities/team.entity';
+import { TeamMemberEntity } from './team/entities/team-member.entity';
 
 @Module({
   imports: [
@@ -34,6 +37,8 @@ import { UserPermissionEntity } from './user/entities/user-permission.entity';
           PermissionEntity,
           RolePermissionEntity,
           UserPermissionEntity,
+          TeamEntity,
+          TeamMemberEntity,
         ],
         // 是否自动同步数据库表结构
         synchronize: false,
@@ -43,6 +48,7 @@ import { UserPermissionEntity } from './user/entities/user-permission.entity';
     }),
     AuthModule,
     UserModule,
+    TeamModule,
   ],
   controllers: [AppController],
   providers: [

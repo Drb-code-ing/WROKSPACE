@@ -6,7 +6,10 @@ import { UserRoleEntity } from './entities/user-role.entity';
 import { PermissionEntity } from './entities/permission.entity';
 import { RolePermissionEntity } from './entities/role-permission.entity';
 import { RoleEntity } from './entities/role.entity';
-import { ADMIN_ROLES } from '../common/constants/permissions';
+import {
+  ADMIN_ROLES,
+  ADMIN_OPERATION_PERMISSIONS,
+} from '../common/constants/permissions';
 
 @Injectable()
 export class PermissionService {
@@ -59,8 +62,15 @@ export class PermissionService {
     // some() 方法，只要有一个角色是管理员，就返回 true，否则返回 false
     const isAdmin = roleCodes.some((r) =>
       // 验证是否有一项roleCode在ADMIN_ROLES数组中
+      // ADMIN_ROLES 类型不一定为string[]
+      // 断言为readonly string[]，确保每一项都为string，防止类型错误
       (ADMIN_ROLES as readonly string[]).includes(r.roleCode),
     );
+    if (isAdmin) {
+      for (const code of ADMIN_OPERATION_PERMISSIONS) {
+        set.add(code);
+      }
+    }
 
     return [...set];
   }

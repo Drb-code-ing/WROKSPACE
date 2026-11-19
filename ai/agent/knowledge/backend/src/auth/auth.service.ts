@@ -20,6 +20,8 @@ export class AuthService {
       dto.username,
       dto.password,
     );
+    // 更新用户最后登录时间
+    await this.userService.touchLastLogin(user.userId);
 
     return {
       accessToken: '123456',
