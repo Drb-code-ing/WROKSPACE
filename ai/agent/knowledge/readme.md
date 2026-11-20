@@ -165,3 +165,43 @@ status 角色状态 1 正常 0 禁用
 - team.entity.ts
 - team-member.entity.ts
 把公司的组织架构搭建起来了。
+
+## JWT
+- 简单流程
+登录验证用户名、密码 成功 -> 得到user 对象 -> 准备一个payload(userId, username, ....) -> 加盐，由jwt 生成 token -> 颁发给用户 -> 前端存储localStorage
+之后请求 -> header Authorization 带上 Bearer + token -> 后端验证verify token 解析出用户对象
+
+不太安全
+令牌，不是cookie(请求头 httpOnly | secure 自动带上) / session
+sessionId 去 session 存储里获取用户信息
+分布式，session 不太适合？或者麻烦
+登录用户越多，内存中用于存储session 对象的空间越多，会占用大量的内存空间
+jwt 颁发的token 有优势，可以在客户端存储，服务端不用维护会话，分布式部署更简单
+token -> verify -> 得到payload对象(此过程只需要解密，不需要安排会话空间)
+
+单accessToken 不太安全
+假如被中间人攻击得到token
+1. 让它失效
+2. accessToken 有效期设短一点 15 分钟  频繁重新登录
+
+单token 想让它失效只能等过期，没办法主动注销，一旦泄密能一直用。
+为了安全，只能把有效期设很短，用户就得频繁登录，体验很差。
+
+### 双token 机制
+双token 本质是把"身份" 和 "续期" 分开，AccessToken(身份，有效期短一些，15分钟) 和 RefreshToken(续期，有效期长一些，7天)
+这样既能秒级注销权限，又不用每次请求都查库，兼顾了安全和性能
+
+用户登录 -> 服务器效验账号密码 -> 签发accessToken(15min) 和 refreshToken(7天) -> 前端localStorage 保存accessToken，httpOnly 保存refreshToken -> 每次请求业务接口，header 带上 accessToken -> 服务器端验证 accessToken 有效，解析出用户对象，执行业务
+
+accessToken 过期 -> 401 -> 前端拦截，带上refreshToken 调用刷新接口 -> 服务器端验证 refreshToken 有效，重新签发 accessToken -> 重试请求
+
+refreshToken 过期 -> 重新登录
+
+前端可以拿到新的Token，重试原请求，用户无感知属性
+
+- accessToken 怎么失效？
+- 访问需要登录的接口，acessToken verify ?
+
+### 守卫
+如果接口需要权限，没有accessToken 或者过期，直接拒绝访问，到不了控制器
+用户 -> AuthGuard(中间件) authorization -> verify user -> /play

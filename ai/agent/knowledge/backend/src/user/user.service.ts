@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  NotFoundException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { compare } from 'bcryptjs';
@@ -64,6 +68,7 @@ export class UserService {
   }
 
   // ts 可以通过函数返回值约束 数据库操作 promise 一行用户记录
+  // 根据用户名查询用户，不存在返回 null
   async findByUsername(username: string): Promise<UserEntity | null> {
     return this.userRepo.findOne({
       where: { username, deleted: false },
@@ -114,5 +119,28 @@ export class UserService {
       permissions,
       teamIds,
     };
+  }
+
+  // refreshToken 认证成功，调用该方法重新颁发 accessToken等
+  async buildAuthUser(userId: string): Promise<AuthUser> {
+    const user = await this.findByIdOrThrow(userId);
+    if (user.status !== 1) {
+      throw new UnauthorizedException('用户已被禁用');
+    }
+    const roles = await this.getRoleCodes(user.id);
+    const permissions = await this.permissionService.getUserPermissionCodes(
+      user.id,
+    );
+    return await this.toAuthUser(user, roles, permissions);
+  }
+  // 根据用户ID查询用户，不存在抛出异常
+  async findByIdOrThrow(userId: string): Promise<UserEntity> {
+    const user = await this.userRepo.findOne({
+      where: { id: userId, deleted: false },
+    });
+    if (!user) {
+      throw new NotFoundException('用户不存在');
+    }
+    return user;
   }
 }

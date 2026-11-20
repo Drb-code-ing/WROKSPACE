@@ -2,7 +2,7 @@
 
 > 项目：Knowledge Hub（NestJS 11 + TypeORM + PostgreSQL/pgvector + React 19 + antd 6）
 > 范围：用户 / 角色 / 权限 / 团队 四块数据模型，以及登录、鉴权、权限计算的完整链路。
-> 状态：RBAC 数据层与权限计算已完成；JWT 双 Token 为下一步实现（本文给出设计）。
+> 状态：RBAC 数据层、权限计算、JWT 双 Token 签发与刷新、全局认证守卫均已完成；接口级权限（PermissionGuard）与 refreshToken 白名单为下一步。
 
 ---
 
@@ -352,7 +352,7 @@ POST /auth/login { username, password }
   │         ├─ PermissionService.getUserPermissionCodes
   │         └─ TeamService.listAccessibleTeamIds
   ├─ touchLastLogin 更新 last_login_at
-  └─ 返回 AuthUser → 签发 JWT（下一步）
+  └─ 返回 LoginResult：accessToken + refreshToken + userInfo + expiresIn
 ```
 
 两个安全细节：
@@ -395,21 +395,70 @@ if (isAdmin) {
 
 为什么要有这一步：管理员权限涉及系统配置类接口，如果漏配一条 `kh_role_permission` 数据，管理员会被“锁在门外”；用常量兜底，保证超管永远可用，同时避免把上百条权限逐条插库。
 
-### 7.3 请求鉴权（设计，下一步实现）
+### 7.3 请求鉴权（已实现）
+
+认证交给全局守卫 `JwtAuthGuard`，通过 `APP_GUARD` 注册在 `AuthModule`，所有接口默认都要登录：
+
+```ts
+// auth.module.ts
+providers: [
+  AuthService,
+  { provide: APP_GUARD, useClass: JwtAuthGuard },
+]
+```
+
+```ts
+// auth/guards/jwt-auth.guard.ts（核心逻辑）
+canActivate(context: ExecutionContext): boolean {
+  // 1. @Public() 标记的接口直接放行（登录、刷新）
+  const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
+    context.getHandler(),
+    context.getClass(),
+  ]);
+  if (isPublic) return true;
+
+  // 2. 只接受 Authorization: Bearer <token>
+  const token = context.switchToHttp().getRequest().headers.authorization
+    ?.replace(/^Bearer\s+/i, '');
+  if (!token) throw new UnauthorizedException('未登录');
+
+  // 3. 验签 + 过期校验
+  let payload: AccessTokenPayload;
+  try {
+    payload = this.jwtService.verify<AccessTokenPayload>(token);
+  } catch {
+    throw new UnauthorizedException('登录状态已失效');
+  }
+
+  // 4. 防止把 refreshToken 当 accessToken 用
+  if (payload.type !== 'access') {
+    throw new UnauthorizedException('令牌类型错误');
+  }
+
+  request.user = payload;   // 挂到请求上，Controller 直接取
+  return true;
+}
+```
 
 ```
-请求 → JwtAuthGuard
+请求 → JwtAuthGuard（认证：你是谁）
+        ├─ @Public() → 放行
         ├─ 无 token / 签名错 / 过期 → 401
-        ├─ 解出 AuthUser 挂到 request.user
-        └─ RefreshToken 不参与业务接口
-     → PermissionGuard / RolesGuard
-        ├─ @Roles('ROLE_REVIEWER')        → 校验角色编码
-        ├─ @RequirePermissions('document:review') → 校验权限编码
+        ├─ type !== 'access' → 401
+        └─ request.user = { sub, username, type: 'access' }
+     → PermissionGuard / RolesGuard（授权：你能不能）
+        ├─ @Roles('ROLE_REVIEWER')
+        ├─ @RequirePermissions('document:review')
         └─ 失败 → 403
      → Controller
 ```
 
-Guard 顺序很重要：**先认证（你是谁），再授权（你能不能）**。`@Public()` 装饰器用于登录、刷新、健康检查等免鉴权接口。
+两个关键设计：
+
+1. **顺序不能反**：先认证再授权，否则权限校验拿不到用户身份；
+2. **`@Public()` 是必须的**：全局守卫会把 `/auth/login` 也拦住，没有这个装饰器就会“登录需要先登录”的死循环。
+
+`/auth/me` 就是一个最小验证：不带 token 访问 401，带上 token 返回 payload。
 
 ### 7.4 数据权限（第三种维度）
 
@@ -440,44 +489,134 @@ where: {
 
 单 token 的两难：有效期短则频繁登录，有效期长则泄露后长期可用。双 token 把“长期凭证”和“短期凭证”分开，刷新接口还能做**轮换与重放检测**。
 
-### 8.2 accessToken payload 设计
+### 8.2 payload 里到底放什么
+
+payload 是“身份卡片”，不是“用户对象”。分四类内容：
+
+| 类别 | 字段 | 说明 |
+|---|---|---|
+| 标准声明 | `sub`、`iat`、`exp`、`iss`、`aud`、`jti` | `@nestjs/jwt` 自动填 `iat/exp` |
+| 身份信息 | `username`、`realName` | 只放展示需要、且不敏感、不常变的 |
+| 授权信息 | `roles`、`perms`、`teamIds` | 放进去 = 鉴权零查库；代价是变更延迟 |
+| 令牌元信息 | `type`、`permVersion` | 区分 access/refresh；控制权限即时生效 |
+
+本项目当前实现只放最小集合：
+
+```ts
+interface TokenPayload {
+  sub: string;                    // 用户 id（BIGINT 转字符串）
+  username: string;
+  type: 'access' | 'refresh';
+}
+```
+
+accessToken：
 
 ```json
 {
   "sub": "1000000000000000001",
   "username": "admin",
-  "roles": ["ROLE_ADMIN", "ROLE_REVIEWER"],
-  "perms": ["document:list", "document:review", "system:user"],
-  "teams": ["8000000000000000001"],
-  "iat": 1763500000,
-  "exp": 1763501800
+  "type": "access",
+  "iat": 1763600000,
+  "exp": 1763600900
 }
 ```
 
-取舍：
+refreshToken 只多一个语义（`type: 'refresh'`），**不放任何权限**——刷新时会重新查库，保证拿到最新权限。
 
-- **把权限放进 token**：鉴权时零查库，适合高频接口；
-- **代价**：权限变更要等 token 过期才生效。解决方案是加 `permVersion`，权限变更时 `INCR user:{id}:permVersion`，Guard 校验版本不一致则要求刷新；或者缩短 accessToken 寿命（15 分钟）作为兜底。
+#### “payload 只有 sub，业务怎么执行？”
 
-### 8.3 刷新流程
+这是最容易晕的点。答案是：**token 只负责证明“你是谁”，业务数据永远去数据库查。**
 
 ```
-POST /auth/refresh { refreshToken }
-  ├─ 验签 + 校验 jti 是否在 Redis 白名单
-  ├─ 查用户状态（禁用/删除则拒绝）
-  ├─ 重新计算 roles/permissions（保证权限是最新的）
-  ├─ 旧 refreshToken 作废（轮换）
-  └─ 返回新的 accessToken + refreshToken
+请求 → Guard 验签 → req.user = { sub, username, type }
+     → 业务代码用 req.user.sub 去查数据
+        DocumentService.list(req.user.sub, teamIds)
 ```
 
-**轮换 + 重放检测**：一个 refreshToken 只能用一次；如果同一个 token 被使用两次，说明可能被窃取，直接吊销该用户所有会话。
+两种取值方式，按 payload 内容决定：
 
-### 8.4 登出
+| payload | 请求进入后拿到什么 | 需要额外查询吗 |
+|---|---|---|
+| 只有 `sub` | `{ userId }` | 需要角色/权限时查库或 Redis 缓存 |
+| 带 `roles/perms/teamIds` | 完整身份上下文 | 不需要 |
+
+主流折中方案：payload 放 `sub + roles`，权限点放 Redis（`user:perms:{id}`，TTL 5 分钟），兼顾体积与即时性。
+
+#### 绝对不能放的
+
+密码、密码 hash、身份证/手机号、几百条权限点、频繁变化的数据——因为 payload 只是 Base64，**谁都能解开看**，签名只保证“没被篡改”。
+
+### 8.3 签发实现
+
+```ts
+// AuthService
+async login(dto: LoginDto): Promise<LoginResult> {
+  const user = await this.userService.validateCredentials(dto.username, dto.password);
+  await this.userService.touchLastLogin(user.userId);
+
+  return {
+    accessToken: this.signAccessToken(user),   // 15m
+    refreshToken: this.signRefreshToken(user), // 7d
+    tokenType: 'Bearer',
+    userInfo: user,                            // 前端渲染菜单/按钮用
+    expiresIn: this.accessExpiresSeconds(),    // 秒，供前端设置刷新定时器
+  };
+}
+```
+
+有效期从 `.env` 读（`JWT_ACCESS_EXPIRES=15m`、`JWT_REFRESH_EXPIRES=7d`），并额外提供一个“把 `15m` 转成 900 秒”的解析方法——因为前端需要的是秒数，而 JWT 接受的是带单位字符串。
+
+### 8.4 刷新流程（已实现）
+
+```ts
+async refresh(dto: RefreshTokenDto): Promise<LoginResult> {
+  let payload: TokenPayload;
+  try {
+    payload = this.jwtService.verify<TokenPayload>(dto.refreshToken);
+  } catch {
+    throw new UnauthorizedException('refresh token 无效或已过期');
+  }
+  // 重新查库：状态、角色、权限、团队都取最新的
+  const user = await this.userService.buildAuthUser(payload.sub);
+  return this.buildLoginResult(user);
+}
+```
+
+三个必须做的动作：
+
+1. **重新查库算权限**，不能直接复用旧 payload；
+2. **校验用户状态**（`status !== 1` 直接拒绝），离职/禁用的人不能靠 refresh 续命；
+3. **轮换**（生产建议）：旧 refreshToken 作废；同一个 token 用两次视为泄露，吊销全部会话。
+
+### 8.5 登出
 
 accessToken 无状态、无法即时删除，所以登出要做两件事：
 
-1. `refreshToken` 从白名单/Redis 删除（保证不能再换新 token）；
-2. accessToken 剩余有效期很短，等它自然过期；对安全要求高的系统，可把 `jti` 放入 Redis 黑名单（TTL = 剩余有效期）。
+1. `refreshToken` 从 Redis 白名单删除，保证不能再换新 token；
+2. accessToken 等它自然过期（≤15 分钟）；安全要求高的系统把 `jti` 放入 Redis 黑名单（TTL = 剩余有效期）。
+
+### 8.6 三个常被混淆的概念
+
+| 概念 | 作用对象 | 是否保密 | 类比 |
+|---|---|---|---|
+| 密码盐（bcrypt salt） | 密码哈希 | 不保密，存在 hash 串里 | 每人不同的调料 |
+| JWT `secret` | token 签名 | **绝密**，泄露即可伪造身份 | 只有服务器有的公章 |
+| 密码本身 | 登录那一次校验 | 绝密，禁止入日志/token | 入场券 |
+
+bcrypt 的哈希串 `$2a$10$<22字符盐><31字符摘要>` 自带盐：验证时从串里取出盐，用同样的盐和轮数重算，再比较摘要。所以**盐是“随哈希存下来的随机串”，不是每次重新生成**。
+
+### 8.7 Cookie-Session 与单 Token 的对比
+
+| 维度 | Cookie-Session | 单 JWT Token |
+|---|---|---|
+| 服务端存储 | 必须存 session | 不存 |
+| 传递 | 浏览器自动带 Cookie | 前端手动加 `Authorization` |
+| 撤销 | 删 session 立即生效 | 只能等过期 |
+| 跨域/多端 | 受同源限制，移动端差 | 天然适配 |
+| 主要风险 | CSRF | XSS（token 被 JS 读到） |
+
+结论：**双 Token 是唯一同时拿到“免查库 + 可撤销”的方案**——短命的 accessToken 负责性能，可撤销的 refreshToken 负责安全。生产环境推荐 refreshToken 放 `HttpOnly + Secure + SameSite` Cookie，accessToken 放前端内存。
 
 ---
 
@@ -496,31 +635,60 @@ curl -X POST http://localhost:3000/auth/login \
   "accessToken": "eyJhbGciOi...",
   "refreshToken": "eyJhbGciOi...",
   "tokenType": "Bearer",
-  "expiresIn": 1800
+  "expiresIn": 900,
+  "userInfo": {
+    "userId": "1000000000000000001",
+    "username": "admin",
+    "realName": "系统管理员",
+    "roles": ["ROLE_ADMIN", "ROLE_REVIEWER"],
+    "permissions": ["document:list", "document:review", "system:user"],
+    "teamIds": ["8000000000000000001", "8000000000000000002"]
+  }
 }
 ```
+
+`userInfo` 是给前端渲染菜单/按钮用的；后端鉴权只依赖 token，不依赖这个字段。
 
 ### 9.2 携带 token 访问
 
 ```bash
-curl http://localhost:3000/document/list \
+curl http://localhost:3000/auth/me \
   -H "Authorization: Bearer eyJhbGciOi..."
 ```
 
-Guard 内部：
-
+```json
+{
+  "sub": "1000000000000000001",
+  "username": "admin",
+  "type": "access",
+  "iat": 1763600000,
+  "exp": 1763600900
+}
 ```
-验签 → 取 payload → request.user = { userId, roles, perms, teams }
-→ @RequirePermissions('document:list') 校验 → Controller
+
+不带 token 或 token 过期：
+
+```json
+{ "statusCode": 401, "message": "未登录" }
 ```
 
-### 9.3 权限变更后的效果
+### 9.3 刷新
+
+```bash
+curl -X POST http://localhost:3000/auth/refresh \
+  -H "Content-Type: application/json" \
+  -d '{"refreshToken":"eyJhbGciOi..."}'
+```
+
+刷新会**重新查库**计算角色/权限/团队，所以返回的 `userInfo` 是最新的；用户被禁用时此接口直接 401。
+
+### 9.4 权限变更后的效果
 
 - 管理员在后台给“审核员”角色新增 `document:export` → 写 `kh_role_permission` 一行；
 - 该角色下所有用户在下一次刷新 token 后获得新权限；
 - 如果要求“立即生效”，把 `permVersion` 放进 token 并在 Guard 比对（多一次 Redis 读）。
 
-### 9.4 前端如何使用
+### 9.5 前端如何使用
 
 1. 登录成功后存 token（access 放内存，refresh 放安全存储）；
 2. axios 拦截器统一加 `Authorization`；
@@ -565,16 +733,19 @@ PostgreSQL 部分唯一索引：`UNIQUE (username) WHERE deleted = false`。
 - 6 个 RBAC 实体 + 2 个团队实体，统一 `bigintTransformer`；
 - `UserModule` / `TeamModule` / `AuthModule` 拆分与依赖注入；
 - 登录校验链路：状态、邮箱、bcrypt、角色编码、权限编码、可访问团队；
-- 权限计算：角色并集 ∪ 直授 ∪ 管理员兜底。
+- 权限计算：角色并集 ∪ 直授 ∪ 管理员兜底；
+- JWT 双 token 签发（`/auth/login`），有效期从 `.env` 读取并换算秒数；
+- `/auth/refresh` 刷新：验签后重新查库计算权限；
+- `JwtAuthGuard` 全局认证 + `@Public()` 放行，`/auth/me` 已验证可用。
 
-下一步（JWT）：
+下一步：
 
-1. 引入 `@nestjs/jwt` + `passport-jwt`（或自写 Guard）；
-2. `AuthService.login` 签发双 token，`refreshToken` 存 Redis（含 `jti`、用户、过期时间）；
-3. `JwtAuthGuard` + `@Public()`；
-4. `PermissionGuard` + `@RequirePermissions()`，按 `permission_type = 3` 做接口级校验；
-5. 刷新、登出、权限版本号；
-6. 前端 axios 拦截器与 401 自动刷新。
+1. **refreshToken 落 Redis**：存 `jti` 白名单，实现登出、踢人、轮换与重放检测；
+2. **`PermissionGuard` + `@RequirePermissions()`**：按 `permission_code` 做接口级鉴权（`permission_type = 3`）；
+3. **`permVersion`**：权限变更即时生效；
+4. **登录限流**：失败次数限制 / 验证码，防在线爆破；
+5. **前端 axios 拦截器**：401 自动刷新并重放请求；
+6. **接口文档**：Swagger 标注鉴权方式。
 
 ---
 
